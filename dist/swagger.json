@@ -627,7 +627,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportCertification": {
         "type": "object",
@@ -742,7 +753,18 @@
           "pg_provider",
           "origin"
         ],
-        "description": "본인 인증 내역.\n\n`IIamportCertification` 은 아임포트의 본인인증 정보를 형상화한 자료구조 인터페이스이다.\n\n단, `IIamportCertification` 레코드의 존재가 곧 본인인증의 완결을 뜻하는 것은 아니다.\n{@link IIamportCertification.certified} 값이 `true` 여야만이 비로소, 본인인증 \n대상자가 자신의 핸드폰 번호로 전송된 OTP 를 아임포트의 본인인증 팝업창에 정확히 적어,\n본인인증을 완료했음을 의미한다."
+        "description": "본인 인증 내역.\n\n`IIamportCertification` 은 아임포트의 본인인증 정보를 형상화한 자료구조 인터페이스이다.\n\n단, `IIamportCertification` 레코드의 존재가 곧 본인인증의 완결을 뜻하는 것은 아니다.\n{@link IIamportCertification.certified} 값이 `true` 여야만이 비로소, 본인인증 \n대상자가 자신의 핸드폰 번호로 전송된 OTP 를 아임포트의 본인인증 팝업창에 정확히 적어,\n본인인증을 완료했음을 의미한다.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportCertification.IStore": {
         "type": "object",
@@ -806,7 +828,8 @@
           "gender_digit",
           "carrier"
         ],
-        "description": "본인 인증 입력 정보."
+        "description": "본인 인증 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportCertification.IAccessor_gt_": {
         "type": "object",
@@ -832,7 +855,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportCertification.IAccessor": {
         "type": "object",
@@ -847,7 +881,8 @@
         "required": [
           "imp_uid"
         ],
-        "description": "본인인증 정보의 접근자 구조체."
+        "description": "본인인증 정보의 접근자 구조체.",
+        "x-tson_jsDocTags": []
       },
       "IIamportCertification.IConfirm": {
         "type": "object",
@@ -862,7 +897,8 @@
         "required": [
           "otp"
         ],
-        "description": "본인인증 승인을 위한 입력 정보."
+        "description": "본인인증 승인을 위한 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportPayment.IWebhook": {
         "type": "object",
@@ -895,7 +931,8 @@
           "merchant_uid",
           "status"
         ],
-        "description": "웹훅 데이터."
+        "description": "웹훅 데이터.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportPayment_gt_": {
         "type": "object",
@@ -928,7 +965,8 @@
                 "$ref": "#/components/schemas/IIamportPayment.IBase_lt_phone_or_kpay_or_kakaopay_or_payco_or_lpay_or_ssgpay_or_tosspay_or_cultureland_or_smartculture_or_happymoney_or_booknlife_or_point_gt_",
                 "description": "응답 데이터, 사실상 본문."
               }
-            ]
+            ],
+            "description": "응답 데이터, 사실상 본문."
           }
         },
         "nullable": false,
@@ -937,7 +975,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportCardPayment": {
         "type": "object",
@@ -1126,10 +1175,6 @@
               "$ref": "#/components/schemas/IIamportPaymentCancel"
             },
             "nullable": false
-          },
-          "notice_url": {
-            "type": "string",
-            "nullable": false
           }
         },
         "nullable": false,
@@ -1172,7 +1217,18 @@
           "cancel_reason",
           "cancel_history"
         ],
-        "description": "카드 결제 정보."
+        "description": "카드 결제 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportPaymentCancel": {
         "type": "object",
@@ -1211,7 +1267,18 @@
           "reason",
           "receipt_url"
         ],
-        "description": "결제 취소 정보."
+        "description": "결제 취소 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportTransferPayment": {
         "type": "object",
@@ -1384,10 +1451,6 @@
               "$ref": "#/components/schemas/IIamportPaymentCancel"
             },
             "nullable": false
-          },
-          "notice_url": {
-            "type": "string",
-            "nullable": false
           }
         },
         "nullable": false,
@@ -1427,7 +1490,18 @@
           "cancel_reason",
           "cancel_history"
         ],
-        "description": "계좌 이체 결제 정보."
+        "description": "계좌 이체 결제 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportVBankPayment": {
         "type": "object",
@@ -1620,10 +1694,6 @@
               "$ref": "#/components/schemas/IIamportPaymentCancel"
             },
             "nullable": false
-          },
-          "notice_url": {
-            "type": "string",
-            "nullable": false
           }
         },
         "nullable": false,
@@ -1667,7 +1737,18 @@
           "cancel_reason",
           "cancel_history"
         ],
-        "description": "가상 계좌 결제 정보."
+        "description": "가상 계좌 결제 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportPayment.IBase_lt_phone_or_kpay_or_kakaopay_or_payco_or_lpay_or_ssgpay_or_tosspay_or_cultureland_or_smartculture_or_happymoney_or_booknlife_or_point_gt_": {
         "type": "object",
@@ -1841,10 +1922,6 @@
               "$ref": "#/components/schemas/IIamportPaymentCancel"
             },
             "nullable": false
-          },
-          "notice_url": {
-            "type": "string",
-            "nullable": false
           }
         },
         "nullable": false,
@@ -1882,7 +1959,8 @@
           "cancel_reason",
           "cancel_history"
         ],
-        "description": "결제 기본 (공통) 정보."
+        "description": "결제 기본 (공통) 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportPaymentCancel.IStore": {
         "type": "object",
@@ -1936,7 +2014,8 @@
           "checksum",
           "reason"
         ],
-        "description": "결제 취소 입력 정보."
+        "description": "결제 취소 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportReceipt_gt_": {
         "type": "object",
@@ -1962,7 +2041,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportReceipt": {
         "type": "object",
@@ -2029,7 +2119,18 @@
           "applied_at",
           "cancelled_at"
         ],
-        "description": "현금 영수증 정보."
+        "description": "현금 영수증 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportReceipt.IStore": {
         "type": "object",
@@ -2090,7 +2191,8 @@
           "imp_uid",
           "identifier"
         ],
-        "description": "현금영수증 입력 정보."
+        "description": "현금영수증 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportUser.IAccessor": {
         "type": "object",
@@ -2111,7 +2213,8 @@
           "imp_key",
           "imp_secret"
         ],
-        "description": "아임포트에서 부여해 준 API 및 secret 키."
+        "description": "아임포트에서 부여해 준 API 및 secret 키.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportUser_gt_": {
         "type": "object",
@@ -2137,7 +2240,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportUser": {
         "type": "object",
@@ -2164,7 +2278,18 @@
           "expired_at",
           "access_token"
         ],
-        "description": "아임포트 유저 인증 정보.\n\n아임포트는 고객사에게 API 및 secret 키 정보, {@link IIamportUser.IAccessor} 를 발급해준다.\n\n하지만 이를 곧장 아임포트의 유저 인증에 사용할 수는 없고, 해당 API 및 secret 키를 토대로 유저\n인증 토큰을 발급받아야 하는데, 이 유저 인증 토큰에는 하필이면 만로 시간이라는 게 존재한다.\n`IIamportUser` 는 바로 이러한 유저 인증 토큰 및 그것의 만료 시간을 형상화한 자료구조 \n인터페이스이다.\n\n더하여 이처럼 만료 시간이 존재하는 아임포트의 유저 인증 토큰의 특성상, 이것의 만료 시간이\n초과되지 않도록 관리하는 것은 매우 힘든 일이다. 이에 `iamport-server-api` 에서는 아임포트\n유저 인증 토큰이 만료될 때마다 자동 갱신해주는, {@link  IamportConnector } 클래스를 제공한다."
+        "description": "아임포트 유저 인증 정보.\n\n아임포트는 고객사에게 API 및 secret 키 정보, {@link IIamportUser.IAccessor} 를 발급해준다.\n\n하지만 이를 곧장 아임포트의 유저 인증에 사용할 수는 없고, 해당 API 및 secret 키를 토대로 유저\n인증 토큰을 발급받아야 하는데, 이 유저 인증 토큰에는 하필이면 만로 시간이라는 게 존재한다.\n`IIamportUser` 는 바로 이러한 유저 인증 토큰 및 그것의 만료 시간을 형상화한 자료구조 \n인터페이스이다.\n\n더하여 이처럼 만료 시간이 존재하는 아임포트의 유저 인증 토큰의 특성상, 이것의 만료 시간이\n초과되지 않도록 관리하는 것은 매우 힘든 일이다. 이에 `iamport-server-api` 에서는 아임포트\n유저 인증 토큰이 만료될 때마다 자동 갱신해주는, {@link  IamportConnector } 클래스를 제공한다.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportVBankPayment.IStore": {
         "type": "object",
@@ -2241,7 +2366,8 @@
           "vbank_due",
           "vbank_holder"
         ],
-        "description": "가상 계좌 결제 입력 정보.\n\n가상 계좌를 임의 생성할 수 있다.\n\n단, 일부 PG 사 혹은 `fake-iamport-server` 만 가능.\n\n  - 세틀뱅크\n  - 나이스페이먼츠\n  - KG이니시스"
+        "description": "가상 계좌 결제 입력 정보.\n\n가상 계좌를 임의 생성할 수 있다.\n\n단, 일부 PG 사 혹은 `fake-iamport-server` 만 가능.\n\n  - 세틀뱅크\n  - 나이스페이먼츠\n  - KG이니시스",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportVBankPayment_gt_": {
         "type": "object",
@@ -2267,7 +2393,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportVBankPayment.IUpdate": {
         "type": "object",
@@ -2292,7 +2429,8 @@
         "required": [
           "imp_uid"
         ],
-        "description": "가상 계좌 결제의 수정 입력 정보.\n\n아직 입금되지 않은 가상계좌의 입금기한 또는 입금금액을 수정할 수 있다.\n\n다만, 세틀뱅크 혹은 `fake-iamport-server` 만 가능."
+        "description": "가상 계좌 결제의 수정 입력 정보.\n\n아직 입금되지 않은 가상계좌의 입금기한 또는 입금금액을 수정할 수 있다.\n\n다만, 세틀뱅크 혹은 `fake-iamport-server` 만 가능.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportSubscription_gt_": {
         "type": "object",
@@ -2318,7 +2456,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportSubscription": {
         "type": "object",
@@ -2398,7 +2547,18 @@
           "updated",
           "customer_uid"
         ],
-        "description": "간편 결제 카드 정보."
+        "description": "간편 결제 카드 정보.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportSubscription.IStore": {
         "type": "object",
@@ -2461,7 +2621,8 @@
           "birth",
           "customer_uid"
         ],
-        "description": "간편 결제 카드 입력 정보."
+        "description": "간편 결제 카드 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportSubscription.IOnetime": {
         "type": "object",
@@ -2601,7 +2762,8 @@
           "amount",
           "name"
         ],
-        "description": "결제 신청 입력 정보."
+        "description": "결제 신청 입력 정보.",
+        "x-tson_jsDocTags": []
       },
       "IIamportResponse_lt_IIamportCardPayment_gt_": {
         "type": "object",
@@ -2627,7 +2789,18 @@
           "message",
           "response"
         ],
-        "description": "아임포트 고유의 응답 데이터."
+        "description": "아임포트 고유의 응답 데이터.",
+        "x-tson_jsDocTags": [
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Jeongho Nam - https://github.com/samchon",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
       },
       "IIamportSubscription.IAgain": {
         "type": "object",
@@ -2720,7 +2893,8 @@
           "name",
           "customer_uid"
         ],
-        "description": "간편 결제 카드로 결제 신청 입력 정보."
+        "description": "간편 결제 카드로 결제 신청 입력 정보.",
+        "x-tson_jsDocTags": []
       }
     }
   },
