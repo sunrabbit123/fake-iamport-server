@@ -52,7 +52,7 @@ export namespace at
 
     export function path(customer_uid: string): string
     {
-        return `/subscribe/customers/${customer_uid}`;
+        return `/subscribe/customers/${encodeURIComponent(customer_uid)}`;
     }
 }
 
@@ -108,7 +108,7 @@ export namespace store
 
     export function path(customer_uid: string): string
     {
-        return `/subscribe/customers/${customer_uid}`;
+        return `/subscribe/customers/${encodeURIComponent(customer_uid)}`;
     }
 }
 
@@ -153,6 +153,6 @@ export namespace erase
 
     export function path(customer_uid: string): string
     {
-        return `/subscribe/customers/${customer_uid}`;
+        return `/subscribe/customers/${encodeURIComponent(customer_uid)}`;
     }
 }
