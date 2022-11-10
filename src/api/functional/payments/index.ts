@@ -52,7 +52,7 @@ export namespace at
 
     export function path(imp_uid: string): string
     {
-        return `/payments/${imp_uid}`;
+        return `/payments/${encodeURIComponent(imp_uid)}`;
     }
 }
 

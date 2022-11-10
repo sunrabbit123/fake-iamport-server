@@ -115,6 +115,6 @@ export namespace confirm
 
     export function path(imp_uid: string): string
     {
-        return `/certifications/otp/confirm/${imp_uid}`;
+        return `/certifications/otp/confirm/${encodeURIComponent(imp_uid)}`;
     }
 }

@@ -101,7 +101,7 @@
             }
           }
         },
-        "description": "본인인증 요청하기.\n\n`certifications.otp.request` 는 아임포트 서버에 본인인증을 요청하는 API 함수이다.\n이 API 를 호출하면 본인인증 대상자의 핸드폰으로 OTP 문자가 전송되며, 본인인증\n대상자가 {@link  certifications.otp.confirm } 을 통하여 이 OTP 번호를 정확히\n입력함으로써, 본인인증이 완결된다.\n\n또한 본인인증 대상자가 자신의 핸드폰으로 전송된 OTP 문자를 입력하기 전에도,\n여전히해당 본인인증 내역은 {@link  certifications.at } 함수를 통하여 조회할 수 있다.\n다만, 이 때 리턴되는 {@link IIamportCertification} 에서 인증의 완결 여부를\n지칭하는 {@link IIamportCertification.certified} 값은 `false` 이다."
+        "description": "본인인증 요청하기.\n\n`certifications.otp.request` 는 아임포트 서버에 본인인증을 요청하는 API 함수이다.\n이 API 를 호출하면 본인인증 대상자의 핸드폰으로 OTP 문자가 전송되며, 본인인증\n대상자가 {@link certifications.otp.confirm } 을 통하여 이 OTP 번호를 정확히\n입력함으로써, 본인인증이 완결된다.\n\n또한 본인인증 대상자가 자신의 핸드폰으로 전송된 OTP 문자를 입력하기 전에도,\n여전히해당 본인인증 내역은 {@link certifications.at } 함수를 통하여 조회할 수 있다.\n다만, 이 때 리턴되는 {@link IIamportCertification} 에서 인증의 완결 여부를\n지칭하는 {@link IIamportCertification.certified} 값은 `false` 이다."
       }
     },
     "/certifications/otp/confirm/{imp_uid}": {
@@ -142,7 +142,7 @@
             }
           }
         },
-        "description": "본인인증 시 발급된 OTP 코드 입력하기.\n\n`certifications.otp.confirm` 는 {@link  certifications.otp.request } 를 통하여\n발급된 본인인증 건에 대하여, 본인인증 대상자의 휴대폰으로 전송된 OTP 번호를\n검증하고, 입력한 OTP 번호가 맞거든 해당 본인인증 건을 승인하여 완료 처리해주는\nAPI 함수이다.\n\n이처럼 본인인증을 완료하거든, 해당 본인인증 건 {@link IIamportCertification} 의\n{@link IIamportCertification.certified} 값이 비로소 `true` 로 변경되어,\n비로소 완결된다."
+        "description": "본인인증 시 발급된 OTP 코드 입력하기.\n\n`certifications.otp.confirm` 는 {@link certifications.otp.request } 를 통하여\n발급된 본인인증 건에 대하여, 본인인증 대상자의 휴대폰으로 전송된 OTP 번호를\n검증하고, 입력한 OTP 번호가 맞거든 해당 본인인증 건을 승인하여 완료 처리해주는\nAPI 함수이다.\n\n이처럼 본인인증을 완료하거든, 해당 본인인증 건 {@link IIamportCertification} 의\n{@link IIamportCertification.certified} 값이 비로소 `true` 로 변경되어,\n비로소 완결된다."
       }
     },
     "/internal/webhook": {
@@ -165,7 +165,7 @@
             "description": ""
           }
         },
-        "description": "웹훅 이벤트 더미 리스너.\n\n`internal.webhook` 은 실제 아임포트의 서버에는 존재하지 않는 API 로써,\n`fake-impoart-server` 의 {@link  Configuration.WEBHOOK_URL } 에 아무런 URL 을 설정하지\n않으면, `fake-iamport-server` 로부터 발생하는 모든 종류의 웹훅 이벤트는 이 곳으로 전달되어\n무의미하게 사라진다.\n\n따라서 `fake-iamport-server` 를 사용하여 아임포트 서버와의 연동을 미리 검증코자 할 때는,\n반드시 {@link  Configuration.WEBHOOK_URL } 를 설정하여 웹훅 이벤트가 귀하의 백엔드 서버로\n제대로 전달되도록 하자."
+        "description": "웹훅 이벤트 더미 리스너.\n\n`internal.webhook` 은 실제 아임포트의 서버에는 존재하지 않는 API 로써,\n`fake-impoart-server` 의 {@link Configuration.WEBHOOK_URL } 에 아무런 URL 을 설정하지\n않으면, `fake-iamport-server` 로부터 발생하는 모든 종류의 웹훅 이벤트는 이 곳으로 전달되어\n무의미하게 사라진다.\n\n따라서 `fake-iamport-server` 를 사용하여 아임포트 서버와의 연동을 미리 검증코자 할 때는,\n반드시 {@link Configuration.WEBHOOK_URL } 를 설정하여 웹훅 이벤트가 귀하의 백엔드 서버로\n제대로 전달되도록 하자."
       }
     },
     "/internal/deposit/{imp_uid}": {
@@ -375,7 +375,7 @@
             }
           }
         },
-        "description": "유저 인증 토큰 발행하기.\n\n아임포트에 가입하여 부여받은 API 및 secret 키를 토대로, 유저 인증 토큰을 발행한다.\n\n단, 아임포트가 발급해주는 유저 인증 토큰에는 유효 시간 {@link IIamportUser.expired_at}\n이 있어, 해당 시간이 지나거든 기 발급 토큰이 만료되어 더 이상 쓸 수 없게 된다. 때문에\n아임포트의 이러한 시간 제한에 구애받지 않고 자유로이 아임포트의 API 를 이용하고 싶다면,\n`iamport-server-api` 에서 제공해주는 {@link  IamportConnector } 를 활용하도록 하자."
+        "description": "유저 인증 토큰 발행하기.\n\n아임포트에 가입하여 부여받은 API 및 secret 키를 토대로, 유저 인증 토큰을 발행한다.\n\n단, 아임포트가 발급해주는 유저 인증 토큰에는 유효 시간 {@link IIamportUser.expired_at}\n이 있어, 해당 시간이 지나거든 기 발급 토큰이 만료되어 더 이상 쓸 수 없게 된다. 때문에\n아임포트의 이러한 시간 제한에 구애받지 않고 자유로이 아임포트의 API 를 이용하고 싶다면,\n`iamport-server-api` 에서 제공해주는 {@link IamportConnector } 를 활용하도록 하자."
       }
     },
     "/vbanks": {
@@ -560,7 +560,7 @@
             }
           }
         },
-        "description": "카드로 결제하기, 더불어 간편 결제용으로 등록 가능.\n\n`subscribe.payments.onetime` 은 카드를 매개로 한 결제를 하고자 할 때 호출하는 API\n함수이다. 더하여 입력 값에 {@link IIamportSubscription.IOnetime.customer_uid} 를\n기입하는 경우, 결제에 사용한 카드를 그대로 간편 결제용 카드\n{@link IIamportSubscription} 로 등록해버린다.\n\n다만, 정히 간편 카드 등록과 결제를 동시에 하고 싶다면,\n`subscribe.payments.onetime` 에 {@link IIamportSubscription.IOnetime.customer_uid}\n를 더하기보다, {@link  subscribe.customers.store } 와 {@link  subscribe.payments.again }\n을 각각 호출하는 것을 권장한다. 그것이 예외적인 상황에 보다 안전하게 대처할 수 있기\n때문이다.\n\n더하여 `subscribe.payments.onetime` 은 클라이언트 어플리케이션이 아임포트가 제공하는\n결제 창을 그대로 사용하는 경우, 귀하의 백엔드 서버가 이를 실 서비스에서 호출하는 일은\n없을 것이다. 다만, 고객이 카드를 통하여 결제하는 상황을 시뮬레이션하기 위하여, 테스트\n자동화 프로그램 수준에서 사용될 수는 있다."
+        "description": "카드로 결제하기, 더불어 간편 결제용으로 등록 가능.\n\n`subscribe.payments.onetime` 은 카드를 매개로 한 결제를 하고자 할 때 호출하는 API\n함수이다. 더하여 입력 값에 {@link IIamportSubscription.IOnetime.customer_uid} 를\n기입하는 경우, 결제에 사용한 카드를 그대로 간편 결제용 카드\n{@link IIamportSubscription} 로 등록해버린다.\n\n다만, 정히 간편 카드 등록과 결제를 동시에 하고 싶다면,\n`subscribe.payments.onetime` 에 {@link IIamportSubscription.IOnetime.customer_uid}\n를 더하기보다, {@link subscribe.customers.store } 와 {@link subscribe.payments.again }\n을 각각 호출하는 것을 권장한다. 그것이 예외적인 상황에 보다 안전하게 대처할 수 있기\n때문이다.\n\n더하여 `subscribe.payments.onetime` 은 클라이언트 어플리케이션이 아임포트가 제공하는\n결제 창을 그대로 사용하는 경우, 귀하의 백엔드 서버가 이를 실 서비스에서 호출하는 일은\n없을 것이다. 다만, 고객이 카드를 통하여 결제하는 상황을 시뮬레이션하기 위하여, 테스트\n자동화 프로그램 수준에서 사용될 수는 있다."
       }
     },
     "/subscribe/payments/again": {
@@ -731,7 +731,7 @@
           "__otp": {
             "type": "string",
             "nullable": false,
-            "description": "(테스트 전용) OTP 코드.\n\n오직 `fake-iamport-server` 에서만 쓰이는 속성으로써, 본인인증을 시뮬레이션할 때,\n어떠한 OTP 코드가 발급되었는 지를 확인하기 위하여 사용된다. 이를 이용하여 \n{@link  functional.certifications.otp.confirm } 함수를 호출하면, 본인인증을 완료할\n수 있다."
+            "description": "(테스트 전용) OTP 코드.\n\n오직 `fake-iamport-server` 에서만 쓰이는 속성으로써, 본인인증을 시뮬레이션할 때,\n어떠한 OTP 코드가 발급되었는 지를 확인하기 위하여 사용된다. 이를 이용하여 \n{@link functional.certifications.otp.confirm } 함수를 호출하면, 본인인증을 완료할\n수 있다."
           }
         },
         "nullable": false,
@@ -2060,7 +2060,7 @@
           "imp_uid": {
             "type": "string",
             "nullable": false,
-            "description": "귀속 결제의 {@link  IIamportPayment.imp_uid }."
+            "description": "귀속 결제의 {@link IIamportPayment.imp_uid }."
           },
           "receipt_uid": {
             "type": "string",
@@ -2138,7 +2138,7 @@
           "imp_uid": {
             "type": "string",
             "nullable": false,
-            "description": "귀속 결제의 {@link  IIamportPayment.imp_uid }."
+            "description": "귀속 결제의 {@link IIamportPayment.imp_uid }."
           },
           "identifier": {
             "type": "string",
@@ -2278,7 +2278,7 @@
           "expired_at",
           "access_token"
         ],
-        "description": "아임포트 유저 인증 정보.\n\n아임포트는 고객사에게 API 및 secret 키 정보, {@link IIamportUser.IAccessor} 를 발급해준다.\n\n하지만 이를 곧장 아임포트의 유저 인증에 사용할 수는 없고, 해당 API 및 secret 키를 토대로 유저\n인증 토큰을 발급받아야 하는데, 이 유저 인증 토큰에는 하필이면 만로 시간이라는 게 존재한다.\n`IIamportUser` 는 바로 이러한 유저 인증 토큰 및 그것의 만료 시간을 형상화한 자료구조 \n인터페이스이다.\n\n더하여 이처럼 만료 시간이 존재하는 아임포트의 유저 인증 토큰의 특성상, 이것의 만료 시간이\n초과되지 않도록 관리하는 것은 매우 힘든 일이다. 이에 `iamport-server-api` 에서는 아임포트\n유저 인증 토큰이 만료될 때마다 자동 갱신해주는, {@link  IamportConnector } 클래스를 제공한다.",
+        "description": "아임포트 유저 인증 정보.\n\n아임포트는 고객사에게 API 및 secret 키 정보, {@link IIamportUser.IAccessor} 를 발급해준다.\n\n하지만 이를 곧장 아임포트의 유저 인증에 사용할 수는 없고, 해당 API 및 secret 키를 토대로 유저\n인증 토큰을 발급받아야 하는데, 이 유저 인증 토큰에는 하필이면 만로 시간이라는 게 존재한다.\n`IIamportUser` 는 바로 이러한 유저 인증 토큰 및 그것의 만료 시간을 형상화한 자료구조 \n인터페이스이다.\n\n더하여 이처럼 만료 시간이 존재하는 아임포트의 유저 인증 토큰의 특성상, 이것의 만료 시간이\n초과되지 않도록 관리하는 것은 매우 힘든 일이다. 이에 `iamport-server-api` 에서는 아임포트\n유저 인증 토큰이 만료될 때마다 자동 갱신해주는, {@link IamportConnector } 클래스를 제공한다.",
         "x-tson_jsDocTags": [
           {
             "name": "author",
