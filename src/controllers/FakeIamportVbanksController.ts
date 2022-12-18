@@ -122,7 +122,7 @@ export class FakeIamportVbanksController {
         if (input.vbank_due) payment.vbank_date = input.vbank_due;
 
         // RETURNS WITH INFORM
-        FakeIamportPaymentProvider.webhook(payment);
+        FakeIamportPaymentProvider.webhook(payment).catch(() => {});
         return FakeIamportResponseProvider.success(payment);
     }
 }
