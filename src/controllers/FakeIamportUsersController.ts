@@ -1,4 +1,4 @@
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 
 import { IIamportUser } from "../api/structures/IIamportUser";
@@ -24,9 +24,9 @@ export class FakeIamportUsersController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post("getToken")
+    @core.TypedRoute.Post("getToken")
     public getToken(
-        @helper.TypedBody() input: IIamportUser.IAccessor,
+        @core.TypedBody() input: IIamportUser.IAccessor,
     ): IIamportResponse<IIamportUser> {
         const user: IIamportUser = FakeIamportUserAuth.issue(input);
         return FakeIamportResponseProvider.success(user);

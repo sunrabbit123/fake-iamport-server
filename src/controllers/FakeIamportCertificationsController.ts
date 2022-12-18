@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { v4 } from "uuid";
 
@@ -26,10 +26,10 @@ export class FakeIamportCertificationsController {
      * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
      * @returns 본인인증 정보
      */
-    @helper.TypedRoute.Get(":imp_uid")
+    @core.TypedRoute.Get(":imp_uid")
     public at(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportCertification> {
         FakeIamportUserAuth.authorize(request);
 
@@ -53,10 +53,10 @@ export class FakeIamportCertificationsController {
      * @param input 본인인증 요청 정보
      * @returns 진행 중인 본인인증의 식별자 정보
      */
-    @helper.TypedRoute.Post("otp/request")
+    @core.TypedRoute.Post("otp/request")
     public request(
         @nest.Request() request: express.Request,
-        @helper.TypedBody() input: IIamportCertification.IStore,
+        @core.TypedBody() input: IIamportCertification.IStore,
     ): IIamportResponse<IIamportCertification.IAccessor> {
         FakeIamportUserAuth.authorize(request);
 
@@ -112,11 +112,11 @@ export class FakeIamportCertificationsController {
      * @param input OTP 코드
      * @returns 인증 완료된 본인인증 정보
      */
-    @helper.TypedRoute.Post("otp/confirm/:imp_uid")
+    @core.TypedRoute.Post("otp/confirm/:imp_uid")
     public confirm(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
-        @helper.TypedBody() input: IIamportCertification.IConfirm,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedBody() input: IIamportCertification.IConfirm,
     ): IIamportResponse<IIamportCertification> {
         FakeIamportUserAuth.authorize(request);
 
@@ -137,10 +137,10 @@ export class FakeIamportCertificationsController {
      * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
      * @returns 삭제된 본인인증 정보
      */
-    @helper.TypedRoute.Delete(":imp_uid")
+    @core.TypedRoute.Delete(":imp_uid")
     public erase(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportCertification> {
         FakeIamportUserAuth.authorize(request);
 

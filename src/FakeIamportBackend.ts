@@ -1,8 +1,8 @@
 import { FakeIamportConfiguration } from "./FakeIamportConfiguration";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import express from "express";
-import helper from "nestia-helper";
 
 /**
  * Fake 아임포트 서버의 백엔드 프로그램.
@@ -22,10 +22,7 @@ export class FakeIamportBackend {
         //----
         // MOUNT CONTROLLERS
         this.application_ = await NestFactory.create(
-            await helper.EncryptedModule.dynamic(
-                __dirname + "/controllers",
-                FakeIamportConfiguration.ENCRYPTION_PASSWORD,
-            ),
+            await core.DynamicModule.mount(`${__dirname}/controllers`),
             { logger: false },
         );
 

@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { IIamportPayment } from "../api/structures/IIamportPayment";
 
@@ -24,8 +24,8 @@ export class FakeIamportInternalController {
      * @param input 웹훅 이벤트 정보
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post("webhook")
-    public webhook(@helper.TypedBody() input: IIamportPayment.IWebhook): void {
+    @core.TypedRoute.Post("webhook")
+    public webhook(@core.TypedBody() input: IIamportPayment.IWebhook): void {
         input; // DO NOTHING
     }
 
@@ -42,10 +42,10 @@ export class FakeIamportInternalController {
      *
      * @param imp_uid 대상 결제의 {@link IIamportVBankPayment.imp_uid}
      */
-    @helper.TypedRoute.Get("deposit/:imp_uid")
+    @core.TypedRoute.Get("deposit/:imp_uid")
     public deposit(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): void {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);
