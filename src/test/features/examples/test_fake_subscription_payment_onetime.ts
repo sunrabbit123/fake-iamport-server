@@ -1,12 +1,11 @@
-import TSON from "typescript-json";
-import { v4 } from "uuid";
-
 import imp from "../../../api";
 import { IIamportCardPayment } from "../../../api/structures/IIamportCardPayment";
 import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
 import { RandomGenerator } from "../../../utils/RandomGenerator";
+import typia from "typia";
+import { v4 } from "uuid";
 
 export async function test_fake_subscription_payment_onetime(
     connector: imp.IamportConnector,
@@ -43,7 +42,7 @@ export async function test_fake_subscription_payment_onetime(
             amount: 25_000,
             name: "Fake 주문",
         });
-    TSON.assertType(onetime);
+    typia.assertType(onetime);
     await validate(connector, onetime.response.imp_uid);
 
     /**
@@ -59,7 +58,7 @@ export async function test_fake_subscription_payment_onetime(
             amount: 10_000,
             name: "Fake 주문",
         });
-    TSON.assertType(again);
+    typia.assertType(again);
     await validate(connector, again.response.imp_uid);
 }
 
@@ -97,7 +96,7 @@ async function validate(
             await connector.get(),
             webhook.imp_uid,
         );
-    TSON.assertType(reloaded);
+    typia.assertType(reloaded);
 
     // 결제 방식 및 완료 여부 확인
     const payment: IIamportPayment = reloaded.response;

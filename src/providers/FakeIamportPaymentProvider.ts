@@ -1,11 +1,9 @@
-import { DomainError } from "tstl/exception/DomainError";
-
+import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
 import { IIamportPayment } from "../api/structures/IIamportPayment";
 import { IIamportPaymentCancel } from "../api/structures/IIamportPaymentCancel";
 import { IIamportVBankPayment } from "../api/structures/IIamportVBankPayment";
-
-import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
 import { FakeIamportStorage } from "./FakeIamportStorage";
+import { DomainError } from "tstl/exception/DomainError";
 
 export namespace FakeIamportPaymentProvider {
     export function store(payment: IIamportPayment): void {

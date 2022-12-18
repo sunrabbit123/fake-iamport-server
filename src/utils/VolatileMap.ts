@@ -1,6 +1,6 @@
 import { HashMap } from "tstl/container/HashMap";
-import { OutOfRange } from "tstl/exception/OutOfRange";
 import { TreeMap } from "tstl/container/TreeMap";
+import { OutOfRange } from "tstl/exception/OutOfRange";
 import { equal_to } from "tstl/functional/comparators";
 import { hash } from "tstl/functional/hash";
 

@@ -1,10 +1,9 @@
+import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
 import { IIamportCertification } from "../api/structures/IIamportCertification";
 import { IIamportPayment } from "../api/structures/IIamportPayment";
 import { IIamportReceipt } from "../api/structures/IIamportReceipt";
 import { IIamportSubscription } from "../api/structures/IIamportSubscription";
 import { IIamportUser } from "../api/structures/IIamportUser";
-
-import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
 import { VolatileMap } from "../utils/VolatileMap";
 
 export namespace FakeIamportStorage {

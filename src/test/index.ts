@@ -1,9 +1,8 @@
-import { IamportConnector } from "../api/IamportConnector";
 import { FakeIamportBackend } from "../FakeIamportBackend";
 import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-
-import { DynamicImportIterator } from "./internal/DynamicImportIterator";
+import { IamportConnector } from "../api/IamportConnector";
 import { ErrorUtil } from "../utils/ErrorUtil";
+import { DynamicImportIterator } from "./internal/DynamicImportIterator";
 
 async function handle_error(exp: any): Promise<void> {
     ErrorUtil.toJSON(exp);
