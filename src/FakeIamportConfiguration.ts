@@ -1,13 +1,12 @@
-const EXTENSION = __filename.substr(-2);
-if (EXTENSION === "js") require("source-map-support").install();
-
-import helper from "nestia-helper";
 import * as nest from "@nestjs/common";
 import { IEncryptionPassword } from "nestia-fetcher";
-
+import helper from "nestia-helper";
 import { DomainError } from "tstl/exception/DomainError";
 import { InvalidArgument } from "tstl/exception/InvalidArgument";
 import { OutOfRange } from "tstl/exception/OutOfRange";
+
+const EXTENSION = __filename.substr(-2);
+if (EXTENSION === "js") require("source-map-support").install();
 
 /**
  * Fake 아임포트 서버의 설정 정보.

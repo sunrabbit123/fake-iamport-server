@@ -1,7 +1,6 @@
+import { ArrayUtil } from "./ArrayUtil";
 import { randint } from "tstl/algorithm/random";
 import { sample as _Sample } from "tstl/ranges/algorithm/random";
-
-import { ArrayUtil } from "./ArrayUtil";
 
 export namespace RandomGenerator {
     const CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

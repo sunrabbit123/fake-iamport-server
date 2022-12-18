@@ -1,13 +1,11 @@
-import TSON from "typescript-json";
-import { v4 } from "uuid";
-
 import imp from "../../../api";
 import { IIamportCardPayment } from "../../../api/structures/IIamportCardPayment";
 import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
-
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
 import { RandomGenerator } from "../../../utils/RandomGenerator";
+import typia from "typia";
+import { v4 } from "uuid";
 
 export async function test_fake_card_payment(
     connector: imp.IamportConnector,
@@ -33,7 +31,7 @@ export async function test_fake_card_payment(
             amount: 25_000,
             name: "Fake 주문",
         });
-    TSON.assertType(output);
+    typia.assertType(output);
 
     /**
      * 아임포트 서버로부터의 웹훅 데이터.
@@ -65,7 +63,7 @@ export async function test_fake_card_payment(
             await connector.get(),
             webhook.imp_uid,
         );
-    TSON.assertType(reloaded);
+    typia.assertType(reloaded);
 
     // 결제 방식 및 완료 여부 확인
     const payment: IIamportPayment = reloaded.response;
