@@ -4,6 +4,8 @@ import { DomainError } from "tstl/exception/DomainError";
 import { InvalidArgument } from "tstl/exception/InvalidArgument";
 import { OutOfRange } from "tstl/exception/OutOfRange";
 
+/* eslint-disable */
+
 const EXTENSION = __filename.substr(-2);
 if (EXTENSION === "js") require("source-map-support").install();
 

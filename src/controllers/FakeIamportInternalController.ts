@@ -63,6 +63,6 @@ export class FakeIamportInternalController {
         payment.paid_at = Date.now() / 1000;
 
         // INFORM
-        FakeIamportPaymentProvider.webhook(payment);
+        FakeIamportPaymentProvider.webhook(payment).catch(() => {});
     }
 }

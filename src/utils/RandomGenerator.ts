@@ -6,20 +6,17 @@ export namespace RandomGenerator {
     const CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     export function alphabets(length: number): string {
-        let ret: string = "";
-        for (let i: number = 0; i < length; ++i) {
-            let index: number = randint(9, CHARACTERS.length - 1);
-            ret += CHARACTERS[index];
-        }
-        return ret;
+        return new Array(length)
+            .fill("")
+            .map(() => CHARACTERS[randint(9, CHARACTERS.length - 1)])
+            .join("");
     }
 
     export function name(length: number = 3): string {
-        let ret: string = "";
-        for (let i: number = 0; i < length; ++i)
-            ret += String.fromCharCode(randint(44031, 55203));
-
-        return ret;
+        return new Array(length)
+            .fill("")
+            .map(() => String.fromCharCode(randint(44031, 55203)))
+            .join("");
     }
 
     export function date(from: Date, range: number): Date {
@@ -32,14 +29,11 @@ export namespace RandomGenerator {
     }
 
     export function digit(minC: number, maxC: number): string {
-        let val: number = randint(0, Math.pow(10.0, maxC) - 1);
-        let ret: string = val.toString();
+        const val: number = randint(0, Math.pow(10.0, maxC) - 1);
+        const log10: number = val ? Math.floor(Math.log10(val)) + 1 : 0;
+        const prefix: string = "0".repeat(Math.max(0, minC - log10));
 
-        let log10: number = val ? Math.floor(Math.log10(val)) + 1 : 0;
-        if (log10 < minC)
-            for (let i: number = 0; i < minC - log10; ++i) ret = "0" + ret;
-
-        return ret;
+        return prefix + val.toString();
     }
 
     export function cardNumber(): string {

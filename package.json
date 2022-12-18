@@ -10,6 +10,8 @@
     "build:sdk": "nestia sdk",
     "build:swagger": "nestia swagger",
     "dev": "npm run build -- --watch",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint ./src --fix",
     "package:api": "npm run build:api && cd packages/api && npm publish",
     "prettier": "prettier src --write",
     "start": "pm2 start lib/executable/server.js -i 1 --name fake-iamport-server --wait-ready --listen-timeout 120000 --kill-timeout 15000",
@@ -46,7 +48,6 @@
     "rimraf": "^3.0.2",
     "sloc": "^0.2.1",
     "ts-node": "^10.8.0",
-    "tslint": "^6.1.3",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.4"
   },
