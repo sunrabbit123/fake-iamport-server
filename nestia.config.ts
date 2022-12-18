@@ -1,10 +1,10 @@
-import type nestia from "nestia";
+import type sdk from "@nestia/sdk";
 
-export const NESTIA_CONFIG: nestia.IConfiguration = {
+const NESTIA_CONFIG: sdk.INestiaConfig = {
     input: "src/controllers",
     output: "src/api",
     swagger: {
-        output: "dist/swagger.json"
-    }
+        output: "dist/swagger.json",
+    },
 };
 export default NESTIA_CONFIG;

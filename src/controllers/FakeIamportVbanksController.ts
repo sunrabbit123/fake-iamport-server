@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { randint } from "tstl/algorithm/random";
 import { v4 } from "uuid";
@@ -24,10 +24,10 @@ export class FakeIamportVbanksController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post()
+    @core.TypedRoute.Post()
     public store(
         @nest.Request() request: express.Request,
-        @helper.TypedBody() input: IIamportVBankPayment.IStore,
+        @core.TypedBody() input: IIamportVBankPayment.IStore,
     ): IIamportResponse<IIamportVBankPayment> {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);
@@ -100,10 +100,10 @@ export class FakeIamportVbanksController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Put()
+    @core.TypedRoute.Put()
     public update(
         @nest.Request() request: express.Request,
-        @helper.TypedBody() input: IIamportVBankPayment.IUpdate,
+        @core.TypedBody() input: IIamportVBankPayment.IUpdate,
     ): IIamportResponse<IIamportVBankPayment> {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);

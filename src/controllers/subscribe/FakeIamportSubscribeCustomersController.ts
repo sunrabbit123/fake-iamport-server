@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { v4 } from "uuid";
 
@@ -23,10 +23,10 @@ export class FakeIamportSubscribeCustomersController {
      * @param customer_uid 고객 (간편 결제 카드) 식별자 키
      * @returns 간편 결제 카드 정보
      */
-    @helper.TypedRoute.Get(":customer_uid")
+    @core.TypedRoute.Get(":customer_uid")
     public at(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("customer_uid", "string") customer_uid: string,
+        @core.TypedParam("customer_uid", "string") customer_uid: string,
     ): IIamportResponse<IIamportSubscription> {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);
@@ -56,11 +56,11 @@ export class FakeIamportSubscribeCustomersController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post(":customer_uid")
+    @core.TypedRoute.Post(":customer_uid")
     public store(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("customer_uid", "string") customer_uid: string,
-        @helper.TypedBody() input: IIamportSubscription.IStore,
+        @core.TypedParam("customer_uid", "string") customer_uid: string,
+        @core.TypedBody() input: IIamportSubscription.IStore,
     ): IIamportResponse<IIamportSubscription> {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);
@@ -98,10 +98,10 @@ export class FakeIamportSubscribeCustomersController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Delete(":customer_uid")
+    @core.TypedRoute.Delete(":customer_uid")
     public erase(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("customer_uid", "string") customer_uid: string,
+        @core.TypedParam("customer_uid", "string") customer_uid: string,
     ): IIamportResponse<IIamportSubscription> {
         // AUTHORIZE
         FakeIamportUserAuth.authorize(request);

@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { v4 } from "uuid";
 
@@ -20,10 +20,10 @@ export class FakeIamportReceiptsController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Get()
+    @core.TypedRoute.Get()
     public at(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportReceipt> {
         FakeIamportUserAuth.authorize(request);
 
@@ -41,11 +41,11 @@ export class FakeIamportReceiptsController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post()
+    @core.TypedRoute.Post()
     public store(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
-        @helper.TypedBody() input: IIamportReceipt.IStore,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedBody() input: IIamportReceipt.IStore,
     ): IIamportResponse<IIamportReceipt> {
         FakeIamportUserAuth.authorize(request);
 
@@ -85,10 +85,10 @@ export class FakeIamportReceiptsController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Delete()
+    @core.TypedRoute.Delete()
     public erase(
         @nest.Request() request: express.Request,
-        @helper.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedParam("imp_uid", "string") imp_uid: string,
     ) {
         FakeIamportUserAuth.authorize(request);
 

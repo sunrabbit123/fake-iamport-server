@@ -1,5 +1,5 @@
 import express from "express";
-import helper from "nestia-helper";
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { v4 } from "uuid";
 
@@ -40,10 +40,10 @@ export class FakeIampotSubscribePaymentsController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post("onetime")
+    @core.TypedRoute.Post("onetime")
     public onetime(
         @nest.Request() request: express.Request,
-        @helper.TypedBody() input: IIamportSubscription.IOnetime,
+        @core.TypedBody() input: IIamportSubscription.IOnetime,
     ): IIamportResponse<IIamportCardPayment> {
         FakeIamportUserAuth.authorize(request);
 
@@ -127,10 +127,10 @@ export class FakeIampotSubscribePaymentsController {
      *
      * @author Jeongho Nam - https://github.com/samchon
      */
-    @helper.TypedRoute.Post("again")
+    @core.TypedRoute.Post("again")
     public again(
         @nest.Request() request: express.Request,
-        @helper.TypedBody() input: IIamportSubscription.IAgain,
+        @core.TypedBody() input: IIamportSubscription.IAgain,
     ): IIamportResponse<IIamportCardPayment> {
         FakeIamportUserAuth.authorize(request);
 

@@ -1,6 +1,5 @@
+import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import { IEncryptionPassword } from "nestia-fetcher";
-import helper from "nestia-helper";
 import { DomainError } from "tstl/exception/DomainError";
 import { InvalidArgument } from "tstl/exception/InvalidArgument";
 import { OutOfRange } from "tstl/exception/OutOfRange";
@@ -18,14 +17,6 @@ export namespace FakeIamportConfiguration {
      * @internal
      */
     export const ASSETS = __dirname + "/../assets";
-
-    /**
-     * @internal
-     */
-    export const ENCRYPTION_PASSWORD: Readonly<IEncryptionPassword> = {
-        key: "szngncCKO7wZTuayfhkRNlBfI5Nl5N88",
-        iv: "M0Yvmgrk58GBvUAt",
-    };
 
     /**
      * 유저 토큰의 유효 시간.
@@ -96,21 +87,21 @@ export namespace FakeIamportConfiguration {
 }
 
 // CUSTOM EXCEPTIION CONVERSION
-helper.ExceptionManager.insert(
+core.ExceptionManager.insert(
     OutOfRange,
     (exp) => new nest.NotFoundException(exp.message),
 );
-helper.ExceptionManager.insert(
+core.ExceptionManager.insert(
     InvalidArgument,
     (exp) => new nest.ConflictException(exp.message),
 );
-helper.ExceptionManager.insert(
+core.ExceptionManager.insert(
     DomainError,
     (exp) => new nest.UnprocessableEntityException(exp.message),
 );
 
 // TRACE EXACT SERVER INTERNAL ERROR
-helper.ExceptionManager.insert(
+core.ExceptionManager.insert(
     Error,
     (exp) =>
         new nest.InternalServerErrorException({
