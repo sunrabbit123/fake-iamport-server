@@ -1,7 +1,7 @@
-import { IIamportSubscription } from "../api/structures/IIamportSubscription";
-import { RandomGenerator } from "../utils/RandomGenerator";
-import { FakeIamportStorage } from "./FakeIamportStorage";
 import { v4 } from "uuid";
+import { IIamportSubscription } from "../api/structures/IIamportSubscription";
+import { TossRandomGenerator } from "../utils/TossRandomGenerator";
+import { FakeIamportStorage } from "./FakeIamportStorage";
 
 export namespace FakeIamportSubscriptionProvider {
     export function store(
@@ -14,12 +14,12 @@ export namespace FakeIamportSubscriptionProvider {
             pg_id: v4(),
             card_type: "card",
             card_code: v4(),
-            card_name: RandomGenerator.name(),
+            card_name: TossRandomGenerator.name(),
             card_number: input.card_number,
-            customer_name: RandomGenerator.name(),
-            customer_tel: RandomGenerator.mobile(),
+            customer_name: TossRandomGenerator.name(),
+            customer_tel: TossRandomGenerator.mobile(),
             customer_addr: "address-of-somewhere",
-            customer_email: RandomGenerator.alphabets(8) + "@samchon.org",
+            customer_email: TossRandomGenerator.alphabets(8) + "@samchon.org",
             customer_postcode: "11122",
             inserted: 1,
             updated: 0,
