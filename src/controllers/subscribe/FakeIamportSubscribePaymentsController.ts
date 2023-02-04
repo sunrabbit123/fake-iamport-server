@@ -11,7 +11,7 @@ import { FakeIamportResponseProvider } from "../../providers/FakeIamportResponse
 import { FakeIamportStorage } from "../../providers/FakeIamportStorage";
 import { FakeIamportSubscriptionProvider } from "../../providers/FakeIamportSubscriptionProvider";
 import { FakeIamportUserAuth } from "../../providers/FakeIamportUserAuth";
-import { RandomGenerator } from "../../utils/RandomGenerator";
+import { TossRandomGenerator } from "../../utils/TossRandomGenerator";
 import { FakeIamportPaymentProvider } from "../../providers/FakeIamportPaymentProvider";
 
 @nest.Controller("subscribe/payments")
@@ -56,7 +56,7 @@ export class FakeIampotSubscribePaymentsController {
         const pg_id: string = v4();
         const payment: IIamportCardPayment = {
             card_code: v4(),
-            card_name: RandomGenerator.name(),
+            card_name: TossRandomGenerator.name(),
             card_number: input.card_number,
             card_quota: input.card_quota || 0,
             apply_num: v4(),

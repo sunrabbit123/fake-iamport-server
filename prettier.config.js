@@ -4,4 +4,8 @@ module.exports = {
     semi: true,
     tabWidth: 4,
     trailingComma: "all",
+    importOrder: [
+        "<THIRD_PARTY_MODULES>",
+        "^[./]"
+    ],
 };

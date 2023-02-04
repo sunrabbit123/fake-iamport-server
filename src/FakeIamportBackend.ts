@@ -1,8 +1,8 @@
-import { FakeIamportConfiguration } from "./FakeIamportConfiguration";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import express from "express";
+import { FakeIamportConfiguration } from "./FakeIamportConfiguration";
 
 /**
  * Fake 아임포트 서버의 백엔드 프로그램.

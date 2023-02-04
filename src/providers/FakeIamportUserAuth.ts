@@ -1,9 +1,9 @@
-import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-import { IIamportUser } from "../api/structures/IIamportUser";
-import { FakeIamportStorage } from "./FakeIamportStorage";
 import * as nest from "@nestjs/common";
 import express from "express";
 import { v4 } from "uuid";
+import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
+import { IIamportUser } from "../api/structures/IIamportUser";
+import { FakeIamportStorage } from "./FakeIamportStorage";
 
 export namespace FakeIamportUserAuth {
     export function issue(accessor: IIamportUser.IAccessor): IIamportUser {

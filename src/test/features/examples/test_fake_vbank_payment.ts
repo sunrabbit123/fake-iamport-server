@@ -1,11 +1,11 @@
+import typia from "typia";
+import { v4 } from "uuid";
 import imp from "../../../api";
 import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
 import { IIamportVBankPayment } from "../../../api/structures/IIamportVBankPayment";
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
-import { RandomGenerator } from "../../../utils/RandomGenerator";
-import typia from "typia";
-import { v4 } from "uuid";
+import { TossRandomGenerator } from "../../../utils/TossRandomGenerator";
 
 export async function test_fake_vbank_payment(
     connector: imp.IamportConnector,
@@ -31,11 +31,11 @@ async function issue(
         await imp.functional.vbanks.store(await connector.get(), {
             merchant_uid: v4(),
             amount: 40_000,
-            vbank_code: RandomGenerator.alphabets(8),
+            vbank_code: TossRandomGenerator.alphabets(8),
             vbank_due: Date.now() / 1000 + 7 * 24 * 60 * 60,
-            vbank_holder: RandomGenerator.name(),
+            vbank_holder: TossRandomGenerator.name(),
         });
-    typia.assertType(output);
+    typia.assert(output);
 
     /**
      * 아임포트 서버로부터의 웹훅 데이터.
@@ -65,7 +65,7 @@ async function issue(
             await connector.get(),
             webhook.imp_uid,
         );
-    typia.assertType(reloaded);
+    typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
     const payment: IIamportPayment = reloaded.response;
@@ -119,7 +119,7 @@ async function deposit(
             await connector.get(),
             webhook.imp_uid,
         );
-    typia.assertType(reloaded);
+    typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
     const payment: IIamportPayment = reloaded.response;

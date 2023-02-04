@@ -1,9 +1,9 @@
+import typia from "typia";
 import imp from "../../../api";
 import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportReceipt } from "../../../api/structures/IIamportReceipt";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
 import { test_fake_card_payment } from "./test_fake_card_payment";
-import typia from "typia";
 
 export async function test_fake_receipt(
     connector: imp.IamportConnector,
@@ -21,7 +21,7 @@ export async function test_fake_receipt(
                 buyer_tel: "010********",
             },
         );
-    typia.assertType(output);
+    typia.assert(output);
     if (output.response.amount !== payment.amount)
         throw new Error("Bug on receipts.store(): different amount.");
 
@@ -30,7 +30,7 @@ export async function test_fake_receipt(
             await connector.get(),
             payment.imp_uid,
         );
-    typia.assertType(reloaded);
+    typia.assert(reloaded);
     if (reloaded.response.cash_receipt_issue === false)
         throw new Error("Bug on receipts.store(): payment doesn't know.");
 }

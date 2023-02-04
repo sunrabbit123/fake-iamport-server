@@ -49,13 +49,13 @@ Note that, the special functions starting from the prefix `test_` must be `expor
 When you detect an error, then throw exception such below:
 
 ```typescript
-import { assertType } from "typia";
+import { assert } from "typia";
 import api from "../../../../../../api";
 import { IBbsCustomer } from "../../../../../../api/structures/bbs/actors/IBbsCustomer";
 import { IMember } from "../../../../../../api/structures/members/IMember";
 
 import { Configuration } from "../../../../../../Configuration";
-import { RandomGenerator } from "../../../../../../utils/RandomGenerator";
+import { TossRandomGenerator } from "../../../../../../utils/TossRandomGenerator";
 import { exception_must_be_thrown } from "../../../../../internal/exception_must_be_thrown";
 import { prepare_random_citizen } from "../internal/prepare_random_citizen";
 import { test_bbs_customer_activate } from "./test_bbs_customer_activate";
@@ -73,7 +73,7 @@ export async function test_bbs_customer_join_after_activate
         (
             connection,
             {
-                email: `${RandomGenerator.alphabets(16)}@samchon.org`,
+                email: `${TossRandomGenerator.alphabets(16)}@samchon.org`,
                 password: Configuration.SYSTEM_PASSWORD,
                 citizen: prepare_random_citizen()
             }
@@ -85,12 +85,12 @@ export async function test_bbs_customer_join_after_activate
     (
         connection,
         {
-            email: `${RandomGenerator.alphabets(16)}@samchon.org`,
+            email: `${TossRandomGenerator.alphabets(16)}@samchon.org`,
             password: Configuration.SYSTEM_PASSWORD,
             citizen: customer.citizen
         }
     );
-    assertType<typeof member>(member);
+    assert<typeof member>(member);
 }
 ```
 
