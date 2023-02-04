@@ -5,7 +5,7 @@ import { IIamportCardPayment } from "../../../api/structures/IIamportCardPayment
 import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
-import { TossRandomGenerator } from "../../../utils/TossRandomGenerator";
+import { AdvancedRandomGenerator } from "../../../utils/AdvancedRandomGenerator";
 
 export async function test_fake_subscription_payment_onetime(
     connector: imp.IamportConnector,
@@ -34,7 +34,7 @@ export async function test_fake_subscription_payment_onetime(
         await imp.functional.subscribe.payments.onetime(await connector.get(), {
             customer_uid,
 
-            card_number: TossRandomGenerator.cardNumber(),
+            card_number: AdvancedRandomGenerator.cardNumber(),
             expiry: "2028-12",
             birth: "880311",
 

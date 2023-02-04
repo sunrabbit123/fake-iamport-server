@@ -5,7 +5,7 @@ import { IIamportPayment } from "../../../api/structures/IIamportPayment";
 import { IIamportResponse } from "../../../api/structures/IIamportResponse";
 import { IIamportVBankPayment } from "../../../api/structures/IIamportVBankPayment";
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
-import { TossRandomGenerator } from "../../../utils/TossRandomGenerator";
+import { AdvancedRandomGenerator } from "../../../utils/AdvancedRandomGenerator";
 
 export async function test_fake_vbank_payment(
     connector: imp.IamportConnector,
@@ -31,9 +31,9 @@ async function issue(
         await imp.functional.vbanks.store(await connector.get(), {
             merchant_uid: v4(),
             amount: 40_000,
-            vbank_code: TossRandomGenerator.alphabets(8),
+            vbank_code: AdvancedRandomGenerator.alphabets(8),
             vbank_due: Date.now() / 1000 + 7 * 24 * 60 * 60,
-            vbank_holder: TossRandomGenerator.name(),
+            vbank_holder: AdvancedRandomGenerator.name(),
         });
     typia.assert(output);
 
