@@ -9,7 +9,7 @@ import { IIamportSubscription } from "../../api/structures/IIamportSubscription"
 import { FakeIamportStorage } from "../../providers/FakeIamportStorage";
 import { FakeIamportUserAuth } from "../../providers/FakeIamportUserAuth";
 import { FakeIamportResponseProvider } from "../../providers/FakeIamportResponseProvider";
-import { TossRandomGenerator } from "../../utils/TossRandomGenerator";
+import { AdvancedRandomGenerator } from "../../utils/AdvancedRandomGenerator";
 
 @nest.Controller("subscribe/customers")
 export class FakeIamportSubscribeCustomersController {
@@ -72,12 +72,12 @@ export class FakeIamportSubscribeCustomersController {
             pg_id: v4(),
             card_type: "card",
             card_code: v4(),
-            card_name: TossRandomGenerator.name(),
+            card_name: AdvancedRandomGenerator.name(),
             card_number: input.card_number,
-            customer_name: TossRandomGenerator.name(),
-            customer_tel: TossRandomGenerator.mobile(),
+            customer_name: AdvancedRandomGenerator.name(),
+            customer_tel: AdvancedRandomGenerator.mobile(),
             customer_addr: "address-of-somewhere",
-            customer_email: TossRandomGenerator.alphabets(8) + "@samchon.org",
+            customer_email: AdvancedRandomGenerator.alphabets(8) + "@samchon.org",
             customer_postcode: "11122",
             inserted: 1,
             updated: 0,

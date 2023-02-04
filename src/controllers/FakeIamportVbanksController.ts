@@ -12,7 +12,7 @@ import { FakeIamportPaymentProvider } from "../providers/FakeIamportPaymentProvi
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
 import { FakeIamportStorage } from "../providers/FakeIamportStorage";
 import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
-import { TossRandomGenerator } from "../utils/TossRandomGenerator";
+import { AdvancedRandomGenerator } from "../utils/AdvancedRandomGenerator";
 
 @nest.Controller("vbanks")
 export class FakeIamportVbanksController {
@@ -37,9 +37,9 @@ export class FakeIamportVbanksController {
         const payment: IIamportVBankPayment = {
             // VIRTUAL-BANK INFO
             vbank_code: input.vbank_code,
-            vbank_name: TossRandomGenerator.name(2) + "은행",
+            vbank_name: AdvancedRandomGenerator.name(2) + "은행",
             vbank_num: randint(100000000, 999999999).toString(),
-            vbank_holder: TossRandomGenerator.name(),
+            vbank_holder: AdvancedRandomGenerator.name(),
             vbank_date: input.vbank_due,
             vbank_issued_at: Date.now(),
 

@@ -9,7 +9,7 @@ import { IIamportResponse } from "../api/structures/IIamportResponse";
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
 import { FakeIamportStorage } from "../providers/FakeIamportStorage";
 import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
-import { TossRandomGenerator } from "../utils/TossRandomGenerator";
+import { AdvancedRandomGenerator } from "../utils/AdvancedRandomGenerator";
 
 @nest.Controller("certifications")
 export class FakeIamportCertificationsController {
@@ -87,7 +87,7 @@ export class FakeIamportCertificationsController {
             pg_provider: "some-provider",
             origin: "fake-iamport",
 
-            __otp: TossRandomGenerator.digit(4, 4),
+            __otp: AdvancedRandomGenerator.digit(4, 4),
         };
         FakeIamportStorage.certifications.set(certication.imp_uid, certication);
 

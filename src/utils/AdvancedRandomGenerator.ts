@@ -1,7 +1,7 @@
 import { ArrayUtil, RandomGenerator } from "@nestia/e2e";
 import { randint } from "tstl/algorithm/random";
 
-export const TossRandomGenerator = {
+export const AdvancedRandomGenerator = {
     ...RandomGenerator,
     cardNumber: () =>
         ArrayUtil.repeat(4, () => RandomGenerator.digit(1, 4)).join("-"),
