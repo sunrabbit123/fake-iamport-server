@@ -124,6 +124,9 @@ export namespace IIamportSubscription
          */
         name: string;
 
+        /**
+         * 통화 정보.
+         */
         currency?: IIamportPayment.Currency;
 
         /**
