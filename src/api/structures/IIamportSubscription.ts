@@ -48,35 +48,47 @@ export namespace IIamportSubscription
          * 카드 번호
          * 
          * 형식: XXXX-XXXX-XXXX-XXXX
+         * 
+         * @pattern ^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$
          */
         card_number: string;
 
         /**
-         * 유효기간
+         * 카드 유효기간
          * 
          * 형식: YYYY-MM
+         * 
+         * @pattern ^([0-9]{4})-(0[1-9]|1[012])$
          */
         expiry: string;
 
         /**
-         * 생년월일
+         * 생년월일 YYMMDD 또는 사업자등록번호 10자리
          * 
-         * 형식: YYMMDD
+         * @pattern ^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\d{10})$
          */
         birth: string;
 
         /**
          * 카드 비밀번호 앞 두 자리
+         * 
+         * @pattern \d{2}
          */
         pwd_2digit?: string;
 
         /**
          * 카드 인증번호 (카드 뒷면 3 자리).
+         * 
+         * @pattern \d{3}
          */
         cvc?: string;
 
         customer_name?: string;
         customer_tel?: string;
+
+        /**
+         * @format email
+         */
         customer_email?: string;
         customr_addr?: string;
         customer_postcode?: string;
@@ -144,6 +156,10 @@ export namespace IIamportSubscription
         card_quota?: number;
 
         buyer_name?: string;
+
+        /**
+         * @format email
+         */
         buyer_email?: string;
         buyer_tel?: string;
         buyer_addr?: string;
@@ -169,7 +185,9 @@ export namespace IIamportSubscription
         custom_data?: string;
 
         /**
-         * 결제 성공시 통지될 Notification, 웹훅 URL
+         * 결제 성공시 통지될 Notification, 웹훅 URL.
+         * 
+         * @format url
          */
         notice_url?: string;
     }

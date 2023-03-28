@@ -93,6 +93,8 @@ export namespace IIamportPayment
 
         /**
          * 영수증 URL
+         * 
+         * @format url
          */
         receipt_url: string;
 
@@ -111,6 +113,10 @@ export namespace IIamportPayment
         
         // BUYER
         buyer_name: string | null;
+
+        /**
+         * @format email
+         */
         buyer_email: string | null;
         buyer_tel: string | null;
         buyer_addr: string | null;
@@ -161,6 +167,7 @@ export namespace IIamportPayment
 
         /**
          * @internal
+         * @format url
          */
         notice_url?: string;
     }
