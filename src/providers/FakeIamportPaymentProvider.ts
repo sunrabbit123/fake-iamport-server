@@ -36,13 +36,13 @@ export namespace FakeIamportPaymentProvider {
         else if (!payment.cancel_amount) payment.cancel_amount = 0;
 
         // ARCHIVE CANCEL HISTORY
-        payment.cancel_amount += input.amount;
+        payment.cancel_amount += input.amount ?? payment.amount;
         payment.cancel_reason = input.reason;
         payment.cancelled_at = Date.now() / 1_000;
         payment.cancel_history.push({
             pg_id: payment.pg_id,
             pg_tid: payment.pg_tid,
-            amount: input.amount,
+            amount: input.amount ?? payment.amount,
             cancelled_at: Date.now() / 1_000,
             reason: input.reason,
             receipt_url: payment.receipt_url,

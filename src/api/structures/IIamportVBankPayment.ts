@@ -53,10 +53,31 @@ export namespace IIamportVBankPayment
      */
     export interface IStore
     {
+        /**
+         * 주문 식별자 키.
+         * 
+         * 아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.
+         */
         merchant_uid: string;
+
+        /**
+         * 총액.
+         */
         amount: number;
+
+        /**
+         * 가상계좌 은행 코드.
+         */
         vbank_code: string;
+
+        /**
+         * 가상계좌 입금기한, 유닉스 타임.
+         */
         vbank_due: number;
+
+        /**
+         * 예금주.
+         */
         vbank_holder: string;
 
         name?: string;

@@ -12,5 +12,5 @@ export const AdvancedRandomGenerator = {
         new Array(4)
             .fill("")
             .map(() => randint(0, 9999).toString().padStart(4, "0"))
-            .join(""),
+            .join("-"),
 };

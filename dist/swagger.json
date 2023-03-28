@@ -1567,7 +1567,25 @@
             "type": "string",
             "nullable": false,
             "description": "생년월일, YYYYMMDD 형식.",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
           },
           "foreigner": {
             "type": "boolean",
@@ -1692,7 +1710,25 @@
             "type": "string",
             "nullable": false,
             "description": "생년월일.\n\nYYYYMMDD 형식.",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
           },
           "gender_digit": {
             "type": "string",
@@ -1938,13 +1974,49 @@
             "type": "string",
             "nullable": false,
             "description": "카드 번호.",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "card_quota": {
-            "type": "number",
+            "type": "integer",
             "nullable": false,
             "description": "할부 개월 수",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "type",
+                "value": "uint"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "type",
+                "text": [
+                  {
+                    "text": "uint",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "minimum": 0
           },
           "apply_num": {
             "type": "string",
@@ -2007,7 +2079,25 @@
             "type": "string",
             "nullable": false,
             "description": "영수증 URL",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           },
           "cash_receipt_issue": {
             "type": "boolean",
@@ -2053,7 +2143,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": true,
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -2230,7 +2338,25 @@
           "receipt_url": {
             "type": "string",
             "nullable": false,
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           }
         },
         "nullable": false,
@@ -2324,7 +2450,25 @@
             "type": "string",
             "nullable": false,
             "description": "영수증 URL",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           },
           "cash_receipt_issue": {
             "type": "boolean",
@@ -2370,7 +2514,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": true,
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -2606,7 +2768,25 @@
             "type": "string",
             "nullable": false,
             "description": "영수증 URL",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           },
           "cash_receipt_issue": {
             "type": "boolean",
@@ -2652,7 +2832,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": true,
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -2867,7 +3065,25 @@
             "type": "string",
             "nullable": false,
             "description": "영수증 URL",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           },
           "cash_receipt_issue": {
             "type": "boolean",
@@ -2913,7 +3129,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": true,
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -3050,51 +3284,72 @@
           "imp_uid": {
             "type": "string",
             "nullable": false,
+            "description": "결제 정보 {@link IIamportPayment } 의 식별자 키.",
             "x-typia-required": true
           },
           "merchant_uid": {
             "type": "string",
             "nullable": false,
+            "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
             "x-typia-required": true
           },
           "amount": {
             "type": "number",
             "nullable": false,
-            "x-typia-required": true
+            "description": "취소 금액, 부분 취소도 가능하다.\n\n누락시 전액 취소.",
+            "x-typia-required": false
           },
           "checksum": {
             "type": "number",
             "nullable": true,
+            "description": "취소 트랜잭션 수행 전, 현재 시점의 취소 가능한 잔액.\n\nAPI요청자가 기록하고 있는 취소가능 잔액과 아임포트가 기록하고 있는 취소가능 잔액이 \n일치하는지 사전에 검증하고, 검증에 실패하면 트랜잭션을 수행하지 않는다. \n\n`null` 인 경우에는 검증 프로세스를 생략.",
             "x-typia-required": true
           },
           "reason": {
             "type": "string",
             "nullable": false,
+            "description": "취소 사유.",
             "x-typia-required": true
           },
           "tax_free": {
             "type": "number",
             "nullable": false,
+            "description": "취소요청금액 중 면세금액.",
+            "x-typia-jsDocTags": [
+              {
+                "name": "defualt",
+                "text": [
+                  {
+                    "text": "0",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
             "x-typia-required": false
           },
           "refund_holder": {
             "type": "string",
             "nullable": false,
+            "description": "환불계좌 예금주.",
             "x-typia-required": false
           },
           "refund_bank": {
             "type": "string",
             "nullable": false,
+            "description": "환불계좌 은행 코드.",
             "x-typia-required": false
           },
           "refund_account": {
             "type": "string",
             "nullable": false,
+            "description": "환불계좌 계좌번호.",
             "x-typia-required": false
           },
           "refund_tel": {
             "type": "string",
             "nullable": false,
+            "description": "환불계좌 예금주 연락처",
             "x-typia-required": false
           }
         },
@@ -3102,7 +3357,6 @@
         "required": [
           "imp_uid",
           "merchant_uid",
-          "amount",
           "checksum",
           "reason"
         ],
@@ -3196,7 +3450,25 @@
             "type": "string",
             "nullable": false,
             "description": "현금영수증 조회 URL.",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "url"
           },
           "applied_at": {
             "type": "number",
@@ -3417,26 +3689,31 @@
           "merchant_uid": {
             "type": "string",
             "nullable": false,
+            "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
             "x-typia-required": true
           },
           "amount": {
             "type": "number",
             "nullable": false,
+            "description": "총액.",
             "x-typia-required": true
           },
           "vbank_code": {
             "type": "string",
             "nullable": false,
+            "description": "가상계좌 은행 코드.",
             "x-typia-required": true
           },
           "vbank_due": {
             "type": "number",
             "nullable": false,
+            "description": "가상계좌 입금기한, 유닉스 타임.",
             "x-typia-required": true
           },
           "vbank_holder": {
             "type": "string",
             "nullable": false,
+            "description": "예금주.",
             "x-typia-required": true
           },
           "name": {
@@ -3725,31 +4002,121 @@
             "type": "string",
             "nullable": false,
             "description": "카드 번호\n\n형식: XXXX-XXXX-XXXX-XXXX",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "expiry": {
             "type": "string",
             "nullable": false,
-            "description": "유효기간\n\n형식: YYYY-MM",
-            "x-typia-required": true
+            "description": "카드 유효기간\n\n형식: YYYY-MM",
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^([0-9]{4})-(0[1-9]|1[012])$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^([0-9]{4})-(0[1-9]|1[012])$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^([0-9]{4})-(0[1-9]|1[012])$"
           },
           "birth": {
             "type": "string",
             "nullable": false,
-            "description": "생년월일\n\n형식: YYMMDD",
-            "x-typia-required": true
+            "description": "생년월일 YYMMDD 또는 사업자등록번호 10자리",
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
           },
           "pwd_2digit": {
             "type": "string",
             "nullable": false,
             "description": "카드 비밀번호 앞 두 자리",
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "\\d{2}"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "\\d{2}",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "pattern": "\\d{2}"
           },
           "cvc": {
             "type": "string",
             "nullable": false,
             "description": "카드 인증번호 (카드 뒷면 3 자리).",
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "\\d{3}"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "\\d{3}",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "pattern": "\\d{3}"
           },
           "customer_name": {
             "type": "string",
@@ -3764,7 +4131,25 @@
           "customer_email": {
             "type": "string",
             "nullable": false,
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "email"
           },
           "customr_addr": {
             "type": "string",
@@ -3806,31 +4191,121 @@
             "type": "string",
             "nullable": false,
             "description": "카드 번호\n\n형식: XXXX-XXXX-XXXX-XXXX",
-            "x-typia-required": true
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "expiry": {
             "type": "string",
             "nullable": false,
-            "description": "유효기간\n\n형식: YYYY-MM",
-            "x-typia-required": true
+            "description": "카드 유효기간\n\n형식: YYYY-MM",
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^([0-9]{4})-(0[1-9]|1[012])$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^([0-9]{4})-(0[1-9]|1[012])$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^([0-9]{4})-(0[1-9]|1[012])$"
           },
           "birth": {
             "type": "string",
             "nullable": false,
-            "description": "생년월일\n\n형식: YYMMDD",
-            "x-typia-required": true
+            "description": "생년월일 YYMMDD 또는 사업자등록번호 10자리",
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "pattern": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
           },
           "pwd_2digit": {
             "type": "string",
             "nullable": false,
             "description": "카드 비밀번호 앞 두 자리",
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "\\d{2}"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "\\d{2}",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "pattern": "\\d{2}"
           },
           "cvc": {
             "type": "string",
             "nullable": false,
             "description": "카드 인증번호 (카드 뒷면 3 자리).",
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "pattern",
+                "value": "\\d{3}"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "pattern",
+                "text": [
+                  {
+                    "text": "\\d{3}",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "pattern": "\\d{3}"
           },
           "customer_name": {
             "type": "string",
@@ -3845,7 +4320,25 @@
           "customer_email": {
             "type": "string",
             "nullable": false,
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "email"
           },
           "customr_addr": {
             "type": "string",
@@ -3907,7 +4400,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": false,
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -3945,8 +4456,26 @@
           "notice_url": {
             "type": "string",
             "nullable": false,
-            "description": "결제 성공시 통지될 Notification, 웹훅 URL",
-            "x-typia-required": false
+            "description": "결제 성공시 통지될 Notification, 웹훅 URL.",
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "url"
           }
         },
         "nullable": false,
@@ -4054,7 +4583,25 @@
           "buyer_email": {
             "type": "string",
             "nullable": false,
-            "x-typia-required": false
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "email"
           },
           "buyer_tel": {
             "type": "string",
@@ -4092,8 +4639,26 @@
           "notice_url": {
             "type": "string",
             "nullable": false,
-            "description": "결제 성공시 통지될 Notification, 웹훅 URL",
-            "x-typia-required": false
+            "description": "결제 성공시 통지될 Notification, 웹훅 URL.",
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "url"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "url",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": false,
+            "format": "url"
           },
           "customer_uid": {
             "type": "string",

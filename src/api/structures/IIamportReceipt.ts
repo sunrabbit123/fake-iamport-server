@@ -37,6 +37,8 @@ export interface IIamportReceipt
 
     /**
      * 현금영수증 조회 URL.
+     * 
+     * @format url
      */
     receipt_url: string;
 

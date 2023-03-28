@@ -43,6 +43,8 @@ export interface IIamportCertification
 
     /**
      * 생년월일, YYYYMMDD 형식.
+     * 
+     * @pattern ^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$
      */
     birthday: string;
 
@@ -144,6 +146,8 @@ export namespace IIamportCertification
          * 생년월일.
          * 
          * YYYYMMDD 형식.
+         * 
+         * @pattern ^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$
          */
         birth: string;
 
