@@ -1,7 +1,8 @@
-import express from "express";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import { IIamportPayment } from "../api/structures/IIamportPayment";
+import express from "express";
+
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
 
 import { FakeIamportPaymentProvider } from "../providers/FakeIamportPaymentProvider";
 import { FakeIamportStorage } from "../providers/FakeIamportStorage";

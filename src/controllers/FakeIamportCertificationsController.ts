@@ -1,10 +1,10 @@
-import express from "express";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
+import express from "express";
 import { v4 } from "uuid";
 
-import { IIamportCertification } from "../api/structures/IIamportCertification";
-import { IIamportResponse } from "../api/structures/IIamportResponse";
+import { IIamportCertification } from "iamport-server-api/lib/structures/IIamportCertification";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
 import { FakeIamportStorage } from "../providers/FakeIamportStorage";

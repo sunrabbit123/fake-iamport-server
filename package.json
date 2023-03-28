@@ -5,18 +5,23 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "rimraf lib && ttsc",
+    "----------------------------------------------": "",
+    "build": "rimraf lib && tsc",
     "build:api": "rimraf packages/api/lib && nestia sdk && npx copyfiles README.md packages/api && tsc -p tsconfig.api.json",
     "build:sdk": "rimraf src/api/functional && nestia sdk",
     "build:swagger": "nestia swagger",
     "dev": "npm run build -- --watch",
     "eslint": "eslint ./src",
     "eslint:fix": "eslint ./src --fix",
-    "package:api": "npm run build:api && cd packages/api && npm publish",
     "prettier": "prettier src --write",
+    "------------------------------------------------": "",
+    "package:api": "npm run build:api && cd packages/api && npm publish",
+    "prepare": "ts-patch install",
+    "-------------------------------------------------": "",
     "start": "pm2 start lib/executable/server.js -i 1 --name fake-iamport-server --wait-ready --listen-timeout 120000 --kill-timeout 15000",
     "start:reload": "pm2 reload fake-iamport-server",
     "stop": "pm2 delete fake-iamport-server",
+    "--------------------------------------------------": "",
     "test": "node lib/test"
   },
   "repository": {
@@ -30,7 +35,7 @@
   },
   "homepage": "https://github.com/samchon/fake-iamport-server",
   "devDependencies": {
-    "@nestia/sdk": "^1.0.16",
+    "@nestia/sdk": "^1.0.17",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/atob": "^2.1.2",
     "@types/btoa": "^1.2.3",
@@ -48,7 +53,7 @@
     "rimraf": "^3.0.2",
     "sloc": "^0.2.1",
     "ts-node": "^10.8.0",
-    "ttypescript": "^1.5.15",
+    "ts-patch": "^2.1.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {
@@ -56,6 +61,7 @@
     "@nestia/e2e": "^0.1.5",
     "source-map-support": "^0.5.19",
     "tstl": "^2.5.13",
+    "typescript-transform-paths": "^3.4.6",
     "typia": "^3.6.9",
     "uuid": "^8.3.2"
   },

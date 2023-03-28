@@ -1,4 +1,4 @@
-import { IIamportResponse } from "../api/structures/IIamportResponse";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 
 export namespace FakeIamportResponseProvider {
     export function success<T extends object>(

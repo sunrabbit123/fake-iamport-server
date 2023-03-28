@@ -1,9 +1,10 @@
+import { IIamportCertification } from "iamport-server-api/lib/structures/IIamportCertification";
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportReceipt } from "iamport-server-api/lib/structures/IIamportReceipt";
+import { IIamportSubscription } from "iamport-server-api/lib/structures/IIamportSubscription";
+import { IIamportUser } from "iamport-server-api/lib/structures/IIamportUser";
+
 import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-import { IIamportCertification } from "../api/structures/IIamportCertification";
-import { IIamportPayment } from "../api/structures/IIamportPayment";
-import { IIamportReceipt } from "../api/structures/IIamportReceipt";
-import { IIamportSubscription } from "../api/structures/IIamportSubscription";
-import { IIamportUser } from "../api/structures/IIamportUser";
 import { VolatileMap } from "../utils/VolatileMap";
 
 export namespace FakeIamportStorage {

@@ -1,8 +1,10 @@
 import * as nest from "@nestjs/common";
 import express from "express";
 import { v4 } from "uuid";
+
+import { IIamportUser } from "iamport-server-api/lib/structures/IIamportUser";
+
 import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-import { IIamportUser } from "../api/structures/IIamportUser";
 import { FakeIamportStorage } from "./FakeIamportStorage";
 
 export namespace FakeIamportUserAuth {
@@ -13,10 +15,10 @@ export namespace FakeIamportUserAuth {
             );
 
         const user: IIamportUser = {
-            now: Date.now() / 1000,
+            now: Date.now() / 1_000,
             expired_at:
                 (Date.now() + FakeIamportConfiguration.USER_EXPIRATION_TIME) /
-                1000,
+                1_000,
             access_token: v4(),
         };
         FakeIamportStorage.users.set(user.access_token, user);
@@ -30,7 +32,7 @@ export namespace FakeIamportUserAuth {
             throw new nest.ForbiddenException("No authorization token exists.");
 
         const user: IIamportUser = FakeIamportStorage.users.get(token);
-        if (new Date(user.expired_at * 1000).getTime() > Date.now())
+        if (new Date(user.expired_at * 1_000).getTime() > Date.now())
             throw new nest.ForbiddenException("The token has been expired.");
     }
 }

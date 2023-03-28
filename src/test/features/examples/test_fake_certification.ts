@@ -1,7 +1,8 @@
 import typia from "typia";
-import imp from "../../../api";
-import { IIamportCertification } from "../../../api/structures/IIamportCertification";
-import { IIamportResponse } from "../../../api/structures/IIamportResponse";
+
+import imp from "iamport-server-api";
+import { IIamportCertification } from "iamport-server-api/lib/structures/IIamportCertification";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 
 export async function test_fake_certification(
     connector: imp.IamportConnector,

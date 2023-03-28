@@ -1,8 +1,10 @@
 import typia from "typia";
-import imp from "../../../api";
-import { IIamportPayment } from "../../../api/structures/IIamportPayment";
-import { IIamportReceipt } from "../../../api/structures/IIamportReceipt";
-import { IIamportResponse } from "../../../api/structures/IIamportResponse";
+
+import imp from "iamport-server-api";
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportReceipt } from "iamport-server-api/lib/structures/IIamportReceipt";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+
 import { test_fake_card_payment } from "./test_fake_card_payment";
 
 export async function test_fake_receipt(
