@@ -1,12 +1,12 @@
-import express from "express";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
+import express from "express";
 import { randint } from "tstl/algorithm/random";
 import { v4 } from "uuid";
 
-import { IIamportPayment } from "../api/structures/IIamportPayment";
-import { IIamportResponse } from "../api/structures/IIamportResponse";
-import { IIamportVBankPayment } from "../api/structures/IIamportVBankPayment";
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+import { IIamportVBankPayment } from "iamport-server-api/lib/structures/IIamportVBankPayment";
 
 import { FakeIamportPaymentProvider } from "../providers/FakeIamportPaymentProvider";
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";

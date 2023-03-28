@@ -1,9 +1,11 @@
 import typia from "typia";
 import { v4 } from "uuid";
-import imp from "../../../api";
-import { IIamportCardPayment } from "../../../api/structures/IIamportCardPayment";
-import { IIamportPayment } from "../../../api/structures/IIamportPayment";
-import { IIamportResponse } from "../../../api/structures/IIamportResponse";
+
+import imp from "iamport-server-api";
+import { IIamportCardPayment } from "iamport-server-api/lib/structures/IIamportCardPayment";
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+
 import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
 import { AdvancedRandomGenerator } from "../../../utils/AdvancedRandomGenerator";
 

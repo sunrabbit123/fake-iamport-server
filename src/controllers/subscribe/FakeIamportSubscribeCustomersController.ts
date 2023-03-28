@@ -1,14 +1,14 @@
-import express from "express";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
+import express from "express";
 import { v4 } from "uuid";
 
-import { IIamportResponse } from "../../api/structures/IIamportResponse";
-import { IIamportSubscription } from "../../api/structures/IIamportSubscription";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+import { IIamportSubscription } from "iamport-server-api/lib/structures/IIamportSubscription";
 
+import { FakeIamportResponseProvider } from "../../providers/FakeIamportResponseProvider";
 import { FakeIamportStorage } from "../../providers/FakeIamportStorage";
 import { FakeIamportUserAuth } from "../../providers/FakeIamportUserAuth";
-import { FakeIamportResponseProvider } from "../../providers/FakeIamportResponseProvider";
 import { AdvancedRandomGenerator } from "../../utils/AdvancedRandomGenerator";
 
 @nest.Controller("subscribe/customers")
@@ -77,7 +77,8 @@ export class FakeIamportSubscribeCustomersController {
             customer_name: AdvancedRandomGenerator.name(),
             customer_tel: AdvancedRandomGenerator.mobile(),
             customer_addr: "address-of-somewhere",
-            customer_email: AdvancedRandomGenerator.alphabets(8) + "@samchon.org",
+            customer_email:
+                AdvancedRandomGenerator.alphabets(8) + "@samchon.org",
             customer_postcode: "11122",
             inserted: 1,
             updated: 0,

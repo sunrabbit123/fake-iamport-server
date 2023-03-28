@@ -1,8 +1,10 @@
 import { DomainError } from "tstl/exception/DomainError";
+
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportPaymentCancel } from "iamport-server-api/lib/structures/IIamportPaymentCancel";
+import { IIamportVBankPayment } from "iamport-server-api/lib/structures/IIamportVBankPayment";
+
 import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-import { IIamportPayment } from "../api/structures/IIamportPayment";
-import { IIamportPaymentCancel } from "../api/structures/IIamportPaymentCancel";
-import { IIamportVBankPayment } from "../api/structures/IIamportVBankPayment";
 import { FakeIamportStorage } from "./FakeIamportStorage";
 
 export namespace FakeIamportPaymentProvider {
@@ -13,7 +15,7 @@ export namespace FakeIamportPaymentProvider {
 
     export function deposit(payment: IIamportVBankPayment): void {
         payment.status = "paid";
-        payment.paid_at = Date.now() / 1000;
+        payment.paid_at = Date.now() / 1_000;
         webhook(payment).catch(() => {});
     }
 
@@ -36,12 +38,12 @@ export namespace FakeIamportPaymentProvider {
         // ARCHIVE CANCEL HISTORY
         payment.cancel_amount += input.amount;
         payment.cancel_reason = input.reason;
-        payment.cancelled_at = Date.now() / 1000;
+        payment.cancelled_at = Date.now() / 1_000;
         payment.cancel_history.push({
             pg_id: payment.pg_id,
             pg_tid: payment.pg_tid,
             amount: input.amount,
-            cancelled_at: Date.now() / 1000,
+            cancelled_at: Date.now() / 1_000,
             reason: input.reason,
             receipt_url: payment.receipt_url,
         });

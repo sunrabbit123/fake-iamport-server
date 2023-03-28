@@ -6,6 +6,10 @@ module.exports = {
     trailingComma: "all",
     importOrder: [
         "<THIRD_PARTY_MODULES>",
-        "^[./]"
+        "iamport-server*",
+        "^[./]",
     ],
+    importOrderSeparation: true,
+    importOrderSortSpecifiers: true,
+    importOrderParserPlugins: ["decorators-legacy", "typescript"],
 };

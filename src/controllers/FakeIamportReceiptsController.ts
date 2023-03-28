@@ -1,14 +1,15 @@
-import express from "express";
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
+import express from "express";
 import { v4 } from "uuid";
 
-import { IIamportReceipt } from "../api/structures/IIamportReceipt";
-import { IIamportResponse } from "../api/structures/IIamportResponse";
-import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
-import { IIamportPayment } from "../api/structures/IIamportPayment";
-import { FakeIamportStorage } from "../providers/FakeIamportStorage";
+import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
+import { IIamportReceipt } from "iamport-server-api/lib/structures/IIamportReceipt";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
+import { FakeIamportStorage } from "../providers/FakeIamportStorage";
+import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
 
 @nest.Controller("receipts/:imp_uid")
 export class FakeIamportReceiptsController {

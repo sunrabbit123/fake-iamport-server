@@ -1,5 +1,7 @@
 import { v4 } from "uuid";
-import { IIamportSubscription } from "../api/structures/IIamportSubscription";
+
+import { IIamportSubscription } from "iamport-server-api/lib/structures/IIamportSubscription";
+
 import { AdvancedRandomGenerator } from "../utils/AdvancedRandomGenerator";
 import { FakeIamportStorage } from "./FakeIamportStorage";
 

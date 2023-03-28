@@ -1,11 +1,11 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
 
-import { IIamportUser } from "../api/structures/IIamportUser";
+import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
+import { IIamportUser } from "iamport-server-api/lib/structures/IIamportUser";
 
-import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
-import { IIamportResponse } from "../api/structures/IIamportResponse";
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
+import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
 
 @nest.Controller("users")
 export class FakeIamportUsersController {
