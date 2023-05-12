@@ -1,9 +1,10 @@
 import { DynamicExecutor } from "@nestia/e2e";
 
-import { FakeIamportBackend } from "../FakeIamportBackend";
-import { FakeIamportConfiguration } from "../FakeIamportConfiguration";
-import { IamportConnector } from "../api/IamportConnector";
-import { ErrorUtil } from "../utils/ErrorUtil";
+import { IamportConnector } from "iamport-server-api";
+
+import { FakeIamportBackend } from "../src/FakeIamportBackend";
+import { FakeIamportConfiguration } from "../src/FakeIamportConfiguration";
+import { ErrorUtil } from "../src/utils/ErrorUtil";
 
 async function handle_error(exp: any): Promise<void> {
     ErrorUtil.toJSON(exp);

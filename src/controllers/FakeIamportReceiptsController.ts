@@ -1,6 +1,6 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
 import { v4 } from "uuid";
 
 import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
@@ -23,7 +23,7 @@ export class FakeIamportReceiptsController {
      */
     @core.TypedRoute.Get()
     public at(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportReceipt> {
         FakeIamportUserAuth.authorize(request);
@@ -44,7 +44,7 @@ export class FakeIamportReceiptsController {
      */
     @core.TypedRoute.Post()
     public store(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
         @core.TypedBody() input: IIamportReceipt.IStore,
     ): IIamportResponse<IIamportReceipt> {
@@ -88,7 +88,7 @@ export class FakeIamportReceiptsController {
      */
     @core.TypedRoute.Delete()
     public erase(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
     ) {
         FakeIamportUserAuth.authorize(request);

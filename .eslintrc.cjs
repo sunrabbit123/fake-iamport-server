@@ -12,7 +12,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: ["src/**/*.ts"],
+            files: ["src/**/*.ts", "test/**/*.ts"],
             rules: {
                 "@typescript-eslint/consistent-type-definitions": "off",
                 "@typescript-eslint/no-duplicate-imports": "error",

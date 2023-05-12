@@ -1,6 +1,6 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
 import { v4 } from "uuid";
 
 import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
@@ -25,7 +25,7 @@ export class FakeIamportSubscribeCustomersController {
      */
     @core.TypedRoute.Get(":customer_uid")
     public at(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("customer_uid", "string") customer_uid: string,
     ): IIamportResponse<IIamportSubscription> {
         // AUTHORIZE
@@ -58,7 +58,7 @@ export class FakeIamportSubscribeCustomersController {
      */
     @core.TypedRoute.Post(":customer_uid")
     public store(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("customer_uid", "string") customer_uid: string,
         @core.TypedBody() input: IIamportSubscription.IStore,
     ): IIamportResponse<IIamportSubscription> {
@@ -101,7 +101,7 @@ export class FakeIamportSubscribeCustomersController {
      */
     @core.TypedRoute.Delete(":customer_uid")
     public erase(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("customer_uid", "string") customer_uid: string,
     ): IIamportResponse<IIamportSubscription> {
         // AUTHORIZE

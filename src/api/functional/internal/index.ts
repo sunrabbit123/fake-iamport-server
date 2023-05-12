@@ -105,6 +105,6 @@ export namespace deposit
 
     export function path(imp_uid: string): string
     {
-        return `/internal/deposit/${encodeURIComponent(imp_uid)}`;
+        return `/internal/deposit/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }

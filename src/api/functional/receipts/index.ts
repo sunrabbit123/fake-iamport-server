@@ -49,7 +49,7 @@ export namespace at
 
     export function path(imp_uid: string): string
     {
-        return `/receipts/${encodeURIComponent(imp_uid)}`;
+        return `/receipts/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }
 
@@ -96,7 +96,7 @@ export namespace store
 
     export function path(imp_uid: string): string
     {
-        return `/receipts/${encodeURIComponent(imp_uid)}`;
+        return `/receipts/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }
 
@@ -139,6 +139,6 @@ export namespace erase
 
     export function path(imp_uid: string): string
     {
-        return `/receipts/${encodeURIComponent(imp_uid)}`;
+        return `/receipts/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }

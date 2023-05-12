@@ -57,7 +57,7 @@ export namespace at
 
     export function path(imp_uid: string): string
     {
-        return `/certifications/${encodeURIComponent(imp_uid)}`;
+        return `/certifications/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }
 
@@ -99,6 +99,6 @@ export namespace erase
 
     export function path(imp_uid: string): string
     {
-        return `/certifications/${encodeURIComponent(imp_uid)}`;
+        return `/certifications/${encodeURIComponent(imp_uid ?? "null")}`;
     }
 }

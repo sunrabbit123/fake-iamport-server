@@ -1,6 +1,7 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
+import { randint } from "tstl";
 import { v4 } from "uuid";
 
 import { IIamportCertification } from "iamport-server-api/lib/structures/IIamportCertification";
@@ -9,7 +10,6 @@ import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResp
 import { FakeIamportResponseProvider } from "../providers/FakeIamportResponseProvider";
 import { FakeIamportStorage } from "../providers/FakeIamportStorage";
 import { FakeIamportUserAuth } from "../providers/FakeIamportUserAuth";
-import { AdvancedRandomGenerator } from "../utils/AdvancedRandomGenerator";
 
 @nest.Controller("certifications")
 export class FakeIamportCertificationsController {
@@ -28,7 +28,7 @@ export class FakeIamportCertificationsController {
      */
     @core.TypedRoute.Get(":imp_uid")
     public at(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportCertification> {
         FakeIamportUserAuth.authorize(request);
@@ -55,7 +55,7 @@ export class FakeIamportCertificationsController {
      */
     @core.TypedRoute.Post("otp/request")
     public request(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedBody() input: IIamportCertification.IStore,
     ): IIamportResponse<IIamportCertification.IAccessor> {
         FakeIamportUserAuth.authorize(request);
@@ -87,7 +87,7 @@ export class FakeIamportCertificationsController {
             pg_provider: "some-provider",
             origin: "fake-iamport",
 
-            __otp: AdvancedRandomGenerator.digit(4, 4),
+            __otp: randint(0, 9999).toString().padStart(4, "0"),
         };
         FakeIamportStorage.certifications.set(certication.imp_uid, certication);
 
@@ -114,7 +114,7 @@ export class FakeIamportCertificationsController {
      */
     @core.TypedRoute.Post("otp/confirm/:imp_uid")
     public confirm(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
         @core.TypedBody() input: IIamportCertification.IConfirm,
     ): IIamportResponse<IIamportCertification> {
@@ -139,7 +139,7 @@ export class FakeIamportCertificationsController {
      */
     @core.TypedRoute.Delete(":imp_uid")
     public erase(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): IIamportResponse<IIamportCertification> {
         FakeIamportUserAuth.authorize(request);
