@@ -1,5 +1,5 @@
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
 import { v4 } from "uuid";
 
 import { IIamportUser } from "iamport-server-api/lib/structures/IIamportUser";
@@ -26,7 +26,7 @@ export namespace FakeIamportUserAuth {
         return user;
     }
 
-    export function authorize(request: express.Request): void {
+    export function authorize(request: fastify.FastifyRequest): void {
         const token: string | undefined = request.headers.authorization;
         if (token === undefined)
             throw new nest.ForbiddenException("No authorization token exists.");

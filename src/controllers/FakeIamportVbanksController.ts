@@ -1,6 +1,6 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
 import { randint } from "tstl/algorithm/random";
 import { v4 } from "uuid";
 
@@ -26,7 +26,7 @@ export class FakeIamportVbanksController {
      */
     @core.TypedRoute.Post()
     public store(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedBody() input: IIamportVBankPayment.IStore,
     ): IIamportResponse<IIamportVBankPayment> {
         // AUTHORIZE
@@ -102,7 +102,7 @@ export class FakeIamportVbanksController {
      */
     @core.TypedRoute.Put()
     public update(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedBody() input: IIamportVBankPayment.IUpdate,
     ): IIamportResponse<IIamportVBankPayment> {
         // AUTHORIZE

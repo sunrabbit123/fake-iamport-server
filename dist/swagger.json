@@ -1,10 +1,5 @@
 {
   "openapi": "3.0.1",
-  "info": {
-    "version": "1.0.2",
-    "title": "Iamport API",
-    "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
-  },
   "servers": [
     {
       "url": "http://localhost:10851",
@@ -15,6 +10,11 @@
       "description": "real"
     }
   ],
+  "info": {
+    "version": "1.2.0",
+    "title": "Iamport API",
+    "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
+  },
   "paths": {
     "/certifications/{imp_uid}": {
       "get": {
@@ -25,8 +25,7 @@
             "in": "path",
             "description": "대상 본인인증 정보의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -103,8 +102,7 @@
             "in": "path",
             "description": "대상 본인인증 정보의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -245,8 +243,7 @@
             "in": "path",
             "description": "대상 본인인증 정보의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -409,8 +406,7 @@
             "in": "path",
             "description": "대상 결제의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -466,8 +462,7 @@
             "in": "path",
             "description": "대상 결제 기록의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -626,8 +621,7 @@
             "in": "path",
             "description": "귀속 결제의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -713,8 +707,7 @@
             "in": "path",
             "description": "귀속 결제의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -829,8 +822,7 @@
             "in": "path",
             "description": "귀속 결제의 ",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -1129,8 +1121,7 @@
             "in": "path",
             "description": "고객 (간편 결제 카드) 식별자 키",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -1188,8 +1179,7 @@
             "in": "path",
             "description": "고객 (간편 결제 카드) 식별자 키",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -1285,8 +1275,7 @@
             "in": "path",
             "description": "고객 (간편 결제 카드) 식별자 키",
             "schema": {
-              "type": "string",
-              "nullable": false
+              "type": "string"
             },
             "required": true
           }
@@ -1495,21 +1484,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportCertification",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -1535,38 +1525,37 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "아임포트가 발급해 준 식별자 번호.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": true,
             "description": "서비스로부터의 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "nullable": true
           },
           "name": {
-            "type": "string",
-            "nullable": false,
             "description": "본인인증대상자 성명.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "gender": {
-            "type": "string",
-            "nullable": false,
             "description": "성별.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "birth": {
-            "type": "number",
-            "nullable": false,
             "description": "생년월일.\n\n리눅스 타임이 쓰인다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "birthday": {
-            "type": "string",
-            "nullable": false,
             "description": "생년월일, YYYYMMDD 형식.",
             "x-typia-metaTags": [
               {
@@ -1586,78 +1575,80 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
           },
           "foreigner": {
-            "type": "boolean",
-            "nullable": false,
             "description": "외국인 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "phone": {
-            "type": "string",
-            "nullable": false,
             "description": "본인인증 대상자 핸드폰 번호.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "carrier": {
+            "description": "본인인증 대상자 통신사 코드.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "SKT",
               "KT",
               "LGT"
-            ],
-            "nullable": false,
-            "description": "본인인증 대상자 통신사 코드.",
-            "x-typia-required": true
+            ]
           },
           "certified": {
-            "type": "boolean",
-            "nullable": false,
             "description": "OTP 인증 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "certified_at": {
-            "type": "number",
-            "nullable": false,
             "description": "OTP 인증 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "unique_key": {
-            "type": "string",
-            "nullable": false,
             "description": "뭔지 잘 모름, 용도 아시는 분?",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "unique_in_site": {
-            "type": "string",
-            "nullable": false,
             "description": "뭔지 잘 모름, 용도 아시는 분?",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
             "description": "뭔지 잘 모름, 용도 아시는 분?",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
             "description": "PG 제공자.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "origin": {
-            "type": "string",
-            "nullable": false,
             "description": "뭔지 잘 모름, 용도 아시는 분?",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "__otp": {
-            "type": "string",
-            "nullable": false,
             "description": "(테스트 전용) OTP 코드.\n\n오직 `fake-iamport-server` 에서만 쓰이는 속성으로써, 본인인증을 시뮬레이션할 때,\n어떠한 OTP 코드가 발급되었는 지를 확인하기 위하여 사용된다. 이를 이용하여 \n{@link functional.certifications.otp.confirm } 함수를 호출하면, 본인인증을 완료할\n수 있다.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -1696,20 +1687,18 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": false,
             "description": "본인인증대상자 성명.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "phone": {
-            "type": "string",
-            "nullable": false,
             "description": "본인인증 대상자 핸드폰 번호.\n\n핸드폰 번호에 \"-\" 값이 들어가던 아니던 상관 없음.\n\n다만, 내부적으로는 \"-\" 값을 제거하여 처리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "birth": {
-            "type": "string",
-            "nullable": false,
             "description": "생년월일.\n\nYYYYMMDD 형식.",
             "x-typia-metaTags": [
               {
@@ -1729,48 +1718,50 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$"
           },
           "gender_digit": {
-            "type": "string",
-            "nullable": false,
             "description": "주민등록 뒷부분 첫 자리.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "carrier": {
+            "description": "본인인증 대상자 통신사 코드.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "SKT",
               "KT",
               "LGT"
-            ],
-            "nullable": false,
-            "description": "본인인증 대상자 통신사 코드.",
-            "x-typia-required": true
+            ]
           },
           "is_mvno": {
-            "type": "boolean",
-            "nullable": false,
             "description": "알뜰폰 여부.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
           },
           "commpany": {
-            "type": "string",
-            "nullable": false,
             "description": "가맹점 서비스 명칭 또는 domain URL.\n\nKISA 에서 대상자에게 발송하는 SMS에 안내될 서비스 명칭.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "귀사 서비스에서의 본인인증 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "pg": {
-            "type": "string",
-            "nullable": false,
             "description": "PG 사 구분자.\n\n다날 상점아이디를 2개 이상 동시에 사용하시려는 경우에 설정하면 된다. \n\n**danal.{상점아이디}** 형태로 지정.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -1788,21 +1779,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportCertification.IAccessor",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -1828,10 +1820,10 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "본인인증정보의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -1845,10 +1837,10 @@
         "type": "object",
         "properties": {
           "otp": {
-            "type": "string",
-            "nullable": false,
             "description": "SMS 로 전송된 본인인증 번호.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -1862,28 +1854,28 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment} 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "status": {
+            "description": "현재 상태.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "paid",
               "ready",
               "failed",
               "cancelled"
-            ],
-            "nullable": false,
-            "description": "현재 상태.",
-            "x-typia-required": true
+            ]
           }
         },
         "nullable": false,
@@ -1899,42 +1891,47 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/IIamportCardPayment",
                 "description": "응답 데이터, 사실상 본문.",
-                "x-typia-required": true
+                "x-typia-required": true,
+                "x-typia-optional": false
               },
               {
                 "$ref": "#/components/schemas/IIamportTransferPayment",
                 "description": "응답 데이터, 사실상 본문.",
-                "x-typia-required": true
+                "x-typia-required": true,
+                "x-typia-optional": false
               },
               {
                 "$ref": "#/components/schemas/IIamportVBankPayment",
                 "description": "응답 데이터, 사실상 본문.",
-                "x-typia-required": true
+                "x-typia-required": true,
+                "x-typia-optional": false
               },
               {
                 "$ref": "#/components/schemas/IIamportPayment.IBase_lt__doublequote_phone_doublequote__space__or__space__doublequote_kpay_doublequote__space__or__space__doublequote_kakaopay_doublequote__space__or__space__doublequote_payco_doublequote__space__or__space__doublequote_lpay_doublequote__space__or__space__doublequote_ssgpay_doublequote__space__or__space__doublequote_tosspay_doublequote__space__or__space__doublequote_cultureland_doublequote__space__or__space__doublequote_smartculture_doublequote__space__or__space__doublequote_happymoney_doublequote__space__or__space__doublequote_booknlife_doublequote__space__or__space__doublequote_point_doublequote__gt_",
                 "description": "응답 데이터, 사실상 본문.",
-                "x-typia-required": true
+                "x-typia-required": true,
+                "x-typia-optional": false
               }
             ],
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -1960,20 +1957,18 @@
         "type": "object",
         "properties": {
           "card_code": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 식별자 코드.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_name": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 이름.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_number": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 번호.",
             "x-typia-metaTags": [
               {
@@ -1993,11 +1988,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "card_quota": {
-            "type": "integer",
-            "nullable": false,
             "description": "할부 개월 수",
             "x-typia-metaTags": [
               {
@@ -2017,68 +2012,70 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "integer",
             "minimum": 0
           },
           "apply_num": {
-            "type": "string",
-            "nullable": false,
             "description": "카드사 승인번호.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pay_method": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "card",
               "samsung"
-            ],
-            "nullable": false,
-            "x-typia-required": true
+            ]
           },
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment} 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "nullable": true,
             "description": "주문명, 누락 가능.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "nullable": true
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancel_amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소, 환불 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "currency": {
+            "description": "통화 단위.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 단위.",
-            "x-typia-required": true
+            ]
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
             "description": "영수증 URL",
             "x-typia-metaTags": [
               {
@@ -2098,52 +2095,62 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           },
           "cash_receipt_issue": {
-            "type": "boolean",
-            "nullable": false,
             "description": "현금 영수증 발행 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "emb_pg_provider": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "escrow": {
-            "type": "boolean",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "buyer_name": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": true,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -2162,97 +2169,121 @@
               }
             ],
             "x-typia-required": true,
-            "format": "email"
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "nullable": true
           },
           "buyer_tel": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_addr": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_postcode": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid_usage": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "custom_data": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "user_agent": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "status": {
+            "description": "결제의 현재 (진행) 상태.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "paid",
               "ready",
               "failed",
               "cancelled"
-            ],
-            "nullable": false,
-            "description": "결제의 현재 (진행) 상태.",
-            "x-typia-required": true
+            ]
           },
           "started_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 신청 일시.\n\n리눅스 타임이 쓰임.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "paid_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 (지불) 완료 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "failed_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 실패 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "fail_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_history": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IIamportPaymentCancel",
-              "x-typia-required": true
-            },
-            "nullable": false,
-            "x-typia-required": true
+              "description": "",
+              "x-typia-required": true,
+              "x-typia-optional": false
+            }
           }
         },
         "nullable": false,
@@ -2312,33 +2343,37 @@
         "type": "object",
         "properties": {
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "reason": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -2357,6 +2392,8 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           }
         },
@@ -2386,70 +2423,70 @@
         "type": "object",
         "properties": {
           "bank_code": {
-            "type": "string",
-            "nullable": false,
             "description": "은행 식별자 코드.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "bank_name": {
-            "type": "string",
-            "nullable": false,
             "description": "은행 이름.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pay_method": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "trans"
-            ],
-            "nullable": false,
-            "x-typia-required": true
+            ]
           },
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment} 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "nullable": true,
             "description": "주문명, 누락 가능.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "nullable": true
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancel_amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소, 환불 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "currency": {
+            "description": "통화 단위.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 단위.",
-            "x-typia-required": true
+            ]
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
             "description": "영수증 URL",
             "x-typia-metaTags": [
               {
@@ -2469,52 +2506,62 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           },
           "cash_receipt_issue": {
-            "type": "boolean",
-            "nullable": false,
             "description": "현금 영수증 발행 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "emb_pg_provider": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "escrow": {
-            "type": "boolean",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "buyer_name": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": true,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -2533,97 +2580,121 @@
               }
             ],
             "x-typia-required": true,
-            "format": "email"
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "nullable": true
           },
           "buyer_tel": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_addr": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_postcode": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid_usage": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "custom_data": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "user_agent": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "status": {
+            "description": "결제의 현재 (진행) 상태.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "paid",
               "ready",
               "failed",
               "cancelled"
-            ],
-            "nullable": false,
-            "description": "결제의 현재 (진행) 상태.",
-            "x-typia-required": true
+            ]
           },
           "started_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 신청 일시.\n\n리눅스 타임이 쓰임.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "paid_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 (지불) 완료 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "failed_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 실패 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "fail_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_history": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IIamportPaymentCancel",
-              "x-typia-required": true
-            },
-            "nullable": false,
-            "x-typia-required": true
+              "description": "",
+              "x-typia-required": true,
+              "x-typia-optional": false
+            }
           }
         },
         "nullable": false,
@@ -2680,94 +2751,94 @@
         "type": "object",
         "properties": {
           "vbank_code": {
-            "type": "string",
-            "nullable": false,
             "description": "가상 계좌 식별자 코드.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "vbank_name": {
-            "type": "string",
-            "nullable": false,
             "description": "가상 게좌 이름",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "vbank_num": {
-            "type": "string",
-            "nullable": false,
             "description": "가상 계좌 번호",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "vbank_holder": {
-            "type": "string",
-            "nullable": false,
             "description": "가상 계좌 예금주.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "vbank_date": {
-            "type": "number",
-            "nullable": false,
             "description": "가상 계좌 입금 만료 기한.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "vbank_issued_at": {
-            "type": "number",
-            "nullable": false,
             "description": "가상 계좌 개설 일시.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "pay_method": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "vbank"
-            ],
-            "nullable": false,
-            "x-typia-required": true
+            ]
           },
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment} 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "nullable": true,
             "description": "주문명, 누락 가능.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "nullable": true
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancel_amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소, 환불 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "currency": {
+            "description": "통화 단위.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 단위.",
-            "x-typia-required": true
+            ]
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
             "description": "영수증 URL",
             "x-typia-metaTags": [
               {
@@ -2787,52 +2858,62 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           },
           "cash_receipt_issue": {
-            "type": "boolean",
-            "nullable": false,
             "description": "현금 영수증 발행 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "emb_pg_provider": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "escrow": {
-            "type": "boolean",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "buyer_name": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": true,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -2851,97 +2932,121 @@
               }
             ],
             "x-typia-required": true,
-            "format": "email"
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "nullable": true
           },
           "buyer_tel": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_addr": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_postcode": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid_usage": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "custom_data": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "user_agent": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "status": {
+            "description": "결제의 현재 (진행) 상태.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "paid",
               "ready",
               "failed",
               "cancelled"
-            ],
-            "nullable": false,
-            "description": "결제의 현재 (진행) 상태.",
-            "x-typia-required": true
+            ]
           },
           "started_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 신청 일시.\n\n리눅스 타임이 쓰임.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "paid_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 (지불) 완료 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "failed_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 실패 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "fail_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_history": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IIamportPaymentCancel",
-              "x-typia-required": true
-            },
-            "nullable": false,
-            "x-typia-required": true
+              "description": "",
+              "x-typia-required": true,
+              "x-typia-optional": false
+            }
           }
         },
         "nullable": false,
@@ -3002,6 +3107,9 @@
         "type": "object",
         "properties": {
           "pay_method": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "phone",
@@ -3016,55 +3124,52 @@
               "happymoney",
               "booknlife",
               "point"
-            ],
-            "nullable": false,
-            "x-typia-required": true
+            ]
           },
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment} 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "nullable": true,
             "description": "주문명, 누락 가능.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "nullable": true
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancel_amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소, 환불 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "currency": {
+            "description": "통화 단위.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 단위.",
-            "x-typia-required": true
+            ]
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
             "description": "영수증 URL",
             "x-typia-metaTags": [
               {
@@ -3084,52 +3189,62 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           },
           "cash_receipt_issue": {
-            "type": "boolean",
-            "nullable": false,
             "description": "현금 영수증 발행 여부.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "channel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "emb_pg_provider": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_tid": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "escrow": {
-            "type": "boolean",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "boolean"
           },
           "buyer_name": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": true,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -3148,97 +3263,121 @@
               }
             ],
             "x-typia-required": true,
-            "format": "email"
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "nullable": true
           },
           "buyer_tel": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_addr": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "buyer_postcode": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_uid_usage": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "custom_data": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "user_agent": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "status": {
+            "description": "결제의 현재 (진행) 상태.",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "paid",
               "ready",
               "failed",
               "cancelled"
-            ],
-            "nullable": false,
-            "description": "결제의 현재 (진행) 상태.",
-            "x-typia-required": true
+            ]
           },
           "started_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 신청 일시.\n\n리눅스 타임이 쓰임.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "paid_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 (지불) 완료 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "failed_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 실패 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 취소 일시.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "fail_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_reason": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "cancel_history": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IIamportPaymentCancel",
-              "x-typia-required": true
-            },
-            "nullable": false,
-            "x-typia-required": true
+              "description": "",
+              "x-typia-required": true,
+              "x-typia-optional": false
+            }
           }
         },
         "nullable": false,
@@ -3283,38 +3422,37 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 정보 {@link IIamportPayment } 의 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "취소 금액, 부분 취소도 가능하다.\n\n누락시 전액 취소.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "checksum": {
-            "type": "number",
-            "nullable": true,
             "description": "취소 트랜잭션 수행 전, 현재 시점의 취소 가능한 잔액.\n\nAPI요청자가 기록하고 있는 취소가능 잔액과 아임포트가 기록하고 있는 취소가능 잔액이 \n일치하는지 사전에 검증하고, 검증에 실패하면 트랜잭션을 수행하지 않는다. \n\n`null` 인 경우에는 검증 프로세스를 생략.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number",
+            "nullable": true
           },
           "reason": {
-            "type": "string",
-            "nullable": false,
             "description": "취소 사유.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "tax_free": {
-            "type": "number",
-            "nullable": false,
             "description": "취소요청금액 중 면세금액.",
             "x-typia-jsDocTags": [
               {
@@ -3327,31 +3465,33 @@
                 ]
               }
             ],
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "refund_holder": {
-            "type": "string",
-            "nullable": false,
             "description": "환불계좌 예금주.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "refund_bank": {
-            "type": "string",
-            "nullable": false,
             "description": "환불계좌 은행 코드.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "refund_account": {
-            "type": "string",
-            "nullable": false,
             "description": "환불계좌 계좌번호.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "refund_tel": {
-            "type": "string",
-            "nullable": false,
             "description": "환불계좌 예금주 연락처",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -3368,21 +3508,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportReceipt",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -3408,48 +3549,46 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "귀속 결제의 {@link IIamportPayment.imp_uid }.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "receipt_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "현금 영수증의 고유 식별자 ID.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "apply_num": {
-            "type": "string",
-            "nullable": false,
             "description": "승인 번호.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "type": {
+            "description": "발행 타입 (대상).",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
             "enum": [
               "person",
               "company"
-            ],
-            "nullable": false,
-            "description": "발행 타입 (대상).",
-            "x-typia-required": true
+            ]
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "vat": {
-            "type": "number",
-            "nullable": false,
             "description": "부가세.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "receipt_url": {
-            "type": "string",
-            "nullable": false,
             "description": "현금영수증 조회 URL.",
             "x-typia-metaTags": [
               {
@@ -3469,19 +3608,21 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "format": "url"
           },
           "applied_at": {
-            "type": "number",
-            "nullable": false,
             "description": "현금영수증 발행 시간.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "cancelled_at": {
-            "type": "number",
-            "nullable": false,
             "description": "현금영수증 취소 시간.\n\n리눅스 타임이 쓰이며, `null` 대신 0 을 씀.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           }
         },
         "nullable": false,
@@ -3513,62 +3654,62 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "귀속 결제의 {@link IIamportPayment.imp_uid }.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "identifier": {
-            "type": "string",
-            "nullable": false,
             "description": "현금영수증 발생대상 식별정보.\n\n  - 국세청현금영수증카드\n  - 휴대폰번호\n  - 주민등록번호\n  - 사업자등록번호",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "identifier_type": {
+            "description": "현금영수증 발행대상 유형.\n\n - person: 주민등록번호\n - business: 사업자등록번호\n - phone: 휴대폰번호\n - taxcard: 국세청현금영수증카드\n\n일부 PG 사의 경우 이 항목이 없어 된다는데, 어지간하면 그냥 쓰기 바람.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
             "type": "string",
             "enum": [
               "phone",
               "person",
               "business",
               "taxcard"
-            ],
-            "nullable": false,
-            "description": "현금영수증 발행대상 유형.\n\n - person: 주민등록번호\n - business: 사업자등록번호\n - phone: 휴대폰번호\n - taxcard: 국세청현금영수증카드\n\n일부 PG 사의 경우 이 항목이 없어 된다는데, 어지간하면 그냥 쓰기 바람.",
-            "x-typia-required": false
+            ]
           },
           "type": {
+            "description": "현금영수증 발행 타입 (대상).\n\n누락시 person 이 사용됨.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
             "type": "string",
             "enum": [
               "person",
               "company"
-            ],
-            "nullable": false,
-            "description": "현금영수증 발행 타입 (대상).\n\n누락시 person 이 사용됨.",
-            "x-typia-required": false
+            ]
           },
           "buyer_name": {
-            "type": "string",
-            "nullable": false,
             "description": "구매자 이름.\n\n형금영수증 발행건 사후 추적을 위해 가급 입력하기 바람.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": false,
             "description": "구매자 이메일.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_tel": {
-            "type": "string",
-            "nullable": false,
             "description": "구매자 전화번호.\n\n현금영수증 발행건 사후 추적을 위해 가급 입력하기 바람.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "tax_free": {
-            "type": "number",
-            "nullable": false,
             "description": "면세 금액.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           }
         },
         "nullable": false,
@@ -3583,16 +3724,16 @@
         "type": "object",
         "properties": {
           "imp_key": {
-            "type": "string",
-            "nullable": false,
             "description": "API 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "imp_secret": {
-            "type": "string",
-            "nullable": false,
             "description": "Secret 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -3607,21 +3748,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportUser",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -3647,22 +3789,22 @@
         "type": "object",
         "properties": {
           "now": {
-            "type": "number",
-            "nullable": false,
             "description": "토큰 발행 시간.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "expired_at": {
-            "type": "number",
-            "nullable": false,
             "description": "토큰 만료 시간.\n\n리눅스 타임이 기준이며, 이를 JS 에서 사용하려거든, 아래와 같이 변환해야 한다.\n\n```typescript\nnew Date(user.expired_at * 1_000);\n```",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "access_token": {
-            "type": "string",
-            "nullable": false,
             "description": "유저 인증 토큰.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -3688,87 +3830,94 @@
         "type": "object",
         "properties": {
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "vbank_code": {
-            "type": "string",
-            "nullable": false,
             "description": "가상계좌 은행 코드.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "vbank_due": {
-            "type": "number",
-            "nullable": false,
             "description": "가상계좌 입금기한, 유닉스 타임.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "vbank_holder": {
-            "type": "string",
-            "nullable": false,
             "description": "예금주.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_tel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_addr": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_postcode": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "pg": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "notice_url": {
-            "type": "string",
-            "nullable": false,
             "description": "가상 계좌 입금 정보를 수신할 URL.\n\n누락시 기본 웹훅 URL 사용.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "custom_data": {
-            "type": "string",
-            "nullable": false,
             "description": "커스텀 데이터, 자유롭게 사용 가능.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "pg_api_key": {
-            "type": "string",
-            "nullable": false,
             "description": "[이니시스 전용] 가맹점 콘솔에서 확인한 API 값.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -3786,21 +3935,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportVBankPayment",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -3826,22 +3976,22 @@
         "type": "object",
         "properties": {
           "imp_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "대상 결제 기록의 {@link IIamportPayment.imp_uid}.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "수정할 결제 금액.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "vbank_due": {
-            "type": "number",
-            "nullable": false,
             "description": "수정할 가상계좌 입금 기한.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           }
         },
         "nullable": false,
@@ -3855,21 +4005,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportSubscription",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -3895,75 +4046,93 @@
         "type": "object",
         "properties": {
           "pg_provider": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "pg_id": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_code": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_number": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "card_type": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "customer_name": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_tel": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_email": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_addr": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "customer_postcode": {
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
             "type": "string",
-            "nullable": true,
-            "x-typia-required": true
+            "nullable": true
           },
           "inserted": {
-            "type": "number",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "updated": {
-            "type": "number",
-            "nullable": false,
-            "x-typia-required": true
+            "description": "",
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "customer_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "고객 식별자 키.\n\n아임포트가 아닌, 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.\n\n다만 고객이라기보다 실제로는 카드의 식별자 키로 써야함.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -4000,8 +4169,6 @@
         "type": "object",
         "properties": {
           "card_number": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 번호\n\n형식: XXXX-XXXX-XXXX-XXXX",
             "x-typia-metaTags": [
               {
@@ -4021,11 +4188,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "expiry": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 유효기간\n\n형식: YYYY-MM",
             "x-typia-metaTags": [
               {
@@ -4045,11 +4212,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^([0-9]{4})-(0[1-9]|1[012])$"
           },
           "birth": {
-            "type": "string",
-            "nullable": false,
             "description": "생년월일 YYMMDD 또는 사업자등록번호 10자리",
             "x-typia-metaTags": [
               {
@@ -4069,11 +4236,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
           },
           "pwd_2digit": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 비밀번호 앞 두 자리",
             "x-typia-metaTags": [
               {
@@ -4093,11 +4260,11 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "pattern": "\\d{2}"
           },
           "cvc": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 인증번호 (카드 뒷면 3 자리).",
             "x-typia-metaTags": [
               {
@@ -4117,21 +4284,24 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "pattern": "\\d{3}"
           },
           "customer_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_tel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_email": {
-            "type": "string",
-            "nullable": false,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -4150,23 +4320,27 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "email"
           },
           "customr_addr": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_postcode": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "고객 식별자 키.\n\n아임포트가 아닌, 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.\n\n다만 고객이라기보다 실제로는 카드의 식별자 키로 써야함.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,
@@ -4183,14 +4357,12 @@
         "type": "object",
         "properties": {
           "customer_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "고객 식별자 키.\n\n아임포트가 아닌, 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.\n\n다만 고객이라기보다 실제로는 카드의 식별자 키로 써야함.\n\n이를 생략시 단순 결제로만 그치며, 카드 정보가 간편 결제용으로 등록되지 아니함.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "card_number": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 번호\n\n형식: XXXX-XXXX-XXXX-XXXX",
             "x-typia-metaTags": [
               {
@@ -4210,11 +4382,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
           },
           "expiry": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 유효기간\n\n형식: YYYY-MM",
             "x-typia-metaTags": [
               {
@@ -4234,11 +4406,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^([0-9]{4})-(0[1-9]|1[012])$"
           },
           "birth": {
-            "type": "string",
-            "nullable": false,
             "description": "생년월일 YYMMDD 또는 사업자등록번호 10자리",
             "x-typia-metaTags": [
               {
@@ -4258,11 +4430,11 @@
               }
             ],
             "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
             "pattern": "^(([0-9]{2})(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01]))|(\\d{10})$"
           },
           "pwd_2digit": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 비밀번호 앞 두 자리",
             "x-typia-metaTags": [
               {
@@ -4282,11 +4454,11 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "pattern": "\\d{2}"
           },
           "cvc": {
-            "type": "string",
-            "nullable": false,
             "description": "카드 인증번호 (카드 뒷면 3 자리).",
             "x-typia-metaTags": [
               {
@@ -4306,21 +4478,24 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "pattern": "\\d{3}"
           },
           "customer_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_tel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_email": {
-            "type": "string",
-            "nullable": false,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -4339,68 +4514,72 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "email"
           },
           "customr_addr": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "customer_postcode": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트가 아닌 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "name": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 이름.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "currency": {
+            "description": "통화 정보.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 정보.",
-            "x-typia-required": false
+            ]
           },
           "tax_free": {
-            "type": "number",
-            "nullable": false,
             "description": "면세 공급가액.\n\n기본값은 0 로써, 알아서 amount 의 1/11 로써 부가세 처리됨.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "card_quota": {
-            "type": "number",
-            "nullable": false,
             "description": "할부 개월 수.\n\n일시불은 0.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "buyer_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": false,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -4419,44 +4598,47 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "email"
           },
           "buyer_tel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_addr": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_postcode": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "interest_free_by_merchant": {
-            "type": "boolean",
-            "nullable": false,
             "description": "카드할부처리할 때, 할부이자가 발생하는 경우 (카드사 무이자 프로모션 제외). \n\n부과되는 할부이자를 고객대신 가맹점이 지불하고자 PG사와 계약된 경우(현재, 나이스페이먼츠만 지원됨)",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
           },
           "use_card_point": {
-            "type": "boolean",
-            "nullable": false,
             "description": "승인요청시 카드사 포인트 차감하며 결제승인처리할지 flag. \n\nPG사 영업담당자와 계약 당시 사전 협의 필요(현재, 나이스페이먼츠만 지원됨)",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
           },
           "custom_data": {
-            "type": "string",
-            "nullable": false,
             "description": "임의 정보를 기재할 수 있다.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "notice_url": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 성공시 통지될 Notification, 웹훅 URL.",
             "x-typia-metaTags": [
               {
@@ -4476,6 +4658,8 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "url"
           }
         },
@@ -4495,21 +4679,22 @@
         "type": "object",
         "properties": {
           "code": {
-            "type": "number",
-            "nullable": false,
             "description": "에러 코드.\n\n값이 0 이면 오류가 없다는 뜻.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "message": {
-            "type": "string",
-            "nullable": false,
             "description": "성공 또는 오류 메시지.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "response": {
             "$ref": "#/components/schemas/IIamportCardPayment",
             "description": "응답 데이터, 사실상 본문.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false
           }
         },
         "nullable": false,
@@ -4535,55 +4720,55 @@
         "type": "object",
         "properties": {
           "merchant_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 식별자 키.\n\n아임포트가 아닌 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "amount": {
-            "type": "number",
-            "nullable": false,
             "description": "결제 총액.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "number"
           },
           "name": {
-            "type": "string",
-            "nullable": false,
             "description": "주문 이름.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           },
           "currency": {
+            "description": "통화 정보.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
             "type": "string",
             "enum": [
               "KRW",
               "USD",
               "EUR",
               "JPY"
-            ],
-            "nullable": false,
-            "description": "통화 정보.",
-            "x-typia-required": false
+            ]
           },
           "tax_free": {
-            "type": "number",
-            "nullable": false,
             "description": "면세 공급가액.\n\n기본값은 0 로써, 알아서 amount 의 1/11 로써 부가세 처리됨.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "card_quota": {
-            "type": "number",
-            "nullable": false,
             "description": "할부 개월 수.\n\n일시불은 0.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "number"
           },
           "buyer_name": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_email": {
-            "type": "string",
-            "nullable": false,
+            "description": "",
             "x-typia-metaTags": [
               {
                 "kind": "format",
@@ -4602,44 +4787,47 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "email"
           },
           "buyer_tel": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_addr": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "buyer_postcode": {
-            "type": "string",
-            "nullable": false,
-            "x-typia-required": false
+            "description": "",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "interest_free_by_merchant": {
-            "type": "boolean",
-            "nullable": false,
             "description": "카드할부처리할 때, 할부이자가 발생하는 경우 (카드사 무이자 프로모션 제외). \n\n부과되는 할부이자를 고객대신 가맹점이 지불하고자 PG사와 계약된 경우(현재, 나이스페이먼츠만 지원됨)",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
           },
           "use_card_point": {
-            "type": "boolean",
-            "nullable": false,
             "description": "승인요청시 카드사 포인트 차감하며 결제승인처리할지 flag. \n\nPG사 영업담당자와 계약 당시 사전 협의 필요(현재, 나이스페이먼츠만 지원됨)",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
           },
           "custom_data": {
-            "type": "string",
-            "nullable": false,
             "description": "임의 정보를 기재할 수 있다.",
-            "x-typia-required": false
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string"
           },
           "notice_url": {
-            "type": "string",
-            "nullable": false,
             "description": "결제 성공시 통지될 Notification, 웹훅 URL.",
             "x-typia-metaTags": [
               {
@@ -4659,13 +4847,15 @@
               }
             ],
             "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "string",
             "format": "url"
           },
           "customer_uid": {
-            "type": "string",
-            "nullable": false,
             "description": "고객 식별자 키.\n\n아임포트가 아닌, 이를 이용하는 서비스에서 자체적으로 관리하는 식별자 키.\n\n다만 고객이라기보다 실제로는 카드의 식별자 키로 써야함.",
-            "x-typia-required": true
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
           }
         },
         "nullable": false,

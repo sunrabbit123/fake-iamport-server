@@ -1,6 +1,6 @@
 import core from "@nestia/core";
 import * as nest from "@nestjs/common";
-import express from "express";
+import * as fastify from "fastify";
 
 import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
 
@@ -45,7 +45,7 @@ export class FakeIamportInternalController {
      */
     @core.TypedRoute.Get("deposit/:imp_uid")
     public deposit(
-        @nest.Request() request: express.Request,
+        @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
     ): void {
         // AUTHORIZE

@@ -1,7 +1,9 @@
 import core from "@nestia/core";
-import * as nest from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import express from "express";
+import {
+    FastifyAdapter,
+    NestFastifyApplication,
+} from "@nestjs/platform-fastify";
 
 import { FakeIamportConfiguration } from "./FakeIamportConfiguration";
 
@@ -11,8 +13,7 @@ import { FakeIamportConfiguration } from "./FakeIamportConfiguration";
  * @author Samchon
  */
 export class FakeIamportBackend {
-    private application_?: nest.INestApplication;
-    private is_closing_: boolean = false;
+    private application_?: NestFastifyApplication;
 
     /**
      * 서버 개설.
@@ -24,15 +25,12 @@ export class FakeIamportBackend {
         // MOUNT CONTROLLERS
         this.application_ = await NestFactory.create(
             await core.DynamicModule.mount(`${__dirname}/controllers`),
+            new FastifyAdapter(),
             { logger: false },
         );
 
-        // CONFIGURATIONS
-        this.is_closing_ = false;
-        this.application_.enableCors();
-        this.application_.use(this.middleware.bind(this));
-
         // DO OPEN
+        this.application_.enableCors();
         await this.application_.listen(FakeIamportConfiguration.API_PORT);
 
         //----
@@ -43,7 +41,6 @@ export class FakeIamportBackend {
 
         // WHEN KILL COMMAND COMES
         process.on("SIGINT", async () => {
-            this.is_closing_ = true;
             await this.close();
             process.exit(0);
         });
@@ -58,14 +55,5 @@ export class FakeIamportBackend {
         // DO CLOSE
         await this.application_.close();
         delete this.application_;
-    }
-
-    private middleware(
-        _request: express.Request,
-        response: express.Response,
-        next: () => any,
-    ): void {
-        if (this.is_closing_ === true) response.set("Connection", "close");
-        next();
     }
 }

@@ -6,8 +6,8 @@ import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayme
 import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 import { IIamportVBankPayment } from "iamport-server-api/lib/structures/IIamportVBankPayment";
 
-import { FakeIamportStorage } from "../../../providers/FakeIamportStorage";
-import { AdvancedRandomGenerator } from "../../../utils/AdvancedRandomGenerator";
+import { FakeIamportStorage } from "../../../src/providers/FakeIamportStorage";
+import { AdvancedRandomGenerator } from "../../../src/utils/AdvancedRandomGenerator";
 
 export async function test_fake_vbank_payment(
     connector: imp.IamportConnector,
