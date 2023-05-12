@@ -1,10 +1,5 @@
 {
   "openapi": "3.0.1",
-  "info": {
-    "version": "1.0.2",
-    "title": "Iamport API",
-    "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
-  },
   "servers": [
     {
       "url": "http://localhost:10851",
@@ -15,6 +10,11 @@
       "description": "real"
     }
   ],
+  "info": {
+    "version": "1.2.0",
+    "title": "Iamport API",
+    "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
+  },
   "paths": {
     "/certifications/{imp_uid}": {
       "get": {
