@@ -21,7 +21,7 @@ import type { IIamportCardPayment } from "./../../../structures/IIamportCardPaym
  * 
  * 다만, 정히 간편 카드 등록과 결제를 동시에 하고 싶다면,
  * `subscribe.payments.onetime` 에 {@link IIamportSubscription.IOnetime.customer_uid}
- * 를 더하기보다, {@link  subscribe.customers.store } 와 {@link  subscribe.payments.again }
+ * 를 더하기보다, {@link subscribe.customers.store} 와 {@link subscribe.payments.again}
  * 을 각각 호출하는 것을 권장한다. 그것이 예외적인 상황에 보다 안전하게 대처할 수 있기
  * 때문이다.
  * 
@@ -30,9 +30,9 @@ import type { IIamportCardPayment } from "./../../../structures/IIamportCardPaym
  * 없을 것이다. 다만, 고객이 카드를 통하여 결제하는 상황을 시뮬레이션하기 위하여, 테스트
  * 자동화 프로그램 수준에서 사용될 수는 있다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param input 카드 결제 신청 정보
  * @returns 카드 결제 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIampotSubscribePaymentsController.onetime()
@@ -85,9 +85,9 @@ export namespace onetime
  * 연동하는 백엔드 서버 및 프론트 어플리케이션을 개발할 때, 반드시 이 상황에 대한 별도의
  * 설계 및 개발이 필요하니, 이 점을 염두에 두기 바란다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param input 미리 등록한 카드를 이용한 결제 신청 정보
  * @returns 카드 결제 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIampotSubscribePaymentsController.again()

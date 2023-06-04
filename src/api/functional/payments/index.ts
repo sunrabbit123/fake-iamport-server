@@ -16,9 +16,9 @@ import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCa
  * 
  * 아임포트를 통하여 발생한 결제 기록을 열람한다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid}
  * @returns 결제 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportPaymentsController.at()
@@ -61,9 +61,9 @@ export namespace at
  * 
  * 만약 가상 계좌를 통한 결제였다면, 반드시 환불 계좌 정보를 입력해줘야 한다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param input 결제 취소 입력 정보
  * @returns 취소된 결제 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportPaymentsController.cancel()

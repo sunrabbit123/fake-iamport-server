@@ -17,7 +17,6 @@ import type { IIamportSubscription } from "./../../../structures/IIamportSubscri
  * 간편 결제 카드 등록 창을 이용하여 저장한 간편 결제 카드 정보를 조회하는 API
  * 함수이다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param customer_uid 고객 (간편 결제 카드) 식별자 키
  * @returns 간편 결제 카드 정보
  * 
@@ -68,10 +67,10 @@ export namespace at
  * 일은 없을 것이다. 다만, 고객이 간편 결제 카드를 등록하는 상황을 시뮬레이션하기 위하여,
  * 테스트 자동화 프로그램 수준에서 사용될 수는 있다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param customer_uid 고객 (간편 결제 카드) 식별자 키
  * @param input 카드 입력 정보
  * @returns 간편 결제 카드 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportSubscribeCustomersController.store()
@@ -117,9 +116,9 @@ export namespace store
  * 
  * 간편 결제를 위하여 등록한 카드를 제거한다.
  * 
- * @param connection connection Information of the remote HTTP(s) server with headers (+encryption password)
  * @param customer_uid 고객 (간편 결제 카드) 식별자 키
  * @returns 삭제된 간편 결제 카드 정보
+ * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportSubscribeCustomersController.erase()
