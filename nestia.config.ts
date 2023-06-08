@@ -1,6 +1,7 @@
 import type { INestiaConfig } from "@nestia/sdk";
 
 const NESTIA_CONFIG: INestiaConfig = {
+    random: true,
     input: "src/controllers",
     output: "src/api",
     swagger: {

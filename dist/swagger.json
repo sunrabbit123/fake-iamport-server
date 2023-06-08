@@ -11,7 +11,7 @@
     }
   ],
   "info": {
-    "version": "1.3.1",
+    "version": "1.3.2",
     "title": "Iamport API",
     "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
   },
