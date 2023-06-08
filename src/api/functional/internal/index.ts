@@ -6,7 +6,9 @@
 //================================================================
 import { Fetcher } from "@nestia/fetcher";
 import type { IConnection, Primitive } from "@nestia/fetcher";
+import typia from "typia";
 
+import { NestiaSimulator } from "./../../utils/NestiaSimulator";
 import type { IIamportPayment } from "./../../structures/IIamportPayment";
 
 /**
@@ -30,10 +32,13 @@ import type { IIamportPayment } from "./../../structures/IIamportPayment";
  */
 export async function webhook(
     connection: IConnection,
-    input: Primitive<webhook.Input>,
+    input: webhook.Input,
 ): Promise<void> {
     return !!connection.random
-        ? undefined
+        ? webhook.simulate(
+              connection,
+              input,
+          )
         : Fetcher.fetch(
               connection,
               webhook.ENCRYPTED,
@@ -54,6 +59,17 @@ export namespace webhook {
 
     export const path = (): string => {
         return `/internal/webhook`;
+    }
+    export const simulate = async (
+        connection: IConnection,
+        input: webhook.Input,
+    ): Promise<void> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path()
+        });
+        assert.body(() => typia.assert(input));
     }
 }
 
@@ -79,7 +95,10 @@ export async function deposit(
     imp_uid: string,
 ): Promise<void> {
     return !!connection.random
-        ? undefined
+        ? deposit.simulate(
+              connection,
+              imp_uid,
+          )
         : Fetcher.fetch(
               connection,
               deposit.ENCRYPTED,
@@ -98,5 +117,16 @@ export namespace deposit {
 
     export const path = (imp_uid: string): string => {
         return `/internal/deposit/${encodeURIComponent(imp_uid ?? "null")}`;
+    }
+    export const simulate = async (
+        connection: IConnection,
+        imp_uid: string,
+    ): Promise<void> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(imp_uid)
+        });
+        assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
     }
 }

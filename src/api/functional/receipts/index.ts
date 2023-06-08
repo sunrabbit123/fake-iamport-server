@@ -8,6 +8,7 @@ import { Fetcher } from "@nestia/fetcher";
 import type { IConnection, Primitive } from "@nestia/fetcher";
 import typia from "typia";
 
+import { NestiaSimulator } from "./../../utils/NestiaSimulator";
 import type { IIamportResponse } from "./../../structures/IIamportResponse";
 import type { IIamportReceipt } from "./../../structures/IIamportReceipt";
 
@@ -28,11 +29,9 @@ export async function at(
     imp_uid: string,
 ): Promise<at.Output> {
     return !!connection.random
-        ? at.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? at.simulate(
+              connection,
+              imp_uid,
           )
         : Fetcher.fetch(
               connection,
@@ -56,6 +55,23 @@ export namespace at {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        imp_uid: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(imp_uid)
+        });
+        assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
 
 /**
@@ -74,14 +90,13 @@ export namespace at {
 export async function store(
     connection: IConnection,
     imp_uid: string,
-    input: Primitive<store.Input>,
+    input: store.Input,
 ): Promise<store.Output> {
     return !!connection.random
-        ? store.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? store.simulate(
+              connection,
+              imp_uid,
+              input,
           )
         : Fetcher.fetch(
               connection,
@@ -107,6 +122,25 @@ export namespace store {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        imp_uid: string,
+        input: store.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(imp_uid)
+        });
+        assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
+        assert.body(() => typia.assert(input));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
 
 /**
@@ -126,11 +160,9 @@ export async function erase(
     imp_uid: string,
 ): Promise<erase.Output> {
     return !!connection.random
-        ? erase.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? erase.simulate(
+              connection,
+              imp_uid,
           )
         : Fetcher.fetch(
               connection,
@@ -154,4 +186,21 @@ export namespace erase {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        imp_uid: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(imp_uid)
+        });
+        assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }

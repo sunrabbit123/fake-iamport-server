@@ -8,6 +8,7 @@ import { Fetcher } from "@nestia/fetcher";
 import type { IConnection, Primitive } from "@nestia/fetcher";
 import typia from "typia";
 
+import { NestiaSimulator } from "./../../utils/NestiaSimulator";
 import type { IIamportUser } from "./../../structures/IIamportUser";
 import type { IIamportResponse } from "./../../structures/IIamportResponse";
 
@@ -32,14 +33,12 @@ import type { IIamportResponse } from "./../../structures/IIamportResponse";
  */
 export async function getToken(
     connection: IConnection,
-    input: Primitive<getToken.Input>,
+    input: getToken.Input,
 ): Promise<getToken.Output> {
     return !!connection.random
-        ? getToken.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? getToken.simulate(
+              connection,
+              input,
           )
         : Fetcher.fetch(
               connection,
@@ -65,4 +64,21 @@ export namespace getToken {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        input: getToken.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path()
+        });
+        assert.body(() => typia.assert(input));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }

@@ -8,6 +8,7 @@ import { Fetcher } from "@nestia/fetcher";
 import type { IConnection, Primitive } from "@nestia/fetcher";
 import typia from "typia";
 
+import { NestiaSimulator } from "./../../../utils/NestiaSimulator";
 import type { IIamportResponse } from "./../../../structures/IIamportResponse";
 import type { IIamportSubscription } from "./../../../structures/IIamportSubscription";
 
@@ -30,11 +31,9 @@ export async function at(
     customer_uid: string,
 ): Promise<at.Output> {
     return !!connection.random
-        ? at.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? at.simulate(
+              connection,
+              customer_uid,
           )
         : Fetcher.fetch(
               connection,
@@ -58,6 +57,23 @@ export namespace at {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        customer_uid: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(customer_uid)
+        });
+        assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
 
 /**
@@ -85,14 +101,13 @@ export namespace at {
 export async function store(
     connection: IConnection,
     customer_uid: string,
-    input: Primitive<store.Input>,
+    input: store.Input,
 ): Promise<store.Output> {
     return !!connection.random
-        ? store.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? store.simulate(
+              connection,
+              customer_uid,
+              input,
           )
         : Fetcher.fetch(
               connection,
@@ -118,6 +133,25 @@ export namespace store {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        customer_uid: string,
+        input: store.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(customer_uid)
+        });
+        assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
+        assert.body(() => typia.assert(input));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
 
 /**
@@ -139,11 +173,9 @@ export async function erase(
     customer_uid: string,
 ): Promise<erase.Output> {
     return !!connection.random
-        ? erase.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? erase.simulate(
+              connection,
+              customer_uid,
           )
         : Fetcher.fetch(
               connection,
@@ -167,4 +199,21 @@ export namespace erase {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        customer_uid: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(customer_uid)
+        });
+        assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }

@@ -8,6 +8,7 @@ import { Fetcher } from "@nestia/fetcher";
 import type { IConnection, Primitive } from "@nestia/fetcher";
 import typia from "typia";
 
+import { NestiaSimulator } from "./../../utils/NestiaSimulator";
 import type { IIamportResponse } from "./../../structures/IIamportResponse";
 import type { IIamportPayment } from "./../../structures/IIamportPayment";
 import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCancel";
@@ -31,11 +32,9 @@ export async function at(
     imp_uid: string,
 ): Promise<at.Output> {
     return !!connection.random
-        ? at.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? at.simulate(
+              connection,
+              imp_uid,
           )
         : Fetcher.fetch(
               connection,
@@ -59,6 +58,23 @@ export namespace at {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        imp_uid: string,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path(imp_uid)
+        });
+        assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
 
 /**
@@ -77,14 +93,12 @@ export namespace at {
  */
 export async function cancel(
     connection: IConnection,
-    input: Primitive<cancel.Input>,
+    input: cancel.Input,
 ): Promise<cancel.Output> {
     return !!connection.random
-        ? cancel.random(
-              typeof connection.random === "object" &&
-                  connection.random !== null
-                  ? connection.random
-                  : undefined
+        ? cancel.simulate(
+              connection,
+              input,
           )
         : Fetcher.fetch(
               connection,
@@ -110,4 +124,21 @@ export namespace cancel {
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
+    export const simulate = async (
+        connection: IConnection,
+        input: cancel.Input,
+    ): Promise<Output> => {
+        const assert = NestiaSimulator.assert({
+            method: METHOD,
+            host: connection.host,
+            path: path()
+        });
+        assert.body(() => typia.assert(input));
+        return typia.random<Output>(
+            typeof connection.random === 'object'
+            && connection.random !== null
+                ? connection.random
+                : undefined
+        );
+    }
 }
