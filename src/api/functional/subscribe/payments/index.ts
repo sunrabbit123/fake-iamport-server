@@ -45,7 +45,7 @@ export async function onetime(
     connection: IConnection,
     input: onetime.Input,
 ): Promise<onetime.Output> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? onetime.simulate(
               connection,
               input,
@@ -84,10 +84,10 @@ export namespace onetime {
             path: path()
         });
         assert.body(() => typia.assert(input));
-        return typia.random<Output>(
-            typeof connection.random === 'object'
-            && connection.random !== null
-                ? connection.random
+        return random(
+            typeof (connection.simulate ?? (connection as any).random) === 'object'
+            && (connection.simulate ?? (connection as any).random) !== null
+                ? (connection.simulate ?? (connection as any).random)
                 : undefined
         );
     }
@@ -119,7 +119,7 @@ export async function again(
     connection: IConnection,
     input: again.Input,
 ): Promise<again.Output> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? again.simulate(
               connection,
               input,
@@ -158,10 +158,10 @@ export namespace again {
             path: path()
         });
         assert.body(() => typia.assert(input));
-        return typia.random<Output>(
-            typeof connection.random === 'object'
-            && connection.random !== null
-                ? connection.random
+        return random(
+            typeof (connection.simulate ?? (connection as any).random) === 'object'
+            && (connection.simulate ?? (connection as any).random) !== null
+                ? (connection.simulate ?? (connection as any).random)
                 : undefined
         );
     }

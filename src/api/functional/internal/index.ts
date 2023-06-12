@@ -34,7 +34,7 @@ export async function webhook(
     connection: IConnection,
     input: webhook.Input,
 ): Promise<void> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? webhook.simulate(
               connection,
               input,
@@ -94,7 +94,7 @@ export async function deposit(
     connection: IConnection,
     imp_uid: string,
 ): Promise<void> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? deposit.simulate(
               connection,
               imp_uid,
