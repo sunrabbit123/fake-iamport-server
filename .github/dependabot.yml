@@ -10,6 +10,7 @@ updates:
       - dependency-name: "@nestia/e2e"
       - dependency-name: "@nestia/sdk"
       - dependency-name: "nestia"
+      - dependency-name: "tstl"
       - dependency-name: "typia"
   - package-ecosystem: 'npm'
     directory: '/packages/api'
