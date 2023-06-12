@@ -4,6 +4,7 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    versioning-strategy: increase
     allow:
       - dependency-name: "@nestia/core"
       - dependency-name: "@nestia/e2e"
@@ -14,3 +15,4 @@ updates:
     directory: '/packages/api'
     schedule:
       interval: 'daily'
+    versioning-strategy: increase
