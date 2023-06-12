@@ -28,7 +28,7 @@ export async function store(
     connection: IConnection,
     input: store.Input,
 ): Promise<store.Output> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? store.simulate(
               connection,
               input,
@@ -67,10 +67,10 @@ export namespace store {
             path: path()
         });
         assert.body(() => typia.assert(input));
-        return typia.random<Output>(
-            typeof connection.random === 'object'
-            && connection.random !== null
-                ? connection.random
+        return random(
+            typeof (connection.simulate ?? (connection as any).random) === 'object'
+            && (connection.simulate ?? (connection as any).random) !== null
+                ? (connection.simulate ?? (connection as any).random)
                 : undefined
         );
     }
@@ -92,7 +92,7 @@ export async function update(
     connection: IConnection,
     input: update.Input,
 ): Promise<update.Output> {
-    return !!connection.random
+    return !!(connection.simulate ?? (connection as any).random)
         ? update.simulate(
               connection,
               input,
@@ -131,10 +131,10 @@ export namespace update {
             path: path()
         });
         assert.body(() => typia.assert(input));
-        return typia.random<Output>(
-            typeof connection.random === 'object'
-            && connection.random !== null
-                ? connection.random
+        return random(
+            typeof (connection.simulate ?? (connection as any).random) === 'object'
+            && (connection.simulate ?? (connection as any).random) !== null
+                ? (connection.simulate ?? (connection as any).random)
                 : undefined
         );
     }
