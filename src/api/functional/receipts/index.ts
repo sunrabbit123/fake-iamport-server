@@ -28,7 +28,7 @@ export async function at(
     connection: IConnection,
     imp_uid: string,
 ): Promise<at.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? at.simulate(
               connection,
               imp_uid,
@@ -66,9 +66,9 @@ export namespace at {
         });
         assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
@@ -92,7 +92,7 @@ export async function store(
     imp_uid: string,
     input: store.Input,
 ): Promise<store.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? store.simulate(
               connection,
               imp_uid,
@@ -135,9 +135,9 @@ export namespace store {
         assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
         assert.body(() => typia.assert(input));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
@@ -159,7 +159,7 @@ export async function erase(
     connection: IConnection,
     imp_uid: string,
 ): Promise<erase.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? erase.simulate(
               connection,
               imp_uid,
@@ -197,9 +197,9 @@ export namespace erase {
         });
         assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }

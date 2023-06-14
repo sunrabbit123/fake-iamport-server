@@ -31,7 +31,7 @@ export async function at(
     connection: IConnection,
     imp_uid: string,
 ): Promise<at.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? at.simulate(
               connection,
               imp_uid,
@@ -69,9 +69,9 @@ export namespace at {
         });
         assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
@@ -95,7 +95,7 @@ export async function cancel(
     connection: IConnection,
     input: cancel.Input,
 ): Promise<cancel.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? cancel.simulate(
               connection,
               input,
@@ -135,9 +135,9 @@ export namespace cancel {
         });
         assert.body(() => typia.assert(input));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }

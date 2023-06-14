@@ -30,7 +30,7 @@ export async function at(
     connection: IConnection,
     customer_uid: string,
 ): Promise<at.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? at.simulate(
               connection,
               customer_uid,
@@ -68,9 +68,9 @@ export namespace at {
         });
         assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
@@ -103,7 +103,7 @@ export async function store(
     customer_uid: string,
     input: store.Input,
 ): Promise<store.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? store.simulate(
               connection,
               customer_uid,
@@ -146,9 +146,9 @@ export namespace store {
         assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
         assert.body(() => typia.assert(input));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
@@ -172,7 +172,7 @@ export async function erase(
     connection: IConnection,
     customer_uid: string,
 ): Promise<erase.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? erase.simulate(
               connection,
               customer_uid,
@@ -210,9 +210,9 @@ export namespace erase {
         });
         assert.param("customer_uid")("string")(() => typia.assert(customer_uid));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }

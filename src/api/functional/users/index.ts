@@ -35,7 +35,7 @@ export async function getToken(
     connection: IConnection,
     input: getToken.Input,
 ): Promise<getToken.Output> {
-    return !!(connection.simulate ?? (connection as any).random)
+    return !!connection.simulate
         ? getToken.simulate(
               connection,
               input,
@@ -75,9 +75,9 @@ export namespace getToken {
         });
         assert.body(() => typia.assert(input));
         return random(
-            typeof (connection.simulate ?? (connection as any).random) === 'object'
-            && (connection.simulate ?? (connection as any).random) !== null
-                ? (connection.simulate ?? (connection as any).random)
+            typeof connection.simulate === 'object' &&
+                connection.simulate !== null
+                ? connection.simulate
                 : undefined
         );
     }
