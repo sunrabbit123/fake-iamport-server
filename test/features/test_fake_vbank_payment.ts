@@ -1,3 +1,4 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
@@ -6,8 +7,8 @@ import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayme
 import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 import { IIamportVBankPayment } from "iamport-server-api/lib/structures/IIamportVBankPayment";
 
-import { FakeIamportStorage } from "../../../src/providers/FakeIamportStorage";
-import { AdvancedRandomGenerator } from "../../../src/utils/AdvancedRandomGenerator";
+import { FakeIamportStorage } from "../../src/providers/FakeIamportStorage";
+import { AdvancedRandomGenerator } from "../../src/utils/AdvancedRandomGenerator";
 
 export async function test_fake_vbank_payment(
     connector: imp.IamportConnector,
@@ -16,7 +17,7 @@ export async function test_fake_vbank_payment(
     const ready: IIamportVBankPayment = await issue(connector);
 
     // 입금 시뮬레이션
-    return await deposit(connector, ready);
+    return deposit(connector, ready);
 }
 
 async function issue(
@@ -38,6 +39,7 @@ async function issue(
             vbank_holder: AdvancedRandomGenerator.name(),
         });
     typia.assert(output);
+    TestValidator.equals("status")(output.response.status)("ready");
 
     /**
      * 아임포트 서버로부터의 웹훅 데이터.
@@ -47,12 +49,8 @@ async function issue(
      */
     const webhook: IIamportPayment.IWebhook =
         FakeIamportStorage.webhooks.back();
-    if (webhook.imp_uid !== output.response.imp_uid)
-        throw new Error(
-            "Bug on vbanks.store(): failed to deliver the webhook event.",
-        );
-    else if (webhook.status !== "ready")
-        throw new Error("Bug on vbanks.store(): its status must be ready.");
+    TestValidator.equals("imp_uid")(webhook.imp_uid)(output.response.imp_uid);
+    TestValidator.equals("status")(webhook.status)("ready");
 
     /**
      * 결제 내역 조회하기.
@@ -70,14 +68,13 @@ async function issue(
     typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
-    const payment: IIamportPayment = reloaded.response;
-    if (payment.pay_method !== "vbank")
-        throw new Error("Bug on payments.at(): its pay_method must be vbank.");
-    else if (payment.paid_at || payment.status !== "ready")
-        throw new Error("Bug on payments.at(): its status must be ready.");
+    const payment: IIamportVBankPayment = typia.assert<IIamportVBankPayment>(
+        reloaded.response,
+    );
+    TestValidator.equals("imp_uid")(payment.imp_uid)(output.response.imp_uid);
+    TestValidator.equals("status")(payment.status)("ready");
 
-    // 첫 번째 if condition 에 의해 자동 다운 캐스팅 된 상태
-    payment.vbank_num;
+    // FOR THE NEXT STEP
     return payment;
 }
 
@@ -102,12 +99,8 @@ async function deposit(
      */
     const webhook: IIamportPayment.IWebhook =
         FakeIamportStorage.webhooks.back();
-    if (webhook.imp_uid !== ready.imp_uid)
-        throw new Error(
-            "Bug on internal.deposit(): failed to deliver the webhook event.",
-        );
-    else if (webhook.status !== "paid")
-        throw new Error("Bug on internal.deposit(): its status must be paid.");
+    TestValidator.equals("imp_uid")(webhook.imp_uid)(ready.imp_uid);
+    TestValidator.equals("status")(webhook.status)("paid");
 
     /**
      * 결제 내역 조회하기.
@@ -124,13 +117,10 @@ async function deposit(
     typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
-    const payment: IIamportPayment = reloaded.response;
-    if (payment.pay_method !== "vbank")
-        throw new Error("Bug on payments.at(): its pay_method must be vbank.");
-    else if (!payment.paid_at || payment.status !== "paid")
-        throw new Error("Bug on payments.at(): its status must be paid.");
-
-    // 첫 번째 if condition 에 의해 자동 다운 캐스팅 된 상태
-    payment.vbank_num;
+    const payment: IIamportVBankPayment = typia.assert<IIamportVBankPayment>(
+        reloaded.response,
+    );
+    TestValidator.equals("imp_uid")(payment.imp_uid)(reloaded.response.imp_uid);
+    TestValidator.equals("status")(payment.status)("paid");
     return payment;
 }

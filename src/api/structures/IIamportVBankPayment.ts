@@ -2,12 +2,10 @@ import { IIamportPayment } from "./IIamportPayment";
 
 /**
  * 가상 계좌 결제 정보.
- * 
+ *
  * @author Jeongho Nam - https://github.com/samchon
  */
-export interface IIamportVBankPayment
-    extends IIamportPayment.IBase<"vbank">
-{
+export interface IIamportVBankPayment extends IIamportPayment.IBase<"vbank"> {
     /**
      * 가상 계좌 식별자 코드.
      */
@@ -38,24 +36,22 @@ export interface IIamportVBankPayment
      */
     vbank_issued_at: number;
 }
-export namespace IIamportVBankPayment
-{
+export namespace IIamportVBankPayment {
     /**
      * 가상 계좌 결제 입력 정보.
-     * 
+     *
      * 가상 계좌를 임의 생성할 수 있다.
-     * 
+     *
      * 단, 일부 PG 사 혹은 `fake-iamport-server` 만 가능.
-     * 
+     *
      *   - 세틀뱅크
      *   - 나이스페이먼츠
      *   - KG이니시스
      */
-    export interface IStore
-    {
+    export interface IStore {
         /**
          * 주문 식별자 키.
-         * 
+         *
          * 아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.
          */
         merchant_uid: string;
@@ -90,7 +86,7 @@ export namespace IIamportVBankPayment
 
         /**
          * 가상 계좌 입금 정보를 수신할 URL.
-         * 
+         *
          * 누락시 기본 웹훅 URL 사용.
          */
         notice_url?: string;
@@ -108,13 +104,12 @@ export namespace IIamportVBankPayment
 
     /**
      * 가상 계좌 결제의 수정 입력 정보.
-     * 
+     *
      * 아직 입금되지 않은 가상계좌의 입금기한 또는 입금금액을 수정할 수 있다.
-     * 
+     *
      * 다만, 세틀뱅크 혹은 `fake-iamport-server` 만 가능.
      */
-    export interface IUpdate
-    {
+    export interface IUpdate {
         /**
          * 대상 결제 기록의 {@link IIamportPayment.imp_uid}.
          */

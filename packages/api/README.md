@@ -17,13 +17,15 @@
     - 자료 구조: [src/api/structures/IIamportPayment.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/structures/IIamportPayment.ts)
     - API 함수: [src/api/functional/payments/index.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/functional/payments/index.ts)
     - 예제 코드
-      - 본인 인증: [test_fake_certification.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_certification.ts)
-      - 가상 계좌 결제: [test_fake_vbank_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_vbank_payment.ts)
-      - 카드 결제: [test_fake_card_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_card_payment.ts)
+      - 본인 인증: [test_fake_certification.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_certification.ts)
+      - 가상 계좌 결제: [test_fake_vbank_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_vbank_payment.ts)
+      - 카드 결제: [test_fake_card_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment.ts)
       - 간편 결제 등록
-        - [test_fake_subscription_payment_again.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_subscription_payment_again.ts)
-        - [test_fake_subscription_payment_onetime.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_subscription_payment_onetime.ts)
-      - 현금 영수증 발행하기: [test_fake_receipt.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_receipt.ts)
+        - [test_fake_subscription_payment_again.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_subscription_payment_again.ts)
+        - [test_fake_subscription_payment_onetime.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_subscription_payment_onetime.ts)
+      - 전체 환불: [test_fake_card_payment_cancel.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment_cancel.ts)
+      - 부분 환불: [test_fake_card_payment_cancel_partial.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment_cancel_partial.ts)
+      - 현금 영수증 발행하기: [test_fake_receipt.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_receipt.ts)
   - 연관 저장소
     - [samchon/typia](https://github.com/samchon/typia) - Superfast runtime validator
     - [samchon/nestia](https://github.com/samchon/nestia) - SDK generator for the NestJS
@@ -172,13 +174,15 @@ npm install --save fake-iamport-server-api
     - 자료 구조: [src/api/structures/IIamportPayment.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/structures/IIamportPayment.ts)
     - API 함수: [src/api/functional/payments/index.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/functional/payments/index.ts)
     - 예제 코드
-      - 본인 인증: [test_fake_certification.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_certification.ts)
-      - 가상 계좌 결제: [test_fake_vbank_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_vbank_payment.ts)
-      - 카드 결제: [test_fake_card_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_card_payment.ts)
+      - 본인 인증: [test_fake_certification.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_certification.ts)
+      - 가상 계좌 결제: [test_fake_vbank_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_vbank_payment.ts)
+      - 카드 결제: [test_fake_card_payment.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment.ts)
       - 간편 결제 등록
-        - [test_fake_subscription_payment_again.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_subscription_payment_again.ts)
-        - [test_fake_subscription_payment_onetime.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_subscription_payment_onetime.ts)
-      - 현금 영수증 발행하기: [test_fake_receipt.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/examples/test_fake_receipt.ts)
+        - [test_fake_subscription_payment_again.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_subscription_payment_again.ts)
+        - [test_fake_subscription_payment_onetime.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_subscription_payment_onetime.ts)
+      - 전체 환불: [test_fake_card_payment_cancel.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment_cancel.ts)
+      - 부분 환불: [test_fake_card_payment_cancel_partial.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_card_payment_cancel_partial.ts)
+      - 현금 영수증 발행하기: [test_fake_receipt.ts](https://github.com/samchon/fake-iamport-server/blob/master/test/features/test_fake_receipt.ts)
   - 연관 저장소
     - [samchon/netia](https://github.com/samchon/nestia) - Automatic SDK generator for the NestJS
     - [samchon/fake-toss-payments-server](https://github.com/samchon/fake-toss-payments-server): 가짜 토스 페이먼츠 서버
@@ -375,11 +379,16 @@ Nestia is a set of helper libraries for NestJS, supporting below features:
     - SDK generator for clients
     - Swagger generator evolved than ever
     - Automatic E2E test functions generator
+    - Mockup Simulator for client applications
+  - `@nestia/migrate`: Swagger to NestJS
   - `nestia`: just CLI (command line interface) tool
 
 > **Note**
 > 
 > - **Only one line** required, with pure TypeScript type
-> - Runtime validator is **20,000x faster** than `class-validator`
-> - JSON serialization is **200x faster** than `class-transformer`
-> - SDK is similar with [tRPC](https://trpc.io), but much advanced
+> - Enhance performance **30x** up
+>   - Runtime validator is **20,000x faster** than `class-validator`
+>   - JSON serialization is **200x faster** than `class-transformer`
+> - Software Development Kit
+>   - SDK is similar with [tRPC](https://trpc.io), but much advanced
+>   - Mockup simulator like [msw](https://mswjs.io/), but fully automated

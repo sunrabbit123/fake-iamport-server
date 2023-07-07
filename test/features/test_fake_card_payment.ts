@@ -1,3 +1,4 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
@@ -6,8 +7,8 @@ import { IIamportCardPayment } from "iamport-server-api/lib/structures/IIamportC
 import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
 import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 
-import { FakeIamportStorage } from "../../../src/providers/FakeIamportStorage";
-import { AdvancedRandomGenerator } from "../../../src/utils/AdvancedRandomGenerator";
+import { FakeIamportStorage } from "../../src/providers/FakeIamportStorage";
+import { AdvancedRandomGenerator } from "../../src/utils/AdvancedRandomGenerator";
 
 export async function test_fake_card_payment(
     connector: imp.IamportConnector,
@@ -23,7 +24,7 @@ export async function test_fake_card_payment(
      * 반대로 *input* 값에 {@link IIamportSubscription.IOnetime.customer_uid} 값을
      * 채워넣으면, 결제가 완료됨과 동시에 해당 카드가간편 결제용으로 등록된다.
      */
-    const output: IIamportResponse<IIamportCardPayment> =
+    const reply: IIamportResponse<IIamportCardPayment> =
         await imp.functional.subscribe.payments.onetime(await connector.get(), {
             card_number: AdvancedRandomGenerator.cardNumber(),
             expiry: "2028-12",
@@ -33,7 +34,7 @@ export async function test_fake_card_payment(
             amount: 25_000,
             name: "Fake 주문",
         });
-    typia.assert(output);
+    typia.assert(reply);
 
     /**
      * 아임포트 서버로부터의 웹훅 데이터.
@@ -43,14 +44,13 @@ export async function test_fake_card_payment(
      */
     const webhook: IIamportPayment.IWebhook =
         FakeIamportStorage.webhooks.back();
-    if (webhook.imp_uid !== output.response.imp_uid)
-        throw new Error(
-            "Bug on subscribe.payments.onetime(): failed to deliver the webhook event.",
-        );
-    else if (webhook.status !== "paid")
-        throw new Error(
-            "Bug on subscribe.payments.onetime(): its status must be paid.",
-        );
+    TestValidator.equals("webhook.imp_uid")(webhook.imp_uid)(
+        reply.response.imp_uid,
+    );
+    TestValidator.equals("webhook.merchant_uid")(webhook.merchant_uid)(
+        reply.response.merchant_uid,
+    );
+    TestValidator.equals("webhook.status")(webhook.status)("paid");
 
     /**
      * 결제 내역 조회하기.
@@ -68,13 +68,11 @@ export async function test_fake_card_payment(
     typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
-    const payment: IIamportPayment = reloaded.response;
-    if (payment.pay_method !== "card")
-        throw new Error("Bug on payments.at(): its pay_method must be card.");
-    else if (!payment.paid_at || payment.status !== "paid")
-        throw new Error("Bug on payments.at(): its status must be paid.");
-
-    // 첫 번째 if condition 에 의해 자동 다운 캐스팅 된 상태
-    payment.card_number;
+    const payment: IIamportCardPayment = typia.assert<IIamportCardPayment>(
+        reloaded.response,
+    );
+    TestValidator.predicate("paid")(
+        () => payment.status === "paid" && payment.paid_at !== 0,
+    );
     return payment;
 }

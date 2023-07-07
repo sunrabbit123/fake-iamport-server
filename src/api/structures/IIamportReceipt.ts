@@ -1,10 +1,9 @@
 /**
  * 현금 영수증 정보.
- * 
+ *
  * @author Jeongho Nam - https://github.com/samchon
  */
-export interface IIamportReceipt
-{
+export interface IIamportReceipt {
     /**
      * 귀속 결제의 {@link IIamportPayment.imp_uid}.
      */
@@ -14,7 +13,7 @@ export interface IIamportReceipt
      * 현금 영수증의 고유 식별자 ID.
      */
     receipt_uid: string;
-    
+
     /**
      * 승인 번호.
      */
@@ -37,7 +36,7 @@ export interface IIamportReceipt
 
     /**
      * 현금영수증 조회 URL.
-     * 
+     *
      * @format url
      */
     receipt_url: string;
@@ -49,17 +48,16 @@ export interface IIamportReceipt
 
     /**
      * 현금영수증 취소 시간.
-     * 
+     *
      * 리눅스 타임이 쓰이며, `null` 대신 0 을 씀.
      */
     cancelled_at: number;
 }
 
-export namespace IIamportReceipt
-{
+export namespace IIamportReceipt {
     /**
      * 현금영수증 발행대상 유형.
-     * 
+     *
      *  - person: 주민등록번호
      *  - business: 사업자등록번호
      *  - phone: 휴대폰번호
@@ -75,8 +73,7 @@ export namespace IIamportReceipt
     /**
      * 현금영수증 입력 정보.
      */
-    export interface IStore
-    {
+    export interface IStore {
         /**
          * 귀속 결제의 {@link IIamportPayment.imp_uid}.
          */
@@ -84,7 +81,7 @@ export namespace IIamportReceipt
 
         /**
          * 현금영수증 발생대상 식별정보.
-         * 
+         *
          *   - 국세청현금영수증카드
          *   - 휴대폰번호
          *   - 주민등록번호
@@ -94,26 +91,26 @@ export namespace IIamportReceipt
 
         /**
          * 현금영수증 발행대상 유형.
-         * 
+         *
          *  - person: 주민등록번호
          *  - business: 사업자등록번호
          *  - phone: 휴대폰번호
          *  - taxcard: 국세청현금영수증카드
-         * 
+         *
          * 일부 PG 사의 경우 이 항목이 없어 된다는데, 어지간하면 그냥 쓰기 바람.
          */
         identifier_type?: IdentifierType;
 
         /**
          * 현금영수증 발행 타입 (대상).
-         * 
+         *
          * 누락시 person 이 사용됨.
          */
         type?: Type;
 
         /**
          * 구매자 이름.
-         * 
+         *
          * 형금영수증 발행건 사후 추적을 위해 가급 입력하기 바람.
          */
         buyer_name?: string;
@@ -125,7 +122,7 @@ export namespace IIamportReceipt
 
         /**
          * 구매자 전화번호.
-         * 
+         *
          * 현금영수증 발행건 사후 추적을 위해 가급 입력하기 바람.
          */
         buyer_tel?: string;
