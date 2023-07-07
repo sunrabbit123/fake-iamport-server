@@ -5,33 +5,34 @@ import { IIamportVBankPayment } from "./IIamportVBankPayment";
 
 /**
  * 결제 정보.
- * 
- * `IIamportPayment` 는 아임포트의 결제 정보를 형상화한 자료구조이자 유니언 타입의 
+ *
+ * `IIamportPayment` 는 아임포트의 결제 정보를 형상화한 자료구조이자 유니언 타입의
  * 인터페이스로써, if condition 을 통하여 method 값을 특정하면, 파생 타입이 자동으로
  * 지정된다.
- * 
+ *
  * ```typescript
  * if (payment.pay_method === "card")
  *    payment.card_number; // payment be IIamportCardPayment
  * ```
- * 
+ *
  * @author Jeongho Nam - https://github.com/samchon
  */
-export type IIamportPayment 
-    = IIamportCardPayment
+export type IIamportPayment =
+    | IIamportCardPayment
     | IIamportTransferPayment
     | IIamportVBankPayment
-    | IIamportPayment.IBase<Exclude<
-        IIamportPayment.PayMethod, 
-        "card"|"samsung"|"trans"|"vbank">>
+    | IIamportPayment.IBase<
+          Exclude<
+              IIamportPayment.PayMethod,
+              "card" | "samsung" | "trans" | "vbank"
+          >
+      >;
 
-export namespace IIamportPayment
-{
+export namespace IIamportPayment {
     /**
      * 웹훅 데이터.
      */
-    export interface IWebhook
-    {
+    export interface IWebhook {
         /**
          * 결제 정보 {@link IIamportPayment} 의 식별자 키.
          */
@@ -39,7 +40,7 @@ export namespace IIamportPayment
 
         /**
          * 주문 식별자 키.
-         * 
+         *
          * 아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.
          */
         merchant_uid: string;
@@ -53,8 +54,7 @@ export namespace IIamportPayment
     /**
      * 결제 기본 (공통) 정보.
      */
-    export interface IBase<Method extends PayMethod>
-    {
+    export interface IBase<Method extends PayMethod> {
         // IDENTIFIER
         pay_method: Method;
 
@@ -66,7 +66,7 @@ export namespace IIamportPayment
         // ORDER INFO
         /**
          * 주문 식별자 키.
-         * 
+         *
          * 아임포트 서버가 아닌, 이를 사용하는 서비스가 자체적으로 발급하고 관리한다.
          */
         merchant_uid: string;
@@ -93,7 +93,7 @@ export namespace IIamportPayment
 
         /**
          * 영수증 URL
-         * 
+         *
          * @format url
          */
         receipt_url: string;
@@ -110,7 +110,7 @@ export namespace IIamportPayment
         pg_id: string;
         pg_tid: string;
         escrow: boolean;
-        
+
         // BUYER
         buyer_name: string | null;
 
@@ -125,7 +125,7 @@ export namespace IIamportPayment
         customer_uid_usage: string | null;
         custom_data: string | null;
         user_agent: string | null;
-        
+
         // PROPERTIES
         /**
          * 결제의 현재 (진행) 상태.
@@ -134,28 +134,28 @@ export namespace IIamportPayment
 
         /**
          * 결제 신청 일시.
-         * 
+         *
          * 리눅스 타임이 쓰임.
          */
         started_at: number;
 
         /**
          * 결제 (지불) 완료 일시.
-         * 
+         *
          * 리눅스 타임이 쓰이며, `null` 대신 0 을 씀.
          */
         paid_at: number;
 
         /**
          * 결제 실패 일시.
-         * 
+         *
          * 리눅스 타임이 쓰이며, `null` 대신 0 을 씀.
          */
         failed_at: number;
 
         /**
          * 결제 취소 일시.
-         * 
+         *
          * 리눅스 타임이 쓰이며, `null` 대신 0 을 씀.
          */
         cancelled_at: number;
@@ -172,8 +172,8 @@ export namespace IIamportPayment
         notice_url?: string;
     }
 
-    export type PayMethod 
-        = "card"
+    export type PayMethod =
+        | "card"
         | "trans"
         | "vbank"
         | "phone"

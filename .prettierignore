@@ -2,6 +2,7 @@ dist
 lib
 node_modules
 packages
-src/api
+src/api/functional
+src/api/utils/NestiaSimulator.ts
 README.md
 tsconfig.json

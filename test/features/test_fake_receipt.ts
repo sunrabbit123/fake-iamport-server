@@ -1,3 +1,4 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 
 import imp from "iamport-server-api";
@@ -24,8 +25,8 @@ export async function test_fake_receipt(
             },
         );
     typia.assert(output);
-    if (output.response.amount !== payment.amount)
-        throw new Error("Bug on receipts.store(): different amount.");
+    TestValidator.equals("imp_uid")(output.response.imp_uid)(payment.imp_uid);
+    TestValidator.equals("amount")(output.response.amount)(payment.amount);
 
     const reloaded: IIamportResponse<IIamportPayment> =
         await imp.functional.payments.at(
@@ -33,6 +34,5 @@ export async function test_fake_receipt(
             payment.imp_uid,
         );
     typia.assert(reloaded);
-    if (reloaded.response.cash_receipt_issue === false)
-        throw new Error("Bug on receipts.store(): payment doesn't know.");
+    TestValidator.equals("issue")(reloaded.response.cash_receipt_issue)(true);
 }

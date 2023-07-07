@@ -1,3 +1,4 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 
 import imp from "iamport-server-api";
@@ -38,10 +39,7 @@ export async function test_fake_certification(
             accessor.response.imp_uid,
         );
     typia.assert(uncertified);
-    if (uncertified.response.certified === true)
-        throw new Error(
-            "Bug on certifications.otp.request(): must not be certified yet.",
-        );
+    TestValidator.equals("not cerified")(uncertified.response.certified)(false);
 
     /**
      * 본인인증 OTP 코드 입력 시뮬레이션.
@@ -60,8 +58,5 @@ export async function test_fake_certification(
             },
         );
     typia.assert(confirmed);
-    if (confirmed.response.certified === false)
-        throw new Error(
-            "Bug on certifications.otp.confirm(): must be certified.",
-        );
+    TestValidator.equals("cerified")(confirmed.response.certified)(true);
 }

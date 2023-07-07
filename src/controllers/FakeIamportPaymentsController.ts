@@ -56,7 +56,6 @@ export class FakeIamportPaymentsController {
             input.imp_uid,
         );
         FakeIamportPaymentProvider.cancel(payment, input);
-
         return FakeIamportResponseProvider.success(payment);
     }
 }

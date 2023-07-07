@@ -1,3 +1,4 @@
+import { TestValidator } from "@nestia/e2e";
 import typia from "typia";
 import { v4 } from "uuid";
 
@@ -6,12 +7,12 @@ import { IIamportCardPayment } from "iamport-server-api/lib/structures/IIamportC
 import { IIamportPayment } from "iamport-server-api/lib/structures/IIamportPayment";
 import { IIamportResponse } from "iamport-server-api/lib/structures/IIamportResponse";
 
-import { FakeIamportStorage } from "../../../src/providers/FakeIamportStorage";
-import { AdvancedRandomGenerator } from "../../../src/utils/AdvancedRandomGenerator";
+import { FakeIamportStorage } from "../../src/providers/FakeIamportStorage";
+import { AdvancedRandomGenerator } from "../../src/utils/AdvancedRandomGenerator";
 
-export async function test_fake_subscription_payment_again(
+export async function test_fake_subscription_payment_onetime(
     connector: imp.IamportConnector,
-): Promise<IIamportCardPayment> {
+): Promise<void> {
     /**
      * 간편 결제 카드 등록을 위한 고객 식별자 키.
      *
@@ -22,37 +23,52 @@ export async function test_fake_subscription_payment_again(
     const customer_uid: string = v4();
 
     /**
-     * 간편 결제 카드 등록하기.
+     * 결제 요청 레코드 발행하기.
      *
-     * 아임포트에 고객의 카드를 간편 결제 카드로써 등록하면, 매번 결제시마다
-     * 카드 정보를 반복 입력하는 일 없이, `customer_uid` 만을 사용하여 매우
-     * 간단하게 결제할 수 있다.
+     * 아임포트의 경우 {@link subscribe.payments.onetime} 을 이용하면, API 만을
+     * 가지고도 카드 결제를 진행할 수 있다. 그리고 이 때, *input* 값에서
+     * {@link IIamportSubscription.IOnetime.customer_uid} 를 입력하면, 해당 카드가
+     * 간편 결제용으로 등록된다.
+     *
+     * 반대로 *input* 값에서 {@link IIamportSubscription.IOnetime.customer_uid} 를
+     * 빼 버리면, 해당 카드가 간편 결제용으로 등록되는 일은 없다.
      */
-    await imp.functional.subscribe.customers.store(
-        await connector.get(),
-        customer_uid,
-        {
+    const onetime: IIamportResponse<IIamportCardPayment> =
+        await imp.functional.subscribe.payments.onetime(await connector.get(), {
             customer_uid,
+
             card_number: AdvancedRandomGenerator.cardNumber(),
             expiry: "2028-12",
             birth: "880311",
-        },
-    );
+
+            merchant_uid: v4(),
+            amount: 25_000,
+            name: "Fake 주문",
+        });
+    typia.assert(onetime);
+    await validate(connector, onetime.response.imp_uid);
 
     /**
      * 간편 결제 카드로 결제하기.
      *
-     * `customer_uid` 만으로 간편하게 결제할 수 있다.
+     * 앞서 {@link subscribe.payments.onetime} 때 사용한 `customer_uid` 를
+     * 재활용, 카드 정보를 다시 입력하는 일 없이, 매우 간편하게 결제할 수 있다.
      */
-    const output: IIamportResponse<IIamportCardPayment> =
+    const again: IIamportResponse<IIamportCardPayment> =
         await imp.functional.subscribe.payments.again(await connector.get(), {
             customer_uid,
             merchant_uid: v4(),
             amount: 10_000,
             name: "Fake 주문",
         });
-    typia.assert(output);
+    typia.assert(again);
+    await validate(connector, again.response.imp_uid);
+}
 
+async function validate(
+    connector: imp.IamportConnector,
+    imp_uid: string,
+): Promise<IIamportCardPayment> {
     /**
      * 아임포트 서버로부터의 웹훅 데이터.
      *
@@ -61,14 +77,8 @@ export async function test_fake_subscription_payment_again(
      */
     const webhook: IIamportPayment.IWebhook =
         FakeIamportStorage.webhooks.back();
-    if (webhook.imp_uid !== output.response.imp_uid)
-        throw new Error(
-            "Bug on subscribe.payments.onetime(): failed to deliver the webhook event.",
-        );
-    else if (webhook.status !== "paid")
-        throw new Error(
-            "Bug on subscribe.payments.onetime(): its status must be paid.",
-        );
+    TestValidator.equals("webhook.imp_uid")(webhook.imp_uid)(imp_uid);
+    TestValidator.equals("webhook.status")(webhook.status)("paid");
 
     /**
      * 결제 내역 조회하기.
@@ -86,13 +96,11 @@ export async function test_fake_subscription_payment_again(
     typia.assert(reloaded);
 
     // 결제 방식 및 완료 여부 확인
-    const payment: IIamportPayment = reloaded.response;
-    if (payment.pay_method !== "card")
-        throw new Error("Bug on payments.at(): its pay_method must be card.");
-    else if (!payment.paid_at || payment.status !== "paid")
-        throw new Error("Bug on payments.at(): its status must be paid.");
+    const payment: IIamportCardPayment = typia.assert<IIamportCardPayment>(
+        reloaded.response,
+    );
+    TestValidator.predicate("paid_at")(() => payment.paid_at !== 0);
+    TestValidator.equals("status")(payment.status)("paid");
 
-    // 첫 번째 if condition 에 의해 자동 다운 캐스팅 된 상태
-    payment.card_number;
     return payment;
 }
