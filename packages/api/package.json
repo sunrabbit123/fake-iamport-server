@@ -17,7 +17,7 @@
   "dependencies": {
     "@nestia/fetcher": "^1.4.0",
     "tstl": "^2.5.13",
-    "typia": "^4.1.4"
+    "typia": "^4.1.5"
   },
   "keywords": [
     "iamport",
