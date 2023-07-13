@@ -40,7 +40,7 @@ export async function at(
               connection,
               at.ENCRYPTED,
               at.METHOD,
-              at.path(imp_uid),
+              at.path(imp_uid)
           );
 }
 export namespace at {
@@ -105,7 +105,7 @@ export async function cancel(
               cancel.ENCRYPTED,
               cancel.METHOD,
               cancel.path(),
-              input,
+              input
           );
 }
 export namespace cancel {

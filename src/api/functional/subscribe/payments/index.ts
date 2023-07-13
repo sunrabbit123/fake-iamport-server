@@ -55,7 +55,7 @@ export async function onetime(
               onetime.ENCRYPTED,
               onetime.METHOD,
               onetime.path(),
-              input,
+              input
           );
 }
 export namespace onetime {
@@ -129,7 +129,7 @@ export async function again(
               again.ENCRYPTED,
               again.METHOD,
               again.path(),
-              input,
+              input
           );
 }
 export namespace again {

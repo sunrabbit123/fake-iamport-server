@@ -46,7 +46,7 @@ export async function request(
               request.ENCRYPTED,
               request.METHOD,
               request.path(),
-              input,
+              input
           );
 }
 export namespace request {
@@ -120,7 +120,7 @@ export async function confirm(
               confirm.ENCRYPTED,
               confirm.METHOD,
               confirm.path(imp_uid),
-              input,
+              input
           );
 }
 export namespace confirm {
