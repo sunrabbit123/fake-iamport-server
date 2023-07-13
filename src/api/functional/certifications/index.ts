@@ -44,7 +44,7 @@ export async function at(
               connection,
               at.ENCRYPTED,
               at.METHOD,
-              at.path(imp_uid),
+              at.path(imp_uid)
           );
 }
 export namespace at {
@@ -104,7 +104,7 @@ export async function erase(
               connection,
               erase.ENCRYPTED,
               erase.METHOD,
-              erase.path(imp_uid),
+              erase.path(imp_uid)
           );
 }
 export namespace erase {

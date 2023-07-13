@@ -44,7 +44,7 @@ export async function webhook(
               webhook.ENCRYPTED,
               webhook.METHOD,
               webhook.path(),
-              input,
+              input
           );
 }
 export namespace webhook {
@@ -103,7 +103,7 @@ export async function deposit(
               connection,
               deposit.ENCRYPTED,
               deposit.METHOD,
-              deposit.path(imp_uid),
+              deposit.path(imp_uid)
           );
 }
 export namespace deposit {
