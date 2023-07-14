@@ -45,7 +45,7 @@ export async function getToken(
               getToken.ENCRYPTED,
               getToken.METHOD,
               getToken.path(),
-              input
+              input,
           );
 }
 export namespace getToken {
