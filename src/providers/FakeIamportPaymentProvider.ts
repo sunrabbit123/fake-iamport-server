@@ -33,20 +33,25 @@ export namespace FakeIamportPaymentProvider {
             throw new DomainError(
                 "가상계좌 취소는 계좌번호, 예금주, 은행명을 입력해야 합니다.",
             );
-        else if ((input.amount ?? 0) > payment.amount - payment.cancel_amount)
+        else if (
+            typeof input.amount === "number" &&
+            input.amount > payment.amount - payment.cancel_amount
+        )
             throw new DomainError(
                 "취소 금액은 결제 또는 잔여 금액보다 클 수 없습니다.",
             );
         else if (!payment.cancel_amount) payment.cancel_amount = 0;
 
+        input.amount ??= payment.amount - payment.cancel_amount;
+
         // ARCHIVE CANCEL HISTORY
-        payment.cancel_amount += input.amount ?? payment.amount;
+        payment.cancel_amount += input.amount;
         payment.cancel_reason = input.reason;
         payment.cancelled_at = Date.now() / 1_000;
         payment.cancel_history.push({
             pg_id: payment.pg_id,
             pg_tid: payment.pg_tid,
-            amount: input.amount ?? payment.amount,
+            amount: input.amount,
             cancelled_at: Date.now() / 1_000,
             reason: input.reason,
             receipt_url: payment.receipt_url,

@@ -39,7 +39,7 @@ export async function at(
               connection,
               at.ENCRYPTED,
               at.METHOD,
-              at.path(customer_uid)
+              at.path(customer_uid),
           );
 }
 export namespace at {
@@ -114,7 +114,7 @@ export async function store(
               store.ENCRYPTED,
               store.METHOD,
               store.path(customer_uid),
-              input
+              input,
           );
 }
 export namespace store {
@@ -181,7 +181,7 @@ export async function erase(
               connection,
               erase.ENCRYPTED,
               erase.METHOD,
-              erase.path(customer_uid)
+              erase.path(customer_uid),
           );
 }
 export namespace erase {

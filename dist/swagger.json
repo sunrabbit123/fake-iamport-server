@@ -11,7 +11,7 @@
     }
   ],
   "info": {
-    "version": "1.4.1",
+    "version": "1.4.3",
     "title": "Iamport API",
     "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)"
   },
@@ -72,7 +72,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportCertification.ts",
                   "textSpan": {
-                    "start": 439,
+                    "start": 455,
                     "length": 16
                   }
                 }
@@ -149,7 +149,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportCertification.ts",
                   "textSpan": {
-                    "start": 439,
+                    "start": 455,
                     "length": 16
                   }
                 }
@@ -302,7 +302,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportCertification.ts",
                   "textSpan": {
-                    "start": 439,
+                    "start": 455,
                     "length": 16
                   }
                 }
@@ -509,7 +509,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1500,
+                    "start": 1563,
                     "length": 16
                   }
                 }
@@ -668,7 +668,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1500,
+                    "start": 1563,
                     "length": 16
                   }
                 }
@@ -766,7 +766,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1500,
+                    "start": 1563,
                     "length": 16
                   }
                 }
@@ -869,7 +869,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1500,
+                    "start": 1563,
                     "length": 16
                   }
                 }
