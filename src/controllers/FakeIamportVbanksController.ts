@@ -22,6 +22,7 @@ export class FakeIamportVbanksController {
      * @param input 가상 계좌 입력 정보
      * @returns 가상 계좌 결제 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post()
@@ -98,6 +99,7 @@ export class FakeIamportVbanksController {
      * @param input 가상 계좌 편집 입력 정보
      * @returns 편집된 가상 계좌 결제 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Put()

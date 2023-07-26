@@ -21,6 +21,7 @@ import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCa
  * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid}
  * @returns 결제 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportPaymentsController.at()
@@ -85,6 +86,7 @@ export namespace at {
  * @param input 결제 취소 입력 정보
  * @returns 취소된 결제 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportPaymentsController.cancel()

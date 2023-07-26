@@ -38,6 +38,7 @@ export class FakeIampotSubscribePaymentsController {
      * @param input 카드 결제 신청 정보
      * @returns 카드 결제 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post("onetime")
@@ -125,6 +126,7 @@ export class FakeIampotSubscribePaymentsController {
      * @param input 미리 등록한 카드를 이용한 결제 신청 정보
      * @returns 카드 결제 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post("again")

@@ -22,6 +22,9 @@ export class FakeIamportSubscribeCustomersController {
      *
      * @param customer_uid 고객 (간편 결제 카드) 식별자 키
      * @returns 간편 결제 카드 정보
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Get(":customer_uid")
     public at(
@@ -54,6 +57,7 @@ export class FakeIamportSubscribeCustomersController {
      * @param input 카드 입력 정보
      * @returns 간편 결제 카드 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post(":customer_uid")
@@ -97,6 +101,7 @@ export class FakeIamportSubscribeCustomersController {
      * @param customer_uid 고객 (간편 결제 카드) 식별자 키
      * @returns 삭제된 간편 결제 카드 정보
      *
+     * @security bearer
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Delete(":customer_uid")

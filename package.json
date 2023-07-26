@@ -1,6 +1,6 @@
 {
   "name": "fake-iamport-server",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Fake iamport server for testing",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,7 +17,7 @@
     "eslint:fix": "eslint --fix src && eslint --fix --config .eslintrc.test.cjs test",
     "prettier": "prettier src --write && prettier test --write",
     "------------------------------------------------": "",
-    "package:api": "npm run build:api && cd packages/api && npm publish",
+    "package:api": "npm run build:swagger && npm run build:api && cd packages/api && npm publish",
     "package:latest": "npm run build && npm run test && npm publish",
     "package:next": "npm run package:latest -- --tag next",
     "prepare": "ts-patch install",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/samchon/fake-iamport-server",
   "devDependencies": {
-    "@nestia/sdk": "^1.4.14",
+    "@nestia/sdk": "^1.4.15",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/atob": "^2.1.2",
     "@types/btoa": "^1.2.3",

@@ -18,6 +18,7 @@ import type { IIamportReceipt } from "./../../structures/IIamportReceipt";
  * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid}
  * @returns 현금 영수증 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportReceiptsController.at()
@@ -81,6 +82,7 @@ export namespace at {
  * @param input 현금 영수증 입력 정보
  * @returns 현금 영수증 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportReceiptsController.store()
@@ -149,6 +151,7 @@ export namespace store {
  * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid}
  * @returns 취소된 현금 영수증 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportReceiptsController.erase()

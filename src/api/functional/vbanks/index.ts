@@ -18,6 +18,7 @@ import type { IIamportResponse } from "./../../structures/IIamportResponse";
  * @param input 가상 계좌 입력 정보
  * @returns 가상 계좌 결제 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportVbanksController.store()
@@ -82,6 +83,7 @@ export namespace store {
  * @param input 가상 계좌 편집 입력 정보
  * @returns 편집된 가상 계좌 결제 정보
  * 
+ * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportVbanksController.update()
