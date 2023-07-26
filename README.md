@@ -13,7 +13,7 @@
 
   - 서버 주소: http://localhost:10851
   - 매뉴얼
-    - **Swagger Editor**: [dist/swagger.json](https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsamchon%2Ffake-iamport-server%2Fmaster%2Fdist%2Fswagger.json)
+    - **Swagger Editor**: [packages/api/swagger.json](https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsamchon%2Ffake-iamport-server%2Fmaster%2Fpackages%2Fapi%2Fswagger.json)
     - 자료 구조: [src/api/structures/IIamportPayment.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/structures/IIamportPayment.ts)
     - API 함수: [src/api/functional/payments/index.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/functional/payments/index.ts)
     - 예제 코드
@@ -170,7 +170,7 @@ npm install --save fake-iamport-server-api
 
   - 서버 주소: http://localhost:10851
   - 매뉴얼
-    - **Swagger Editor**: [dist/swagger.json](https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsamchon%2Ffake-iamport-server%2Fmaster%2Fdist%2Fswagger.json)
+    - **Swagger Editor**: [packages/api/swagger.json](https://editor.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsamchon%2Ffake-iamport-server%2Fmaster%2Fpackages%2Fapi%2Fswagger.json)
     - 자료 구조: [src/api/structures/IIamportPayment.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/structures/IIamportPayment.ts)
     - API 함수: [src/api/functional/payments/index.ts](https://github.com/samchon/fake-iamport-server/blob/master/src/api/functional/payments/index.ts)
     - 예제 코드

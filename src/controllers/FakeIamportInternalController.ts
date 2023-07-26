@@ -23,6 +23,7 @@ export class FakeIamportInternalController {
      * 제대로 전달되도록 하자.
      *
      * @param input 웹훅 이벤트 정보
+     *
      * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post("webhook")
@@ -42,6 +43,9 @@ export class FakeIamportInternalController {
      * 시뮬레이션하기 위하여 설계된 테스트 함수다.
      *
      * @param imp_uid 대상 결제의 {@link IIamportVBankPayment.imp_uid}
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Get("deposit/:imp_uid")
     public deposit(

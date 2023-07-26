@@ -25,6 +25,9 @@ export class FakeIamportCertificationsController {
      *
      * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
      * @returns 본인인증 정보
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Get(":imp_uid")
     public at(
@@ -52,6 +55,9 @@ export class FakeIamportCertificationsController {
      *
      * @param input 본인인증 요청 정보
      * @returns 진행 중인 본인인증의 식별자 정보
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post("otp/request")
     public request(
@@ -111,6 +117,9 @@ export class FakeIamportCertificationsController {
      * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
      * @param input OTP 코드
      * @returns 인증 완료된 본인인증 정보
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Post("otp/confirm/:imp_uid")
     public confirm(
@@ -136,6 +145,9 @@ export class FakeIamportCertificationsController {
      *
      * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
      * @returns 삭제된 본인인증 정보
+     *
+     * @security bearer
+     * @author Jeongho Nam - https://github.com/samchon
      */
     @core.TypedRoute.Delete(":imp_uid")
     public erase(
