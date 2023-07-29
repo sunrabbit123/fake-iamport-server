@@ -1,6 +1,6 @@
 {
   "name": "fake-iamport-server",
-  "version": "1.4.4",
+  "version": "1.4.6",
   "description": "Fake iamport server for testing",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/samchon/fake-iamport-server",
   "devDependencies": {
-    "@nestia/sdk": "^1.4.15",
+    "@nestia/sdk": "^1.4.17",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/atob": "^2.1.2",
     "@types/btoa": "^1.2.3",
@@ -65,7 +65,7 @@
     "source-map-support": "^0.5.19",
     "tstl": "^2.5.13",
     "typescript-transform-paths": "^3.4.6",
-    "typia": "^4.1.8",
+    "typia": "^4.1.11",
     "uuid": "^9.0.0"
   },
   "keywords": [
