@@ -19,14 +19,13 @@ export * as otp from "./otp";
  * 
  * `certiciations.at` 은 본인인증 정보를 열람할 때 사용하는 API 함수이다.
  * 
- * 다만 이 API 함수를 통하여 열람한 본인인증 정보 {@link IIamportCertification} 이
+ * 다만 이 API 함수를 통하여 열람한 본인인증 정보 {@link IIamportCertification } 이
  * 곧 OTP 인증까지 마쳐 본인인증을 모두 마친 레코드라는 보장은 없다. 본인인증의 완결
- * 여부는 오직, {@link IIamportCertification.certified} 값을 직접 검사해봐야만 알
+ * 여부는 오직, {@link IIamportCertification.certified } 값을 직접 검사해봐야만 알
  * 수 있기 때문이다.
  * 
- * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
+ * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid }
  * @returns 본인인증 정보
- * 
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
@@ -87,9 +86,8 @@ export namespace at {
 /**
  * 본인인증 정보 삭제하기.
  * 
- * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
+ * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid }
  * @returns 삭제된 본인인증 정보
- * 
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 

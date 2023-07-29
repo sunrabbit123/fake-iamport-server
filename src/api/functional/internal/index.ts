@@ -15,16 +15,15 @@ import type { IIamportPayment } from "./../../structures/IIamportPayment";
  * 웹훅 이벤트 더미 리스너.
  * 
  * `internal.webhook` 은 실제 아임포트의 서버에는 존재하지 않는 API 로써,
- * `fake-impoart-server` 의 {@link Configuration.WEBHOOK_URL} 에 아무런 URL 을 설정하지
+ * `fake-impoart-server` 의 {@link Configuration.WEBHOOK_URL } 에 아무런 URL 을 설정하지
  * 않으면, `fake-iamport-server` 로부터 발생하는 모든 종류의 웹훅 이벤트는 이 곳으로 전달되어
  * 무의미하게 사라진다.
  * 
  * 따라서 `fake-iamport-server` 를 사용하여 아임포트 서버와의 연동을 미리 검증코자 할 때는,
- * 반드시 {@link Configuration.WEBHOOK_URL} 를 설정하여 웹훅 이벤트가 귀하의 백엔드 서버로
+ * 반드시 {@link Configuration.WEBHOOK_URL } 를 설정하여 웹훅 이벤트가 귀하의 백엔드 서버로
  * 제대로 전달되도록 하자.
  * 
  * @param input 웹훅 이벤트 정보
- * 
  * @author Jeongho Nam - https://github.com/samchon
  * 
  * @controller FakeIamportInternalController.webhook()
@@ -85,8 +84,7 @@ export namespace webhook {
  * 아임포트 서버에서 webhook 이벤트가 발생, 이를 귀하의 백엔드 서버로 전송하는 일련의 상황을
  * 시뮬레이션하기 위하여 설계된 테스트 함수다.
  * 
- * @param imp_uid 대상 결제의 {@link IIamportVBankPayment.imp_uid}
- * 
+ * @param imp_uid 대상 결제의 {@link IIamportVBankPayment.imp_uid }
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
  * 
