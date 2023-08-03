@@ -51,7 +51,13 @@ export async function onetime(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               onetime.ENCRYPTED,
               onetime.METHOD,
               onetime.path(),
@@ -125,7 +131,13 @@ export async function again(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               again.ENCRYPTED,
               again.METHOD,
               again.path(),

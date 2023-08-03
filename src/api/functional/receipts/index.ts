@@ -15,7 +15,7 @@ import type { IIamportReceipt } from "./../../structures/IIamportReceipt";
 /**
  * 현금 영수증 조회하기.
  * 
- * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid }
+ * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid}
  * @returns 현금 영수증 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
@@ -77,7 +77,7 @@ export namespace at {
 /**
  * 현금 영수증 발행하기.
  * 
- * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid }
+ * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid}
  * @param input 현금 영수증 입력 정보
  * @returns 현금 영수증 정보
  * @security bearer
@@ -99,7 +99,13 @@ export async function store(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               store.ENCRYPTED,
               store.METHOD,
               store.path(imp_uid),
@@ -146,7 +152,7 @@ export namespace store {
 /**
  * 현금 영수증 취소하기.
  * 
- * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid }
+ * @param imp_uid 귀속 결제의 {@link IIamportPayment.imp_uid}
  * @returns 취소된 현금 영수증 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon

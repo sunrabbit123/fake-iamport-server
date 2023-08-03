@@ -24,7 +24,7 @@ export * as otp from "./otp";
  * 여부는 오직, {@link IIamportCertification.certified } 값을 직접 검사해봐야만 알
  * 수 있기 때문이다.
  * 
- * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid }
+ * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
  * @returns 본인인증 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
@@ -86,7 +86,7 @@ export namespace at {
 /**
  * 본인인증 정보 삭제하기.
  * 
- * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid }
+ * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
  * @returns 삭제된 본인인증 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon

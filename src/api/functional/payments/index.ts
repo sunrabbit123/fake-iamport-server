@@ -18,7 +18,7 @@ import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCa
  * 
  * 아임포트를 통하여 발생한 결제 기록을 열람한다.
  * 
- * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid }
+ * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid}
  * @returns 결제 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
@@ -101,7 +101,13 @@ export async function cancel(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               cancel.ENCRYPTED,
               cancel.METHOD,
               cancel.path(),
