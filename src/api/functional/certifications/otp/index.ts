@@ -44,7 +44,13 @@ export async function request(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               request.ENCRYPTED,
               request.METHOD,
               request.path(),
@@ -98,7 +104,7 @@ export namespace request {
  * {@link IIamportCertification.certified } 값이 비로소 `true` 로 변경되어,
  * 비로소 완결된다.
  * 
- * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid }
+ * @param imp_uid 대상 본인인증 정보의 {@link IIamportCertification.imp_uid}
  * @param input OTP 코드
  * @returns 인증 완료된 본인인증 정보
  * @security bearer
@@ -120,7 +126,13 @@ export async function confirm(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               confirm.ENCRYPTED,
               confirm.METHOD,
               confirm.path(imp_uid),

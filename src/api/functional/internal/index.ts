@@ -40,7 +40,13 @@ export async function webhook(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               webhook.ENCRYPTED,
               webhook.METHOD,
               webhook.path(),

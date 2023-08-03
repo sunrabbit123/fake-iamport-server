@@ -40,7 +40,13 @@ export async function getToken(
               input,
           )
         : Fetcher.fetch(
-              connection,
+              {
+                  ...connection,
+                  headers: {
+                      ...(connection.headers ?? {}),
+                      "Content-Type": "application/json",
+                  },
+              },
               getToken.ENCRYPTED,
               getToken.METHOD,
               getToken.path(),
