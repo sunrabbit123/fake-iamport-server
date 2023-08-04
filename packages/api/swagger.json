@@ -13,7 +13,7 @@
   "info": {
     "title": "Iamport API",
     "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "license": {
       "name": "MIT"
     }
