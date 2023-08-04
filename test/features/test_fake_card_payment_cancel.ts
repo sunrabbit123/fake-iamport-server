@@ -62,6 +62,7 @@ export async function test_fake_card_payment_cancel(
         await imp.functional.payments.at(
             await connector.get(),
             payment.imp_uid,
+            {},
         );
     typia.assert(reloaded);
     typia.assert<IIamportCardPayment>(reloaded.response);

@@ -19,6 +19,7 @@ export class FakeIamportPaymentsController {
      * 아임포트를 통하여 발생한 결제 기록을 열람한다.
      *
      * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid}
+     * @param query 결제 수단이 페이팔인 경우에 사용
      * @returns 결제 정보
      *
      * @security bearer
@@ -28,9 +29,11 @@ export class FakeIamportPaymentsController {
     public at(
         @nest.Request() request: fastify.FastifyRequest,
         @core.TypedParam("imp_uid", "string") imp_uid: string,
+        @core.TypedQuery() query: IIamportPayment.IQuery,
     ): IIamportResponse<IIamportPayment> {
         FakeIamportUserAuth.authorize(request);
 
+        query;
         const payment: IIamportPayment =
             FakeIamportStorage.payments.get(imp_uid);
         return FakeIamportResponseProvider.success(payment);

@@ -9,8 +9,8 @@ import type { IConnection, Primitive } from "@nestia/fetcher";
 import typia from "typia";
 
 import { NestiaSimulator } from "./../../utils/NestiaSimulator";
-import type { IIamportResponse } from "./../../structures/IIamportResponse";
 import type { IIamportPayment } from "./../../structures/IIamportPayment";
+import type { IIamportResponse } from "./../../structures/IIamportResponse";
 import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCancel";
 
 /**
@@ -19,6 +19,7 @@ import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCa
  * 아임포트를 통하여 발생한 결제 기록을 열람한다.
  * 
  * @param imp_uid 대상 결제 기록의 {@link IIamportPayment.imp_uid}
+ * @param query 결제 수단이 페이팔인 경우에 사용
  * @returns 결제 정보
  * @security bearer
  * @author Jeongho Nam - https://github.com/samchon
@@ -30,20 +31,23 @@ import type { IIamportPaymentCancel } from "./../../structures/IIamportPaymentCa
 export async function at(
     connection: IConnection,
     imp_uid: string,
+    query: at.Query,
 ): Promise<at.Output> {
     return !!connection.simulate
         ? at.simulate(
               connection,
               imp_uid,
+              query,
           )
         : Fetcher.fetch(
               connection,
               at.ENCRYPTED,
               at.METHOD,
-              at.path(imp_uid),
+              at.path(imp_uid, query),
           );
 }
 export namespace at {
+    export type Query = Primitive<IIamportPayment.IQuery>;
     export type Output = Primitive<IIamportResponse<IIamportPayment>>;
 
     export const METHOD = "GET" as const;
@@ -53,21 +57,32 @@ export namespace at {
         response: false,
     };
 
-    export const path = (imp_uid: string): string => {
-        return `/payments/${encodeURIComponent(imp_uid ?? "null")}`;
+    export const path = (imp_uid: string, query: at.Query): string => {
+        const variables: Record<any, any> = query as any;
+        const search: URLSearchParams = new URLSearchParams();
+        for (const [key, value] of Object.entries(variables))
+            if (value === undefined) continue;
+            else if (Array.isArray(value))
+                value.forEach((elem) => search.append(key, String(elem)));
+            else
+                search.set(key, String(value));
+        const encoded: string = search.toString();
+        return `/payments/${encodeURIComponent(imp_uid ?? "null")}${encoded.length ? `?${encoded}` : ""}`;;
     }
     export const random = (g?: Partial<typia.IRandomGenerator>): Output =>
         typia.random<Output>(g);
     export const simulate = async (
         connection: IConnection,
         imp_uid: string,
+        query: at.Query,
     ): Promise<Output> => {
         const assert = NestiaSimulator.assert({
             method: METHOD,
             host: connection.host,
-            path: path(imp_uid)
+            path: path(imp_uid, query)
         });
         assert.param("imp_uid")("string")(() => typia.assert(imp_uid));
+        assert.query(() => typia.assert(query));
         return random(
             typeof connection.simulate === 'object' &&
                 connection.simulate !== null

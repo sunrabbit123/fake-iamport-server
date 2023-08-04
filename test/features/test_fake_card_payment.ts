@@ -64,6 +64,7 @@ export async function test_fake_card_payment(
         await imp.functional.payments.at(
             await connector.get(),
             webhook.imp_uid,
+            {},
         );
     typia.assert(reloaded);
 
