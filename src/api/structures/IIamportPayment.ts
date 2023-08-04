@@ -30,6 +30,28 @@ export type IIamportPayment =
 
 export namespace IIamportPayment {
     /**
+     * 결제 수단이 페이팔인 경우, 페이팔의 구매자 보호정책에 의해 결제 승인 시점에
+     * Pending 상태를 만든 후, 내부 심사등을 통해 최종 결제 완료라고 변경함.
+     *
+     * `iamport` 의 기술적 이슈로 해당 상태를 status: failed 로 기록함. 추후
+     * 페이팔에서 최종결제완료로 변경된 경우, `iamport` 에서 `paid` 로 변경 후,
+     * 해당건에 대한 웹훅 발송. `iamport` 를 사용하는 고객사에서는, failed 로 이미
+     * 처리된 결제건에 대한 paid 상태의 웹훅을 받는 문제점이 생김.
+     *
+     * 이에, `iamport` 에서 제공하는 `/payment/{imp_uid}` 에 query-string 으로
+     * `extension=true` 옵션을 추가해야 함
+     *
+     * @issue https://github.com/samchon/fake-iamport-server/issues/13
+     * @author Sangjin Han - https://github.com/ltnscp9028
+     */
+    export interface IQuery {
+        /**
+         * 페이팔의 경우, 이 값을 `true` 로 할 것.
+         */
+        extension?: boolean;
+    }
+
+    /**
      * 웹훅 데이터.
      */
     export interface IWebhook {

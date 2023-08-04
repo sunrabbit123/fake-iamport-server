@@ -64,6 +64,7 @@ async function issue(
         await imp.functional.payments.at(
             await connector.get(),
             webhook.imp_uid,
+            {},
         );
     typia.assert(reloaded);
 
@@ -113,6 +114,7 @@ async function deposit(
         await imp.functional.payments.at(
             await connector.get(),
             webhook.imp_uid,
+            {},
         );
     typia.assert(reloaded);
 

@@ -72,7 +72,8 @@ export async function test_fake_card_payment(): Promise<IIamportCardPayment>
         await imp.functional.payments.at
         (
             await connector.get(),
-            output.response.imp_uid
+            output.response.imp_uid,
+            {},
         );
 
     // 결제 방식 및 완료 여부 확인
@@ -234,7 +235,8 @@ export async function test_fake_subscription_payment_again(): Promise<IIamportCa
         await imp.functional.payments.at
         (
             await connector.get(),
-            output.response.imp_uid
+            output.response.imp_uid,
+            {},
         );
 
     // 결제 방식 및 완료 여부 확인

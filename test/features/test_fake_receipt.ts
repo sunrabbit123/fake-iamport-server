@@ -32,6 +32,7 @@ export async function test_fake_receipt(
         await imp.functional.payments.at(
             await connector.get(),
             payment.imp_uid,
+            {},
         );
     typia.assert(reloaded);
     TestValidator.equals("issue")(reloaded.response.cash_receipt_issue)(true);

@@ -13,7 +13,7 @@
   "info": {
     "title": "Iamport API",
     "description": "Built by [fake-iamport-server](https://github.com/samchon/fake-iamport-server) with [nestia](https://github.com/samchon/nestia)",
-    "version": "1.5.2",
+    "version": "1.5.3",
     "license": {
       "name": "MIT"
     }
@@ -589,6 +589,15 @@
               "type": "string"
             },
             "required": true
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "결제 수단이 페이팔인 경우에 사용",
+            "schema": {
+              "$ref": "#/components/schemas/IIamportPayment.IQuery"
+            },
+            "required": true
           }
         ],
         "responses": {
@@ -638,7 +647,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1563,
+                    "start": 2321,
                     "length": 16
                   }
                 }
@@ -646,6 +655,23 @@
               {
                 "text": "}",
                 "kind": "link"
+              }
+            ]
+          },
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "query",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "결제 수단이 페이팔인 경우에 사용",
+                "kind": "text"
               }
             ]
           },
@@ -827,7 +853,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1563,
+                    "start": 2321,
                     "length": 16
                   }
                 }
@@ -940,7 +966,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1563,
+                    "start": 2321,
                     "length": 16
                   }
                 }
@@ -1058,7 +1084,7 @@
                 "target": {
                   "fileName": "D:/github/samchon/fake-iamport-server/src/api/structures/IIamportPayment.ts",
                   "textSpan": {
-                    "start": 1563,
+                    "start": 2321,
                     "length": 16
                   }
                 }
@@ -2193,6 +2219,39 @@
           "ready",
           "failed",
           "cancelled"
+        ]
+      },
+      "IIamportPayment.IQuery": {
+        "type": "object",
+        "properties": {
+          "extension": {
+            "description": "페이팔의 경우, 이 값을 `true` 로 할 것.",
+            "x-typia-required": false,
+            "x-typia-optional": true,
+            "type": "boolean"
+          }
+        },
+        "nullable": false,
+        "description": "결제 수단이 페이팔인 경우, 페이팔의 구매자 보호정책에 의해 결제 승인 시점에\nPending 상태를 만든 후, 내부 심사등을 통해 최종 결제 완료라고 변경함.\n\n`iamport` 의 기술적 이슈로 해당 상태를 status: failed 로 기록함. 추후\n페이팔에서 최종결제완료로 변경된 경우, `iamport` 에서 `paid` 로 변경 후,\n해당건에 대한 웹훅 발송.\n\n`iamport` 를 사용하는 고객사에서는, failed로 이미 처리된 결제건에 대한\npaid 상태의 웹훅을 받는 문제점이 생김.\n\n이에, `iamport` 에서 제공하는 `/payment/{imp_uid}` 에 query-string 으로\n`extension=true` 옵션을 추가해야 함",
+        "x-typia-jsDocTags": [
+          {
+            "name": "issue",
+            "text": [
+              {
+                "text": "https://github.com/samchon/fake-iamport-server/issues/13",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "author",
+            "text": [
+              {
+                "text": "Sangjin Han - https://github.com/ltnscp9028",
+                "kind": "text"
+              }
+            ]
+          }
         ]
       },
       "IIamportResponse_lt_IIamportPayment_gt_": {

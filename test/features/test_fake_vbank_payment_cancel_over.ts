@@ -32,6 +32,7 @@ export async function test_fake_vbank_payment_cancel_over(
         await imp.functional.payments.at(
             await connector.get(),
             payment.imp_uid,
+            {},
         );
     typia.assert(reloaded);
     typia.assert<IIamportVBankPayment>(reloaded.response);
