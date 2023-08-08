@@ -60,7 +60,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@nestia/core": "^1.6.1",
+    "@nestia/core": "^1.6.2",
     "@nestia/e2e": "^0.3.6",
     "source-map-support": "^0.5.19",
     "tstl": "^2.5.13",
