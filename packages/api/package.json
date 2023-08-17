@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/samchon/fake-iamport-server#readme",
   "dependencies": {
-    "@nestia/fetcher": "^1.6.3",
+    "@nestia/fetcher": "^1.6.5",
     "tstl": "^2.5.13",
     "typia": "^4.2.3"
   },
