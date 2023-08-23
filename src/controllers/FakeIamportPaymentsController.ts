@@ -33,7 +33,6 @@ export class FakeIamportPaymentsController {
     ): IIamportResponse<IIamportPayment> {
         FakeIamportUserAuth.authorize(request);
 
-        query;
         const payment: IIamportPayment =
             FakeIamportStorage.payments.get(imp_uid);
         return FakeIamportResponseProvider.success(payment);
